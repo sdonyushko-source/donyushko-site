@@ -9,8 +9,8 @@
 	&__pixel
 		position absolute
 		display inline-block
-		width 8px
-		height 8px
+		width (100% / 15)
+		height 25%
 		background-color $colorTransparent
 		float left
 		transition background-color 0.5s ease-out
@@ -23,8 +23,8 @@
 	for j in (0..3)
 		for i in (0..14)
 			&__pixel_{j}{i}
-				left (i * 8)px
-				top (j * 8)px
+				left (i * 100% / 15)
+				top (j * 25%)
 
 	&__text
 		font-weight 500
