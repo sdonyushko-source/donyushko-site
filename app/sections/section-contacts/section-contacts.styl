@@ -1,0 +1,131 @@
+.section-contacts
+	padding $blockPaddingTop 0
+
+	&__headline
+		font-weight bold
+		font-size 24px
+
+	&__services
+		padding-top $blockPaddingTop
+
+	&__service-buttons
+		padding-top 50px
+		display inline-block
+
+	&__buttons-row
+		display flex
+
+		&:not(:first-child)
+			margin-top 30px
+
+	&__tag
+		margin-right 30px
+
+	&__information
+		padding $blockPaddingTop 0 90px 0
+		display flex
+		justify-content space-between
+
+	&__send-information
+		margin-right: 15px;
+
+	&__contact-fields
+		padding-top 40px
+		display inline-block
+
+	&__contacts-row
+		display flex
+
+		&:not(:first-child)
+			margin-top 70px
+
+	&__field
+		&:not(:last-child)
+			margin-right 85px
+
+	&__my-contacts
+		padding-top 40px
+		display flex
+		flex-direction column
+
+	&__my-contact-row
+		display flex
+		padding-bottom 15px
+		font-size 18px
+
+	&__contact-name
+		font-weight bold
+		padding-right 15px
+
+	&__contact-value
+		font-weight normal
+
+	&__send
+		& > button
+			padding 20px 95px
+			display flex
+
+	&__contact-information
+		margin-right -15px
+
+// phones and tablets: single column form
+@media w-1185
+	.section-contacts
+		padding 110px 0 40px
+
+		.content-left
+			font-size 24px
+
+		&__information
+			display block
+			padding 30px 0 60px
+
+		&__send-information
+			margin-right 0
+
+		&__contact-fields
+			display block
+			width 100%
+			padding-top 0
+
+		&__contacts-row
+			display block
+
+			&:not(:first-child)
+				margin-top 0
+
+		&__field
+			margin-top 24px
+
+			&:not(:last-child)
+				margin-right 0
+
+		&__contact-information
+			margin-right 0
+			margin-top 50px
+
+		&__my-contacts
+			padding-top 24px
+
+		&__send
+			margin-top 10px
+
+			& > button
+				width 100%
+				padding 14px 20px
+				justify-content center
+
+.hp
+	position absolute
+	left -9999px
+	width 1px
+	height 1px
+	opacity 0
+
+.form-note
+	margin 24px 0
+	padding 16px 20px
+	border 2px solid $mainColor
+	font-size 20px
+	font-weight 500
+	line-height 1.4

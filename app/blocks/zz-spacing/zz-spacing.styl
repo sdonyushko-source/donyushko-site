@@ -1,0 +1,110 @@
+// Tighter vertical rhythm on phones. Loaded last so it wins over the desktop paddings.
+
+@media w-768
+	// ---- home -------------------------------------------------------------
+	.section-main
+		padding 20px 0 30px
+
+		&__projects-headline
+			margin-bottom 30px
+			padding-bottom 12px
+
+		&__headline
+			font-size 32px
+
+		&__project:not(:first-child)
+			padding-top 72px
+
+		&__show-more
+			margin-top 40px
+
+	// first block on every page has to clear the fixed header
+	.section_main > .section__wrap:first-child .section-main
+		padding-top 110px
+
+	.main-project
+		margin-bottom 90px
+
+	// caption stays close to its own card, cards stay clearly apart
+	.project-summary__description
+		padding-top 16px
+
+	// ---- projects list ----------------------------------------------------
+	.section-projects
+		padding-top 110px
+
+		.content-left
+			font-size 22px
+
+		&__project-types
+			margin 30px 0
+			flex-wrap wrap
+
+		&__type
+			margin-right 22px
+
+		&__project
+			padding-bottom 72px
+
+	// ---- project pages ----------------------------------------------------
+	.section-project-1
+	.section-project-2
+	.section-project-4
+	.section-project-5
+		padding-top 20px
+
+		&__picture
+			padding-bottom 30px
+
+	// first block of an old project page clears the fixed header
+	.section[class*="section_project_"] > .section__wrap:first-child > div[class^="section-project-"]
+		padding-top 110px
+
+	.section_case > .section__wrap:first-child .case
+		padding-top 110px
+		padding-bottom 20px
+
+	.section_case > .section__wrap:last-child .case
+		padding-top 10px
+		padding-bottom 50px
+
+	.case
+		&__title
+			padding-bottom 24px
+
+		&__meta
+			margin-top 30px
+			padding 20px 0
+
+		&__back
+			margin-top 30px
+
+	// ---- about / experience ----------------------------------------------
+	.experience
+		padding-top 50px
+
+		&_skills
+			padding-top 10px
+			padding-bottom 10px
+
+		&__headline
+			margin-bottom 20px
+
+	// ---- services ---------------------------------------------------------
+	.section-services
+		padding 110px 0 40px
+
+		&__services
+			padding-top 20px
+			margin-bottom 50px
+
+		&__services-row:not(:first-child)
+			margin-top 40px
+
+// desktop too: the gap between the case header and the first section was ~150px
+.section_case > .section__wrap:first-child .case
+	padding-bottom 30px
+
+.case-panel.case-panel_plain
+	padding-top 40px
+	padding-bottom 40px

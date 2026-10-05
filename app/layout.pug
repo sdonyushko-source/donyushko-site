@@ -1,0 +1,49 @@
+include bemto/bemto
+
+block php
+
+doctype html
+
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+
+		block vars
+		- var _desc = (typeof pageDescription !== 'undefined') ? pageDescription : 'Сергей Донюшко — продуктовый дизайнер, 8+ лет в B2B SaaS, корпоративных продуктах и мобильных приложениях. Кейсы, опыт и контакты.'
+		meta(name="description" content=_desc)
+		if (typeof pageRobots !== 'undefined')
+			meta(name="robots" content=pageRobots)
+		meta(property="og:type" content="website")
+		meta(property="og:site_name" content="Sergey Donyushko")
+		meta(property="og:description" content=_desc)
+		meta(property="og:image" content="https://donyushko.ru/images/og-image.jpg")
+		meta(name="twitter:card" content="summary_large_image")
+
+		link(rel="icon" type="image/png" href="images/favicon.png")
+
+		//- link(rel='stylesheet', href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css')
+		//- link(rel='stylesheet', href='https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css')
+
+		//- link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css")
+
+		//- link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Fira+Sans:200,400,500")
+		link(rel="stylesheet", href="css/common.css?v=20261005")
+		link(rel='stylesheet', href='css/' + filename + '.css?v=20261005')
+		title
+			block title
+
+		block local-styles
+
+	body
+		block body
+
+		script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+		script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+		//- script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js')
+
+		script(type='text/javascript' src='js/common.js?v=20261005')
+		//- script(type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js')
+
+		block local-scripts
+		script(type='text/javascript' src='js/' + filename + '.js?v=20261005')

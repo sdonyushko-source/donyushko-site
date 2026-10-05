@@ -1,0 +1,71 @@
+.contact-input
+	position relative
+	padding-top 30px
+	width 340px
+
+	&__input-field
+		border none
+		box-shadow none
+		outline 0
+		border-bottom 2px solid $mainColor
+		width 340px
+		padding 5px 0 20px 0
+		font-weight 500
+		font-size 18px
+
+		&_long
+			width 765px
+
+		&_invalid
+			&:invalid
+				border-bottom 2px solid $validationColor
+
+	&__placeholder
+		position absolute
+		top 35px
+		left 0
+		transition all $transitionDefault
+		cursor text
+
+	&__text
+		font-weight 500
+		font-size 18px
+
+	&__dot
+		font-weight 900
+		font-size 18px
+
+
+@css {
+	.contact-input__input-field:focus + .contact-input__placeholder,
+	.contact-input__input-field:not(:placeholder-shown) + .contact-input__placeholder {
+		transform: translate3d(0, -100%, 0);
+	}
+
+	.contact-input__input-field:focus + .contact-input__placeholder .contact-input__text,
+	.contact-input__input-field:not(:placeholder-shown) + .contact-input__placeholder .contact-input__text {
+		font-weight: 300;
+		font-size: 14px;
+	}
+
+	.contact-input__input-field:focus + .contact-input__placeholder .contact-input__dot,
+	.contact-input__input-field:not(:placeholder-shown) + .contact-input__placeholder .contact-input__dot {
+		display: none;
+	}
+
+	.contact-input__input-field_invalid:invalid + .contact-input__placeholder .contact-input__text_invalid,
+	.contact-input__input-field_invalid:invalid + .contact-input__placeholder .contact-input__dot_invalid {
+		/*color $validationColor*/
+		color: #ff4b4b;
+	}
+}
+
+@media w-1185
+	.contact-input
+		width 100%
+
+		&__input-field
+			width 100%
+
+			&_long
+				width 100%

@@ -1,0 +1,15 @@
+extends /layout
+
+block vars
+	- var pageDescription = 'Сергей Донюшко — продуктовый дизайнер, 8+ лет в B2B SaaS, корпоративных продуктах и мобильных приложениях. Кейсы, опыт и контакты.'
+	- var pageRobots = 'noindex, nofollow'
+
+block title
+	| Services — Sergey Donyushko
+
+block body
+	+b.page-effect
+		include /sections/section-logo/section-logo-black-clickable
+		include /sections/section-menu/section-menu-black
+		include /sections/section-services/section-services
+		include /sections/section-footer/section-footer-black-clickable

@@ -1,0 +1,58 @@
+.section-about
+	padding $blockPaddingTop 170px
+
+	&__text
+		font-size 34px
+
+		&:not(:last-child)
+			padding-bottom 60px
+
+	&__bold
+		font-weight 500
+
+// the statement under the intro; the picture is kept in the markup but not shown
+.motivation
+	display block
+	padding 0 170px
+
+	&__text-rotated
+	&__text-rotated_ru
+		position static
+		transform none
+		text-align left
+
+	&__text
+		font-size 34px
+
+	&__bold
+		font-weight bold
+		font-size 34px
+
+	&__picture
+		display none
+
+@media w-1185
+	.section-about
+		padding 40px 0
+
+	.motivation
+		padding 0
+
+	// clear the fixed header
+	.section_about > .section__wrap:first-child .section-about
+		padding-top 110px
+
+@media w-768
+	.section-about
+		&__text
+			font-size 22px
+			line-height 1.4
+
+			&:not(:last-child)
+				padding-bottom 30px
+
+	.motivation
+		&__text
+		&__bold
+			font-size 22px
+			line-height 1.4

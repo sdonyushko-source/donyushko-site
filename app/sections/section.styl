@@ -1,0 +1,22 @@
+.section
+	background-color $colorTransparent
+
+	&_black
+		background-color $colorBlack
+		color $colorWhite
+
+	&__wrap
+		max-width 1100px
+		margin 0 auto
+		background-color $colorTransparent
+		@media w-1185
+			padding 0 20px
+
+		&_picture
+			max-width (@max-width + 85px*2)
+			padding-right 0
+
+		&_right
+			padding-right 0
+			@media w-1185
+				padding 0 20px

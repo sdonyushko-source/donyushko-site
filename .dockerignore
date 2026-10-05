@@ -1,0 +1,10 @@
+node_modules
+app
+gulp-tasks
+gulpfile.js
+package.json
+package-lock.json
+yarn.lock
+*.zip
+.git
+.DS_Store

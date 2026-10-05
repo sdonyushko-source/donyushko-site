@@ -1,0 +1,68 @@
+.experience
+	padding $blockPaddingTop 170px 0
+
+	@media w-1185
+		padding $blockPaddingTop 0 0
+
+	&_skills
+		padding-top 40px
+		padding-bottom $blockPaddingTop
+
+	&__headline
+		margin-bottom 40px
+		padding-bottom 20px
+		border-bottom 1px solid $mainColor
+		font-size 40px
+		font-weight bold
+
+	&__item
+		padding 36px 0
+
+		&:not(:last-child)
+			border-bottom 1px solid rgba(27, 27, 27, .15)
+
+		@media w-640
+			padding 28px 0
+
+	&__role
+		font-size 28px
+		font-weight bold
+		line-height 1.25
+
+		@media w-640
+			font-size 22px
+
+	&__period
+		padding 8px 0 16px
+		font-size 18px
+		opacity .6
+
+	&__group
+		padding-bottom 8px
+		font-size 22px
+		font-weight bold
+
+	&__about
+		font-size 20px
+		line-height 1.5
+		max-width 900px
+
+	&__list
+		margin-top 18px
+		padding-left 22px
+		list-style disc
+		max-width 900px
+
+	&__bullet
+		font-size 18px
+		line-height 1.5
+
+		&:not(:last-child)
+			padding-bottom 8px
+
+	&__more
+		margin-top 20px
+
+	&__more-link
+		font-weight 500
+		text-decoration underline

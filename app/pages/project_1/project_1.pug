@@ -1,0 +1,14 @@
+extends /layout
+
+block vars
+	- var pageDescription = 'Мобильное приложение Carnet для поиска и записи в автосервис с лучшими условиями для пользователей в Эстонии.'
+
+block title
+	| Carnet — mobile app | Sergey Donyushko
+
+block body
+	+b.page-effect
+		include /sections/section-logo/section-logo-clickable
+		include /sections/section-menu/section-menu
+		include /sections/section-project_1/section-project_1
+		include /sections/section-footer/section-footer-clickable

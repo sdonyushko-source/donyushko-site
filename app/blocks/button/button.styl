@@ -1,0 +1,28 @@
+.button
+	background transparent
+	color $mainColor
+	fill $mainColor
+	border 2px solid $mainColor
+	cursor pointer
+	padding 5px 11px
+	font-weight 500
+	font-size 16px
+
+	&:hover
+		transition $transitionDefault
+		background-color $mainColor
+		color $colorWhite
+		fill $colorWhite
+
+	&_black
+		color $colorWhite
+		border 2px solid $colorWhite
+
+		&:hover
+			transition $transitionDefault
+			background-color $colorWhite
+			color $mainColor
+
+	&__text
+		font-size 18px
+		padding-right 10px

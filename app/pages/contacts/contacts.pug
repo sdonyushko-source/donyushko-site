@@ -1,0 +1,17 @@
+extends /layout
+
+block vars
+	- var pageDescription = 'Связаться с Сергеем Донюшко: Telegram @donyushko, почта и форма обратной связи.'
+
+block php
+	include contacts.php
+
+block title
+	| Contact — Sergey Donyushko, Product Designer
+
+block body
+	+b.page-effect
+		include /sections/section-logo/section-logo-clickable
+		include /sections/section-menu/section-menu
+		include /sections/section-contacts/section-contacts
+		include /sections/section-footer/section-footer-clickable

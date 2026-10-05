@@ -1,0 +1,192 @@
++b.SECTION.section_contacts.en
+	+e.wrap_right
+		+b.section-contacts
+			+e.FORM.send-request(method="POST")
+				input.hp(type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true")
+				p.form-note.form-note_sent(hidden)
+					| Thank you! Your message has been sent, I will get back to you soon.
+				p.form-note.form-note_error(hidden)
+					| Something went wrong. Please check the fields or write to me on Telegram: @donyushko.
+				+b.content-left
+					+e.P
+						+e.SPAN.bold Contact.
+						|  Send me a message with your details.
+
+					//+e.services
+					//	+e.P.headline Choose the service you are interested in.
+					//	+e.service-buttons
+					//		+e.buttons-row
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Website
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Mobile app
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") UX/UI Service
+					//		+e.buttons-row
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Analysis
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Prototype
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Illustration
+					//		+e.buttons-row
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Animation
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") HTML/CSS
+					//			+e.tag
+					//				+b.BUTTON.service-tag(type="button") Frontend / Backend
+					//		+e.INPUT.services-input(type="hidden" name="services")
+
+				+e.information
+					+e.send-information
+						+e.P.headline Write to me
+						+e.contact-fields
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="name-en" required name="name" placeholder=' ')
+										+e.placeholder(for="name-en")
+											+e.text_required Your name
+											+e.dot_required &#729;
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="email-en" required name="email" type="email" placeholder=' ')
+										+e.placeholder(for="email-en")
+											+e.text_required Your email
+											+e.dot_required &#729;
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="phone-en" required name="phone" placeholder=' ')
+										+e.placeholder(for="phone-en")
+											+e.text_required Your phone number
+											+e.dot_required &#729;
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field(id="company-en" name="company" placeholder=' ')
+										+e.placeholder(for="company-en")
+											+e.text Name company
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_long(id="comment-en" name="comment" placeholder=' ')
+										+e.placeholder(for="comment-en")
+											+e.text Your comment
+
+					+e.contact-information
+						+e.P.headline My contact information
+						+e.my-contacts
+							+e.my-contact-row
+								+e.P.contact-name Phone
+								+e.P.contact-value +7 987 542-72-25
+							+e.my-contact-row
+								+e.P.contact-name Email
+								+e.P.contact-value s.donyushko@gmail.com
+							+e.my-contact-row
+								+e.P.contact-name Telegram
+								+e.P.contact-value @donyushko
+
+				+e.send
+					+b.BUTTON.button.button_send(type="submit" name="send")
+						+e.text Send
+						+e.svg-picture
+							+e.SVG.arrow(xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 16")
+								+e.PATH(fill-rule="nonzero" d="M17.49 8.102l-6.71-6.778L12.09 0 21 9l-8.91 9-1.31-1.324 6.636-6.703H0V8.102z")
+
+
++b.SECTION.section_contacts.ru
+	+e.wrap
+		+b.section-contacts
+			+e.FORM.send-request(method="POST")
+				input.hp(type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true")
+				p.form-note.form-note_sent(hidden)
+					| Спасибо! Сообщение отправлено, я скоро отвечу.
+				p.form-note.form-note_error(hidden)
+					| Не получилось отправить. Проверьте поля или напишите мне в Telegram: @donyushko.
+				+b.content-left
+					+e.P
+						+e.SPAN.bold Связаться.
+						|  Отправьте сообщение со своими данными.
+
+				//+e.services
+				//	+e.P.headline Выберите заинтересовавший вас сервис.
+				//	+e.service-buttons
+				//		+e.buttons-row
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Веб сайты
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Мобильные приложения
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") UX/UI Сервис
+				//		+e.buttons-row
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Аналитика
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Прототипирование
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Иллюстрация
+				//		+e.buttons-row
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Анимаци
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") HTML/CSS
+				//			+e.tag
+				//				+b.BUTTON.service-tag(type="button") Frontend / Backend
+				//		+e.INPUT.services-input(type="hidden" name="services")
+
+				+e.information
+					+e.send-information
+						+e.P.headline Напишите мне
+						+e.contact-fields
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="name-ru" required name="name" placeholder=' ')
+										+e.placeholder(for="name-ru")
+											+e.text_required Ваше имя
+											+e.dot_required &#729;
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="email-ru" required name="email" type="email" placeholder=' ')
+										+e.placeholder(for="email-ru")
+											+e.text_required Ваш электронный адрес
+											+e.dot_required &#729;
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_required(id="phone-ru" required name="phone" placeholder=' ')
+										+e.placeholder(for="phone-ru")
+											+e.text_required Ваш телефон
+											+e.dot_required &#729;
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field(id="company-ru" name="company" placeholder=' ')
+										+e.placeholder(for="company-ru")
+											+e.text(lang='ru') Название компании
+							+e.contacts-row
+								+e.field
+									+b.contact-input
+										+e.INPUT.input-field_long(id="comment-ru" name="comment" placeholder=' ')
+										+e.placeholder(for="comment-ru")
+											+e.text Ваш комментарий
+
+					+e.contact-information
+						+e.P.headline Мои контакты
+						+e.my-contacts
+							+e.my-contact-row
+								+e.P.contact-name Телефон
+								+e.P.contact-value +7 987 542-72-25
+							+e.my-contact-row
+								+e.P.contact-name Email
+								+e.P.contact-value s.donyushko@gmail.com
+							+e.my-contact-row
+								+e.P.contact-name Telegram
+								+e.P.contact-value @donyushko
+
+				+e.send
+					+b.BUTTON.button.button_send(type="submit" name="send")
+						+e.text Отправить
+						+e.svg-picture
+							+e.SVG.arrow(xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 16")
+								+e.PATH(fill-rule="nonzero" d="M17.49 8.102l-6.71-6.778L12.09 0 21 9l-8.91 9-1.31-1.324 6.636-6.703H0V8.102z")

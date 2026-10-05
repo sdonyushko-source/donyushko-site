@@ -1,0 +1,120 @@
+// Burger button and full-screen menu for phones
+
+.burger
+	display none
+
+.mobile-menu
+	display none
+
+@media w-768
+	.section-menu__menu-top
+		display none
+
+	.section-menu
+		padding-top 0
+
+	// logo flush with the content's left edge
+	.section-logo
+		left 20px
+
+	// language switch sits to the left of the burger
+	.section-menu__language
+		position fixed
+		top 30px
+		right 68px
+		height 42px
+		display flex
+		align-items center
+		z-index 100
+
+	// bare burger: only the lines, flush with the content's right edge
+	.burger
+		position fixed
+		top 30px
+		right 20px
+		z-index 100
+		width 32px
+		height 42px
+		padding 0
+		border 0
+		background transparent
+		cursor pointer
+		display flex
+		flex-direction column
+		align-items flex-end
+		justify-content center
+
+		&__line
+			display block
+			width 28px
+			height 2px
+			background-color $mainColor
+
+			&:not(:last-child)
+				margin-bottom 6px
+
+	.mobile-menu
+		position fixed
+		top 0
+		left 0
+		right 0
+		bottom 0
+		z-index 300
+		padding 100px 20px 40px
+		background-color $colorWhite
+		overflow-y auto
+		display none
+		flex-direction column
+		justify-content flex-start
+
+		&_open
+			display flex
+
+		&__close
+			position absolute
+			top 30px
+			right 20px
+			width 32px
+			height 42px
+			padding 0
+			border 0
+			background transparent
+			cursor pointer
+
+		&__close-line
+			position absolute
+			top 20px
+			left 5px
+			width 26px
+			height 2px
+			background-color $mainColor
+
+			&:first-child
+				transform rotate(45deg)
+
+			&:last-child
+				transform rotate(-45deg)
+
+		&__nav
+			.menu__menu-tabs
+				height auto
+				flex-direction column
+				align-items flex-start
+				justify-content flex-start
+
+			.menu__tab
+				margin 0 0 28px
+				font-size 34px
+				font-weight bold
+				text-align left
+
+				&:before
+					display none
+
+		&__language
+			position absolute
+			top 30px
+			right 68px
+			height 42px
+			display flex
+			align-items center

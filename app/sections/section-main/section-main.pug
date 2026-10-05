@@ -1,0 +1,143 @@
++b.SECTION.section_main.en
+	+e.wrap
+		+b.section-main
+			+b.content-left
+				+e.P Welcome,
+					+e.SPAN.bold  I'm Sergey Donyushko, product designer with 8+ years of experience in B2B SaaS, enterprise products and mobile apps
+					| . Here you will find my work. If you would like to discuss a project or a role, get in touch in any way convenient for you.
+			+e.contact
+				+e.avatar
+					include /blocks/avatar/avatar
+				+e.A.button(href='contacts.php')
+					include /blocks/pixel-button/pixel-button
+
+	+e.wrap_picture
+		+b.main-project
+			+e.A.main-link(href='project_6.php')
+				picture
+					source(media='(max-width: 640px)' srcset='images/project_6/pre-6-m.webp')
+					img.main-project__main-picture(src='images/project_6/pre-6.webp' alt='')
+				+e.main-description
+					+e.P.description
+						+e.SPAN.bold beSirius
+						|  is an AI platform for supplier due diligence in critical minerals supply chains
+					+e.P.tag Web platform · AI · B2B SaaS
+
+	+e.wrap
+		+b.section-main
+			+e.projects-headline
+				+e.H1.headline My projects
+				+e.view-all
+					+e.A.more(href='projects.php')
+						+e.more_text View All
+						+e.SVG.more_arrow(xmlns='http://www.w3.org/2000/svg' widht='21' height='18' viewBox='0 0 21 18')
+							+e.PATH(fill='1B1B1B' fill-rule='nonzero' d='M17.49 8.102l-6.71-6.778L12.09 0 21 9l-8.91 9-1.31-1.324 6.636-6.703H0V8.102z')
+
+			+e.projects
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_7.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_7/pre-7-m.webp')
+								img(src='images/project_7/pre-7.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold Mercaux.
+								|  A product ecosystem for international retailers: iOS and Android apps, web portal, POS and Customer QR
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_8.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_8/pre-8-m.webp')
+								img(src='images/project_8/pre-8.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold Viveo Health.
+								|  A telemedicine platform for doctors and patients: web service and mobile app
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_9.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_9/pre-9-m.webp')
+								img(src='images/project_9/pre-9.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold LaResto.
+								|  A mobile app concept for food delivery, table booking and QR menus
+
+
+			+e.show-more
+				+e.A.more(href='projects.php')
+					+e.more_text Show more
+					+e.more_arrow
+						include /images/arrow.svg
+
+
++b.SECTION.section_main.ru
+	+e.wrap
+		+b.section-main
+			+b.content-left
+				+e.P Добро пожаловать,
+					+e.SPAN.bold  я Сергей Донюшко, продуктовый дизайнер с опытом 8+ лет в B2B SaaS, корпоративных продуктах и мобильных приложениях
+					| . Здесь Вы найдёте мои работы. Если захотите обсудить проект или вакансию, свяжитесь со мной удобным для Вас способом.
+
+			+e.contact
+				+e.avatar
+					include /blocks/avatar/avatar
+				+e.A.button(href='contacts.php')
+					include /blocks/pixel-button/pixel-button
+
+	+e.wrap_picture
+		+b.main-project
+			+e.A.main-link(href='project_6.php')
+				picture
+					source(media='(max-width: 640px)' srcset='images/project_6/pre-6-m.webp')
+					img.main-project__main-picture(src='images/project_6/pre-6.webp' alt='')
+				+e.main-description
+					+e.P.description
+						+e.SPAN.bold beSirius
+						|  — AI-платформа для проверки поставщиков в цепочках поставок критических минералов
+					+e.P.tag Веб-платформа · AI · B2B SaaS
+
+
+	+e.wrap
+		+b.section-main
+			+e.projects-headline
+				+e.H1.headline Мои проекты
+				+e.view-all
+					+e.A.more(href='projects.php')
+						+e.more_text Посмотреть все
+						+e.SVG.more_arrow(xmlns='http://www.w3.org/2000/svg' widht='21' height='18' viewBox='0 0 21 18')
+							+e.PATH(fill='1B1B1B' fill-rule='nonzero' d='M17.49 8.102l-6.71-6.778L12.09 0 21 9l-8.91 9-1.31-1.324 6.636-6.703H0V8.102z')
+
+			+e.projects
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_7.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_7/pre-7-m.webp')
+								img(src='images/project_7/pre-7.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold Mercaux.
+								|  Экосистема продуктов для международных ритейлеров: iOS- и Android-приложения, веб-портал, POS и Customer QR
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_8.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_8/pre-8-m.webp')
+								img(src='images/project_8/pre-8.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold Viveo Health.
+								|  Платформа телемедицины для врачей и пациентов: веб-сервис и мобильное приложение
+				+e.project
+					+b.project-summary
+						+e.A.summary-link(href='project_9.php')
+							picture
+								source(media='(max-width: 640px)' srcset='images/project_9/pre-9-m.webp')
+								img(src='images/project_9/pre-9.webp' alt='')
+							+e.P.description
+								+e.SPAN.bold LaResto.
+								|  Концепт мобильного приложения для доставки еды, бронирования столика и QR-меню
+
+			+e.show-more
+				+e.A.more(href='projects.php')
+					+e.more_text Показать ещё
+					+e.more_arrow
+						include /images/arrow.svg

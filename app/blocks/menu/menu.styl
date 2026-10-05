@@ -1,0 +1,32 @@
+.menu
+	&__menu-tabs
+		height 45px
+		display flex
+		justify-content space-between
+		align-items center
+
+	&__tab
+		position relative
+		font-weight 500
+		font-size 16px
+		margin-right 30px
+
+		&:before
+			content ''
+			position absolute
+			bottom -4px
+			height 1px
+			width 100%
+			background-color $mainColor
+			transform-origin right top
+			transform scale(0, 1)
+			transition transform $transitionDefault ease-out
+
+		&:hover::before
+		&:focus::before
+			transform-origin left top
+			transform scale(1, 1)
+
+	&_black
+		.menu__tab:before
+				background-color $colorWhite

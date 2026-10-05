@@ -1,0 +1,32 @@
+.pixel-button
+	position relative
+	display flex
+	align-items center
+	justify-content center
+	width 120px
+	height 32px
+
+	&__pixel
+		position absolute
+		display inline-block
+		width 8px
+		height 8px
+		background-color $colorTransparent
+		float left
+		transition background-color 0.5s ease-out
+		transition-delay 1s
+
+		&:hover
+			background-color $mainColor
+			transition background-color .05s
+
+	for j in (0..3)
+		for i in (0..14)
+			&__pixel_{j}{i}
+				left (i * 8)px
+				top (j * 8)px
+
+	&__text
+		font-weight 500
+		font-size 16px
+

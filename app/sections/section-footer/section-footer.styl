@@ -1,0 +1,37 @@
+.section-footer
+	padding 30px 0
+	display flex
+	align-items center
+	justify-content space-between
+	border-top 1px solid $mainColor
+
+	&_black
+		border-top 1px solid $colorWhite
+
+	&__logo-menu
+		display flex
+		align-items center
+		justify-content flex-start
+
+	&__logo
+		margin-right 60px
+
+	&__network-lang
+		display flex
+		align-items center
+		justify-content flex-end
+
+	&__network-icons
+		margin-right 50px
+
+// phones: only the logo and the social icons
+@media w-768
+	.section-footer__menu-bottom
+	.section-footer__language
+		display none
+
+	.section-footer__logo
+		margin-right 0
+
+	.section-footer__network-icons
+		margin-right 0

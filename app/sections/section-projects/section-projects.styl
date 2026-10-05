@@ -1,0 +1,40 @@
+.section-projects
+	padding-top $blockPaddingTop
+
+	&__project-types
+		margin 70px 0
+		border-bottom 1px solid $mainColor
+		display flex
+		justify-content flex-start
+		align-items center
+
+	&__type
+		position relative
+		font-size 18px
+		font-weight 500
+		margin-right 30px
+		padding-bottom 20px
+		cursor pointer
+
+		&:before
+			content ''
+			position absolute
+			bottom 0
+			height 3px
+			width 100%
+			background-color $mainColor
+			transform-origin right top
+			transform scale(0, 1)
+			/*transition transform $transitionDefault ease-out*/
+
+		&:hover::before
+		&:focus::before
+		&_active:before
+			transform-origin left top
+			transform scale(1, 1)
+
+	&__project
+		padding-bottom $blockPaddingTop
+
+		&_hidden
+			display none
