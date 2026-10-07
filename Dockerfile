@@ -11,4 +11,8 @@ RUN a2enconf site
 
 COPY dist/ /var/www/html/
 
+# Hidden client preview (M-One redesign): reachable only by direct link, not linked from the portfolio.
+# Built separately from the moneteam-redesign Astro project; kept outside dist/ because `gulp build` wipes dist/.
+COPY moneteam/ /var/www/html/moneteam/
+
 EXPOSE 80
