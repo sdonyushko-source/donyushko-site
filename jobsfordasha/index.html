@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Вакансии для Даши</title>
+<meta name="description" content="Подборка вакансий в Нижнем Новгороде: видео, мерчендайзинг, торговля, администрирование, танцы, шитьё.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B0D10'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%231A3FE9'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/inter-cyrillic-wght-normal.DqGufNeO.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Inter Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/inter-cyrillic-ext-wght-normal.BOeWTOD4.woff2) format("woff2-variations");unicode-range:U+460-52F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}
+@font-face{font-family:"Inter Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/inter-cyrillic-wght-normal.DqGufNeO.woff2) format("woff2-variations");unicode-range:U+301,U+400-45F,U+490-491,U+4B0-4B1,U+2116}
+@font-face{font-family:"Inter Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/inter-latin-ext-wght-normal.DO1Apj_S.woff2) format("woff2-variations");unicode-range:U+100-2BA,U+2BD-2C5,U+2C7-2CC,U+2CE-2D7,U+2DD-2FF,U+304,U+308,U+329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url(fonts/inter-latin-wght-normal.Dx4kXJAl.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Bricolage Grotesque Variable";font-style:normal;font-display:swap;font-weight:200 800;src:url(fonts/bricolage-grotesque-latin-opsz-normal.Cre6nC2_.woff2) format("woff2-variations");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root{--bg:#f4f4f2;--surface:#fff;--ink:#0b0d10;--ink-2:#4a4f57;--ink-3:#8a9099;--dark:#0b0d10;--dark-2:#15181d;--dark-line:#ffffff1a;--line:#0b0d101a;--accent:#1a3fe9;--accent-soft:#dce3ff;--radius:20px;--display:"Bricolage Grotesque Variable","Inter Variable",system-ui,sans-serif;--text:"Inter Variable",system-ui,sans-serif;--gutter:clamp(16px,4vw,48px);--max:1320px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);padding:0 var(--gutter);margin:0 auto}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;font-weight:500;line-height:1.05}
+.eyebrow{font:500 13px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:#fff9;display:inline-flex;align-items:center;gap:10px}
+.eyebrow:before{content:"";background:var(--accent);border-radius:50%;width:8px;height:8px}
+.btn{height:52px;font:500 15px/1 var(--text);white-space:nowrap;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 24px;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#1533c4}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translate(3px)}
+
+.hero{background:var(--dark);color:#fff;border-radius:0 0 var(--radius) var(--radius);padding:140px 0 48px;position:relative;overflow:hidden}
+.hero-glow{pointer-events:none;background:radial-gradient(circle,#1a3fe98c 0%,#1a3fe900 62%);width:900px;height:900px;position:absolute;top:-340px;right:-260px;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(-120px,80px) scale(1.1)}}
+.hero .wrap{position:relative}
+.hero .eyebrow{margin-bottom:28px}
+.hero h1{font-size:clamp(48px,8.6vw,132px);font-weight:600;letter-spacing:-.045em}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px #ffffff8c}
+.hero p.lead{color:#ffffffb3;max-width:620px;font-size:clamp(17px,1.4vw,20px);margin-top:32px}
+.stats{border-top:1px solid var(--dark-line);display:grid;grid-template-columns:repeat(4,1fr);margin-top:64px}
+.stat{padding:24px 24px 4px 0}
+.stat+.stat{border-left:1px solid var(--dark-line);padding-left:24px}
+.stat b{display:block;font:500 clamp(32px,3.6vw,52px)/1 var(--display);letter-spacing:-.04em}
+.stat span{color:#ffffff8c;font-size:14px}
+
+.bar{position:sticky;top:0;z-index:20;padding:16px 0;background:var(--bg);box-shadow:0 1px 0 var(--line)}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 14px/1 var(--text);border-radius:999px;padding:12px 18px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.chip i{font-style:normal;color:var(--ink-3);margin-left:6px}
+.chip:hover{border-color:var(--ink)}
+.chip.is-on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chip.is-on i{color:#ffffff99}
+
+main{padding:24px 0 96px}
+.group{padding:40px 0 8px}
+.group[hidden]{display:none}
+.group>h2{font-size:clamp(28px,3vw,40px);margin-bottom:24px}
+.job{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;background:var(--surface);border-radius:var(--radius);padding:32px;margin-bottom:16px;transition:box-shadow .3s,transform .3s}
+.job:hover{box-shadow:0 18px 40px #0b0d1012;transform:translateY(-2px)}
+.company{font-size:14px;color:var(--ink-3);font-weight:500;margin-bottom:12px}
+.job h3{font-size:clamp(24px,2.4vw,34px);margin-bottom:16px}
+.desc{color:var(--ink-2);max-width:62ch}
+.note{margin-top:16px;padding:12px 16px;border-radius:12px;background:var(--accent-soft);color:#1a2c8a;font-size:14px;line-height:1.5}
+.job-side{border-left:1px solid var(--line);padding-left:40px;display:flex;flex-direction:column;gap:20px}
+.money b{display:block;font:500 clamp(24px,2.2vw,30px)/1.1 var(--display);letter-spacing:-.03em}
+.money .tax{display:block;margin-top:6px;font-size:13px;color:var(--ink-3)}
+dl{display:grid;gap:10px}
+.row{display:grid;grid-template-columns:84px 1fr;gap:12px;font-size:14px;line-height:1.45}
+.row dt{color:var(--ink-3)}
+.row dd{color:var(--ink)}
+.job-side .btn{margin-top:auto;width:100%}
+
+footer{padding:0 0 64px;color:var(--ink-3);font-size:14px}
+footer p{max-width:70ch}
+
+@media (max-width:980px){
+ .job{grid-template-columns:1fr;gap:24px;padding:24px}
+ .job-side{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .stat:nth-child(3){border-left:0;padding-left:0}
+ .stat:nth-child(n+3){border-top:1px solid var(--dark-line);margin-top:20px;padding-top:24px}
+}
+@media (max-width:560px){
+ .hero{padding-top:104px}
+ .row{grid-template-columns:72px 1fr}
+ .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.hero-glow{animation:none}.job,.btn{transition:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow">Подборка · Нижний Новгород · 8 октября 2026</p>
+    <h1>Вакансии<br>для <em>Даши</em></h1>
+    <p class="lead">Работа по её опыту: видео и контент, мерчендайзинг, торговля, администрирование, танцы, шитьё. Без холодных продаж и обзвонов.</p>
+    <div class="stats">
+      <div class="stat"><b>50</b><span>вакансий</span></div>
+      <div class="stat"><b>7</b><span>направлений</span></div>
+      <div class="stat"><b>170 000 ₽</b><span>максимум в подборке</span></div>
+      <div class="stat"><b>0</b><span>холодных продаж</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="bar"><div class="wrap"><div class="chips" id="chips"><button class="chip is-on" data-filter="all">Все <i>50</i></button><button class="chip" data-filter="video">Видео и контент <i>6</i></button><button class="chip" data-filter="merch">Оформление и мерчендайзинг <i>3</i></button><button class="chip" data-filter="shop">Продавец-консультант <i>11</i></button><button class="chip" data-filter="admin">Администратор <i>16</i></button><button class="chip" data-filter="dance">Танцы и преподавание <i>4</i></button><button class="chip" data-filter="event">Мероприятия <i>1</i></button><button class="chip" data-filter="sew">Шитьё <i>9</i></button></div></div></div>
+
+<main>
+  <div class="wrap" id="list">
+    <section class="group" id="video" data-group="video">
+      <h2 class="h-md">Видео и контент</h2>
+      
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">РЭДИ</p>
+          <h3>Контент-продюсер (short-form video)</h3>
+          <p class="desc">Создаёт и тестирует гипотезы для Reels, Shorts и TikTok, пишет сценарии и структуру роликов, следит за трендами и метриками, использует AI-инструменты. Нужен человек, который мыслит цифрами и результатом, а не только красивой картинкой.</p>
+          <p class="note">Проект связан с покером: компания онлайн-клуб, это игорная тематика.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 150 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>Удалённо</dd></div><div class="row"><dt>График</dt><dd>Свободный график</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/136771734" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">Viralla</p>
+          <h3>Креатор коротких видео для beauty-брендов</h3>
+          <p class="desc">Съёмки коротких вертикальных видео для Reels, TikTok и Shorts в Нижнем Новгороде. Опыт не нужен, есть команда аналитиков, которая подсказывает, какие ролики заходят. Съёмки очные.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 70 000 до 170 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе</dd></div><div class="row"><dt>График</dt><dd>5/2</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137876354" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">AKM Originals</p>
+          <h3>Видеомонтажёр / Shorts-мейкер</h3>
+          <p class="desc">Монтаж Shorts, Reels и TikTok в Premiere Pro: нарезка длинных видео в динамичные ролики, субтитры, музыка, звук, простые анимации в After Effects. В команде есть наставник, который вводит в проект.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 до 70 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе</dd></div><div class="row"><dt>График</dt><dd>5/2, 6–7 часов в день</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Минина, 29</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137689487" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">AURA</p>
+          <h3>Монтажёр коротких роликов / Reels</h3>
+          <p class="desc">Монтаж коротких вертикальных видео для бренда кастомных подарков. Задачи идут потоком почти каждый день: динамичный монтаж, музыка, титры, простые эффекты.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 до 80 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>Удалённо</dd></div><div class="row"><dt>График</dt><dd>5/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Компания в Краснодаре</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137654286" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">Мебелит (Uperwood)</p>
+          <h3>Контент-маркетолог / SMM-менеджер</h3>
+          <p class="desc">Ведёт весь контент бренда мебели и товаров для ванной в одной системе: соцсети, карточки для маркетплейсов, упаковка бренда. Компания продаёт через Ozon, Wildberries и Яндекс Маркет.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 80 000 до 130 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе или гибрид</dd></div><div class="row"><dt>График</dt><dd>5/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Вятская улица, 41</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137170506" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video">
+        <div class="job-main">
+          <p class="company">ООО ОИПП</p>
+          <h3>СММ-специалист / монтажёр коротких видео для Instagram</h3>
+          <p class="desc">Материал уже есть: нужно нарезать короткие вертикальные видео, добавить субтитры, переходы и музыку, вести единый стиль аккаунта и карусели. Сочинять контент с нуля не нужно.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>Удалённо</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138014774" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="merch" data-group="merch">
+      <h2 class="h-md">Оформление и мерчендайзинг</h2>
+      
+      <article class="job" data-group="merch">
+        <div class="job-main">
+          <p class="company">Befree</p>
+          <h3>Визуальный мерчендайзер магазина Befree (ТЦ «Небо»)</h3>
+          <p class="desc">Выкладка товара, обновление презентации зала, помощь покупателям, коммерческие отчёты и фотоотчёты. Нужен опыт в fashion retail от года. Белая зарплата, ДМС после шести месяцев, обучение.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, с 9:00 до 18:00 (иногда с 7:00 или 8:00)</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Большая Покровская, 82</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137710662" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="merch">
+        <div class="job-main">
+          <p class="company">Spar (Eurospar), офис</p>
+          <h3>Специалист по мерчендайзингу</h3>
+          <p class="desc">Разработка концепций выкладки, отрисовка планограмм в специальной программе, контроль стандартов выкладки и наличия товара в супермаркетах сети.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе</dd></div><div class="row"><dt>График</dt><dd>5/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Дьяконова, 4А</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/136304125" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="merch">
+        <div class="job-main">
+          <p class="company">Пи.О.эС. Менеджмент</p>
+          <h3>Мерчендайзер-консультант</h3>
+          <p class="desc">Работа в магазине «Максидом»: консультации и продажа обоев партнёра, выкладка по планограмме, демонстрационные образцы, ценники. Опыт не нужен.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Бетанкура, 1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/133980612" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="shop" data-group="shop">
+      <h2 class="h-md">Продавец-консультант</h2>
+      
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Elis Fashion Rus</p>
+          <h3>Старший продавец-консультант (ТЦ «Фантастика»)</h3>
+          <p class="desc">Продажи в магазинах одежды: касса, 1С, консультации. Доход: почасовая ставка, процент от личных продаж и премия по итогам магазина. Есть обучение и скидка на коллекции.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 75 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>3/2 или 2/2, 10–11 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137713789" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Rendez-Vous</p>
+          <h3>Продавец-консультант Rendez-vous (ТЦ «Фантастика»)</h3>
+          <p class="desc">Помощь в выборе обуви и сумок, формирование образа, работа с базой постоянных клиентов. Оклад плюс бонусы от продаж, скидка 35%, обучение от Французского института моды.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 69 000 до 115 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 4/3 и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137796508" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Palmetta</p>
+          <h3>Продавец-консультант сети салонов Palmetta (ТЦ «Небо»)</h3>
+          <p class="desc">Женское бельё и купальники. Оформление по ТК, фиксированный оклад плюс процент от личных продаж (3–10,1%, первые два месяца максимальный).</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 45 000 до 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>3/2, 2/2 или 2/1, 9–10 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Большая Покровская, 82</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137752524" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Inventive Retail Group</p>
+          <h3>Продавец-консультант Amazing Red (ТЦ «Небо»)</h3>
+          <p class="desc">Магазин одежды и аксессуаров. Часовая ставка плюс премия за выполнение личного плана, можно работать полный или неполный день, скидки в магазинах группы.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 45 000 до 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>Полный или неполный день, скользящие выходные</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Большая Покровская, 82</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137764675" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Костюм &amp; Галстук</p>
+          <h3>Продавец-консультант в магазине мужской одежды LEXMER</h3>
+          <p class="desc">Помощь в выборе мужской классики, выкладка, касса в 1С «Розница». Гарантированно 55 000 на руки плюс процент от продаж смены (без личных продаж). Оплачиваемая стажировка, наставник.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 65 000 до 85 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, с 10:00 до 22:00</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137971737" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Снежная Королева</p>
+          <h3>Продавец-консультант (ТЦ «Мега»)</h3>
+          <p class="desc">Магазин меха и одежды. Фиксированный оклад плюс процент от личных продаж, наставник на испытательном сроке, корпоративная форма.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 до 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2 или 2/2, 8 или 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>село Федяково (ТЦ «Мега»)</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/136159279" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Спортмастер, PRO</p>
+          <h3>Продавец-эксперт спортивной одежды (бег, туризм, горные лыжи)</h3>
+          <p class="desc">Консультирует покупателей по спортивной одежде и снаряжению в магазине в Федяково. Белая зарплата, свободное самообучение и корпоративные тренинги, доход зависит от результатов.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 116 500 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>село Федяково, Любимая улица, 1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138141797" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Спортмастер</p>
+          <h3>Кассир</h3>
+          <p class="desc">Расчёты с покупателями на кассе магазина спортивных товаров. Официальная зарплата от 59 000 ₽, для лучших кассиров больше 64 000 ₽. Работа с кассой у неё есть с New Yorker.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 59 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, смены по 8 или 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Бетанкура, 3В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/134387842" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Четыре Лапы</p>
+          <h3>Продавец-консультант в зоомагазин</h3>
+          <p class="desc">Консультации покупателей, касса, выкладка. Опыт не обязателен: оплачиваемая стажировка, наставник, с кассой обучат за три дня. Оклад плюс ежемесячные премии.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 56 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>3/3 или 2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138186705" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Магнит, М.Косметик</p>
+          <h3>Менеджер торгового зала / продавец «М.Косметик»</h3>
+          <p class="desc">Магазин косметики и парфюмерии: консультации по уходу, выкладка, касса. Официальное оформление, оплачиваемый отпуск и больничный.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 45 700 до 60 900 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 165к13</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138166459" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop">
+        <div class="job-main">
+          <p class="company">Олимпинвест (BULLFINCH)</p>
+          <h3>Продавец-консультант (аэропорт Нижнего Новгорода)</h3>
+          <p class="desc">Магазин одежды российского бренда в аэропорту. Сменный график день и ночь, 15 смен в месяц. Консультации и работа с кассой.</p>
+          <p class="note">Смены вечерние и ночные, подходит не всем.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, вечерние или ночные смены, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, аэропорт</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137147300" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="admin" data-group="admin">
+      <h2 class="h-md">Администратор</h2>
+      
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">ООО Эстель Сервис Поволжье</p>
+          <h3>Администратор Академии ESTEL</h3>
+          <p class="desc">Организует процессы обучения, рекомендует и продаёт домашний уход, ведёт ежедневную отчётность, отвечает на звонки и следит за порядком в студии. Белая зарплата, ДМС через три месяца.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе</dd></div><div class="row"><dt>График</dt><dd>2/2, с 9:00 до 21:00</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, набережная Федоровского, 8</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137678286" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Lady Stretch</p>
+          <h3>Администратор в студию растяжки (Автозавод)</h3>
+          <p class="desc">Общение с клиентами по регламенту, рассказ о тренировках, продажа абонементов. Сеть больше 200 филиалов. Подходит тем, кто любит общение и работу с людьми.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Краснодонцев, 15А</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137671921" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">LEVITA</p>
+          <h3>Администратор в студию пилатеса и растяжки</h3>
+          <p class="desc">Лицо студии: встречает клиенток, консультирует, ведёт запись. 7 студий по городу, подберут ближайшую. Бесплатные занятия балетом и растяжкой, наставничество.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 до 70 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2, с 9:00 до 22:00</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Воровского, 3</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137851906" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Gold’s Fitness</p>
+          <h3>Администратор рецепции (Gold’s Fitness, Hampton)</h3>
+          <p class="desc">Рецепция фитнес-клуба в гостиничном комплексе Hampton by Hilton: встреча гостей, работа с клиентами клуба. Один из крупнейших комфорт-клубов города.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 58 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В клубе</dd></div><div class="row"><dt>График</dt><dd>5/2 и другие варианты, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Максима Горького, 252</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138160901" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Сеть фитнес-клубов «Режим»</p>
+          <h3>Администратор фитнес-клуба</h3>
+          <p class="desc">Встреча гостей и членов клуба, приём платежей, работа в CRM, продажа сопутствующих товаров, контроль правил клуба. Нужна уверенная работа на ПК.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 51 000 до 55 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В клубе</dd></div><div class="row"><dt>График</dt><dd>3/2 или 2/2, 6 или 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 165к13</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137192050" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">ООО Спутник</p>
+          <h3>Администратор торгового центра «ИНДИГО life»</h3>
+          <p class="desc">Контроль работы служб торгового центра, соблюдение стандартов, консультирование посетителей. Льготный абонемент в Gold’s Fitness за 1 500 ₽ в месяц.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 70 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В торговом центре</dd></div><div class="row"><dt>График</dt><dd>2/2, с 9:00 до 21:00</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Казанское шоссе, 11</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/136841632" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Детская театральная студия «Я — Актёр!»</p>
+          <h3>Администратор выходного дня в театральной студии</h3>
+          <p class="desc">Встреча детей и родителей, организация занятий в студии федеральной сети. Частичная занятость, много вариантов графика.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>5/2, по выходным и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Нартова, 2</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137580094" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">DELIT LAZER</p>
+          <h3>Администратор салона красоты</h3>
+          <p class="desc">Студия лазерной эпиляции и аппаратного массажа: запись клиентов и консультации в чатах и соцсетях, ведение карт в CRM, подтверждение записей. Опыт обязателен.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 68 950 до 84 600 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2, 10 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Костина, 3</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138211226" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Гельтек-Медика</p>
+          <h3>Администратор салона красоты</h3>
+          <p class="desc">Центр диагностики кожи: запись на приём, работа в Yclients, встреча посетителей, консультации по косметике, касса, инвентаризации. Нужны ПК и Excel.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 58 800 до 80 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В центре</dd></div><div class="row"><dt>График</dt><dd>2/2, 10 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Стрелка</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138128584" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Salon de beauté LION (LIONLUX)</p>
+          <h3>Администратор</h3>
+          <p class="desc">Салон красоты бизнес-класса в Нижегородском районе. Ищут живого, доброжелательного человека, которому нравится помогать клиентам и держать порядок на ресепшене.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 52 000 до 71 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В салоне</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 191к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137980032" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">IDOLFACE</p>
+          <h3>Администратор студии красоты</h3>
+          <p class="desc">Новый салон международной сети по массажу лица и эстетической косметологии. Нужен внимательный, заботливый администратор, чтобы создавать комфортную атмосферу для гостей.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В салоне</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 191</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138273210" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">ИП Быстрова П.</p>
+          <h3>Администратор в фитнес-центр</h3>
+          <p class="desc">Встреча гостей, обработка обращений по телефону и в чатах, запись на тренировки и консультации. Всему необходимому обучат за несколько дней.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 67 000 до 75 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В фитнес-центре</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Советская</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138189056" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Культурное наследие (термальный комплекс ПАР1221)</p>
+          <h3>Администратор комплекса</h3>
+          <p class="desc">Встреча и сопровождение гостей по стандартам премиального сервиса, бронирование и управление загрузкой, работа с заявками по телефону и в мессенджерах. Комплекс в историческом центре.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 70 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В комплексе</dd></div><div class="row"><dt>График</dt><dd>1/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Шевченко, 14</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138188790" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">LEVITA</p>
+          <h3>Администратор в студию женского фитнеса (Сормово)</h3>
+          <p class="desc">Студия балета и растяжки. Администратор встречает клиенток, консультирует, ведёт запись. Бесплатные занятия, повышенный фикс в первый месяц.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 до 70 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Щербакова, 14</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137927516" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">Gold’s Fitness</p>
+          <h3>Администратор фитнес-клуба Gold’s Fitness (Золотая миля)</h3>
+          <p class="desc">Рецепция одного из клубов сети в ТРК «Золотая Миля». Работа с гостями клуба, приём клиентов. Есть стажировка.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В клубе</dd></div><div class="row"><dt>График</dt><dd>Смены 8 или 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Коминтерна, 105</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138171792" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin">
+        <div class="job-main">
+          <p class="company">LF Nails (ONELAF)</p>
+          <h3>Администратор-менеджер</h3>
+          <p class="desc">Студия-магазин собственного бренда материалов для маникюра и учебный центр. Работа с клиентами и учениками, продажа материалов, организация записей.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 42 000 до 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2 и другие варианты, 11 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Ковровская улица, 47</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137838725" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="dance" data-group="dance">
+      <h2 class="h-md">Танцы и преподавание</h2>
+      
+      <article class="job" data-group="dance">
+        <div class="job-main">
+          <p class="company">LEVITA</p>
+          <h3>Педагог-хореограф</h3>
+          <p class="desc">Занятия боди-балетом, хореографией и растяжкой для девушек и женщин в сети студий. Частичная занятость, студии по всему городу. Команде нужен общительный, позитивный педагог.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>до 100 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>6/1, 5/2, 4/4 и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137235799" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="dance">
+        <div class="job-main">
+          <p class="company">ЦДС-НН</p>
+          <h3>Педагог-хореограф (хип-хоп и современная хореография)</h3>
+          <p class="desc">Преподавание современной хореографии, хип-хопа или классического танца. Гибкий график под группы, филиал рядом с домом, рост от помощника до хореографа концертных составов.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 35 000 до 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>6/1, 5/2 или свободный</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Ванеева, 199</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137368737" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="dance">
+        <div class="job-main">
+          <p class="company">Lady Stretch</p>
+          <h3>Тренер в студию растяжки / по танцам</h3>
+          <p class="desc">Проводит тренировки для клиенток студии растяжки. График 4/3, смены по 5–6 часов. Подходит активным и энергичным.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>4/3, смены по 5 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Краснодонцев, 15А</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138080631" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="dance">
+        <div class="job-main">
+          <p class="company">Театральная студия «Ирбис»</p>
+          <h3>Педагог по хореографии и сценическому движению</h3>
+          <p class="desc">Занятия для детей в театральной студии по воскресеньям. Подработка, набор на сентябрь 2026. Крупнейшая детская театральная студия России.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 1 000 ₽ за час</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>По выходным или свободный</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137965130" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="event" data-group="event">
+      <h2 class="h-md">Мероприятия</h2>
+      
+      <article class="job" data-group="event">
+        <div class="job-main">
+          <p class="company">Нижегородский инновационный бизнес-инкубатор</p>
+          <h3>Event-менеджер</h3>
+          <p class="desc">Наполняет площадку экспоцентра коммерческими мероприятиями: ведёт клиента от заявки до обратной связи, готовит площадку, координирует техническую команду.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 62 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В офисе</dd></div><div class="row"><dt>График</dt><dd>5/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Академика Сахарова, 4</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138179860" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+    <section class="group" id="sew" data-group="sew">
+      <h2 class="h-md">Шитьё</h2>
+      
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">ООО НиАС</p>
+          <h3>Швея</h3>
+          <p class="desc">Пошив чехлов автобусных сидений на прямострочной машине, выполнение сменного задания. Есть ДМС и служебные автобусы по маршрутам.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 65 000 до 81 500 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, с 7:00 до 16:00</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Московское шоссе, 302/2З</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137708866" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">MARIETTA</p>
+          <h3>Швея / портной</h3>
+          <p class="desc">Бренд свадебных платьев. Пошив свадебных и вечерних платьев целиком или по операциям, нужен опыт с корсетными изделиями. Светлый цех, новое оборудование.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 70 000 до 100 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В цехе</dd></div><div class="row"><dt>График</dt><dd>5/2 или 2/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Интернациональная улица, 95</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137940647" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">ООО Gabbiano</p>
+          <h3>Портной на швейное производство</h3>
+          <p class="desc">Пошив свадебных платьев по готовому крою. Компания обучает свадебной моде за короткое время и растёт.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 75 000 до 120 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Крупской, 14</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138137561" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">ИП Гасилин С. В.</p>
+          <h3>Швея-портной</h3>
+          <p class="desc">Свадебные, вечерние платья и женские костюмы по заказам круглый год. Достаточно бытового опыта, нужно желание учиться и расти.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В ателье</dd></div><div class="row"><dt>График</dt><dd>5/2 или 4/3, 8–9 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Зайцева, 31</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137751046" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">АО «Меридиан»</p>
+          <h3>Конструктор швейных изделий, спецодежды</h3>
+          <p class="desc">Конструирование спецодежды для крупных компаний. 12 швейных фабрик и опытный цех. Её образование конструктора-модельера здесь основное.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2 или 2/2</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Геологов, 1К</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/135634227" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">ИП Шулимова Н. А.</p>
+          <h3>Швея-портной</h3>
+          <p class="desc">Светлое ателье с постоянной клиентской базой: приём и выполнение заказов по ремонту одежды. Оформление по ТК, больничные и отпускные, можно договориться о гибких выходных.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 до 75 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В ателье</dd></div><div class="row"><dt>График</dt><dd>5/2 или 2/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Героев Космоса, 52А</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137839643" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">ИП Толоконникова Е. Н.</p>
+          <h3>Швея на производство школьной формы</h3>
+          <p class="desc">Новый современный цех: пошив школьной формы для мальчиков (костюмная группа). Желателен опыт операционного пошива. Метро, автобусы и трамвай рядом.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В цехе</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Интернациональная, 95к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138223732" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">Жуйчуан Автомобильные Компоненты Рус</p>
+          <h3>Швея-мотористка / моторист</h3>
+          <p class="desc">Производство интерьеров и экстерьеров для автомобилей. Работа на швейном оборудовании в промышленном цеху.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 73 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Юлиуса Фучика, 8к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/134042103" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew">
+        <div class="job-main">
+          <p class="company">Легснаб Спецодежда</p>
+          <h3>Швея-лаборант</h3>
+          <p class="desc">Пошив новых моделей спецодежды: опытные образцы, внимательность и усидчивость. Пятидневка, оформление по ТК.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, с 7:00 до 16:00 или с 8:00 до 17:00</dd></div><div class="row"><dt>Опыт</dt><dd>1–3 года</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Вторчермета, 119</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137876455" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Данные взяты с hh.ru на 8 октября 2026. Условия и зарплата могли измениться, актуальные смотри в самой вакансии. Зарплата «до вычета налогов» означает сумму до НДФЛ.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var chips=document.querySelectorAll('.chip'),groups=document.querySelectorAll('.group');
+  chips.forEach(function(c){c.addEventListener('click',function(){
+    var f=c.getAttribute('data-filter');
+    chips.forEach(function(x){x.classList.toggle('is-on',x===c)});
+    groups.forEach(function(g){g.hidden=(f!=='all'&&g.getAttribute('data-group')!==f)});
+    window.scrollTo({top:document.querySelector('.bar').offsetTop-0,behavior:'smooth'});
+  })});
+})();
+</script>
+</body>
+</html>
