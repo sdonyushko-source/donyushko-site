@@ -48,6 +48,10 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;font-weight:500;line-h
 .bar{position:sticky;top:0;z-index:20;padding:16px 0;background:var(--bg);box-shadow:0 1px 0 var(--line)}
 .chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0}
 .chips::-webkit-scrollbar{display:none}
+.chips-exp{margin-bottom:8px}
+.chip.is-on[data-exp-filter]{background:var(--accent);border-color:var(--accent)}
+.empty{padding:64px 0;text-align:center;color:var(--ink-3)}
+.empty[hidden]{display:none}
 .chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:500 14px/1 var(--text);border-radius:999px;padding:12px 18px;cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .chip i{font-style:normal;color:var(--ink-3);margin-left:6px}
 .chip:hover{border-color:var(--ink)}
@@ -56,7 +60,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;font-weight:500;line-h
 
 main{padding:24px 0 96px}
 .group{padding:40px 0 8px}
-.group[hidden]{display:none}
+.group[hidden],.job[hidden]{display:none}
 .group>h2{font-size:clamp(28px,3vw,40px);margin-bottom:24px}
 .job{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:40px;background:var(--surface);border-radius:var(--radius);padding:32px;margin-bottom:16px;transition:box-shadow .3s,transform .3s}
 .job:hover{box-shadow:0 18px 40px #0b0d1012;transform:translateY(-2px)}
@@ -99,22 +103,22 @@ footer p{max-width:70ch}
     <h1>Вакансии<br>для <em>Даши</em></h1>
     <p class="lead">Работа по её опыту: видео и контент, мерчендайзинг, торговля, администрирование, танцы, шитьё. Без холодных продаж и обзвонов.</p>
     <div class="stats">
-      <div class="stat"><b>50</b><span>вакансий</span></div>
+      <div class="stat"><b>72</b><span>вакансий</span></div>
       <div class="stat"><b>7</b><span>направлений</span></div>
       <div class="stat"><b>170 000 ₽</b><span>максимум в подборке</span></div>
-      <div class="stat"><b>0</b><span>холодных продаж</span></div>
+      <div class="stat"><b>44</b><span>без опыта</span></div>
     </div>
   </div>
 </header>
 
-<div class="bar"><div class="wrap"><div class="chips" id="chips"><button class="chip is-on" data-filter="all">Все <i>50</i></button><button class="chip" data-filter="video">Видео и контент <i>6</i></button><button class="chip" data-filter="merch">Оформление и мерчендайзинг <i>3</i></button><button class="chip" data-filter="shop">Продавец-консультант <i>11</i></button><button class="chip" data-filter="admin">Администратор <i>16</i></button><button class="chip" data-filter="dance">Танцы и преподавание <i>4</i></button><button class="chip" data-filter="event">Мероприятия <i>1</i></button><button class="chip" data-filter="sew">Шитьё <i>9</i></button></div></div></div>
+<div class="bar"><div class="wrap"><div class="chips chips-exp" id="chips-exp"><button class="chip is-on" data-exp-filter="all">Любой опыт <i>72</i></button><button class="chip" data-exp-filter="none">Без опыта <i>44</i></button><button class="chip" data-exp-filter="req">С опытом <i>28</i></button></div><div class="chips" id="chips"><button class="chip is-on" data-filter="all">Все <i>72</i></button><button class="chip" data-filter="video">Видео, фото и контент <i>9</i></button><button class="chip" data-filter="merch">Оформление и мерчендайзинг <i>3</i></button><button class="chip" data-filter="shop">Продавец-консультант <i>23</i></button><button class="chip" data-filter="admin">Администратор <i>19</i></button><button class="chip" data-filter="dance">Танцы и преподавание <i>4</i></button><button class="chip" data-filter="event">Мероприятия и анимация <i>2</i></button><button class="chip" data-filter="sew">Шитьё <i>12</i></button></div></div></div>
 
 <main>
   <div class="wrap" id="list">
     <section class="group" id="video" data-group="video">
-      <h2 class="h-md">Видео и контент</h2>
+      <h2 class="h-md">Видео, фото и контент</h2>
       
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="req">
         <div class="job-main">
           <p class="company">РЭДИ</p>
           <h3>Контент-продюсер (short-form video)</h3>
@@ -127,7 +131,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/136771734" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="none">
         <div class="job-main">
           <p class="company">Viralla</p>
           <h3>Креатор коротких видео для beauty-брендов</h3>
@@ -140,7 +144,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137876354" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="req">
         <div class="job-main">
           <p class="company">AKM Originals</p>
           <h3>Видеомонтажёр / Shorts-мейкер</h3>
@@ -153,7 +157,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137689487" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="req">
         <div class="job-main">
           <p class="company">AURA</p>
           <h3>Монтажёр коротких роликов / Reels</h3>
@@ -166,7 +170,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137654286" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="req">
         <div class="job-main">
           <p class="company">Мебелит (Uperwood)</p>
           <h3>Контент-маркетолог / SMM-менеджер</h3>
@@ -179,7 +183,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137170506" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="video">
+      <article class="job" data-group="video" data-exp="req">
         <div class="job-main">
           <p class="company">ООО ОИПП</p>
           <h3>СММ-специалист / монтажёр коротких видео для Instagram</h3>
@@ -192,11 +196,50 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138014774" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
+      <article class="job" data-group="video" data-exp="none">
+        <div class="job-main">
+          <p class="company">ИП Губкин В. В. (фотоцентр аквапарка OCEANIS)</p>
+          <h3>Фотограф</h3>
+          <p class="desc">Потоковая съёмка в аквапарке: настройки, фон, позы, сюжет. Частичная занятость, много вариантов графика.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 40 000 до 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В аквапарке или выездной</dd></div><div class="row"><dt>График</dt><dd>6/1, 5/2, 4/4 и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, проспект Гагарина, 35к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137825236" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video" data-exp="none">
+        <div class="job-main">
+          <p class="company">ИП Татищева Н. Н. («Попугайник»)</p>
+          <h3>Фотограф</h3>
+          <p class="desc">Съёмка посетителей в месте, где можно общаться с экзотическими птицами. Работа по выходным и другим вариантам графика.</p>
+          <p class="note">Частичная занятость.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>По выходным и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Володарского, 40</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137880668" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="video" data-exp="none">
+        <div class="job-main">
+          <p class="company">Студия LIGHT (BBG)</p>
+          <h3>Ассистент фотографа по художественной гимнастике</h3>
+          <p class="desc">Фото и видео соревнований и клубных съёмок по художественной гимнастике. Нужен человек, который понимает гимнастику изнутри. Танцевальный опыт здесь полезен.</p>
+          <p class="note">Подработка, оплата за смену.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 3 000 до 7 000 ₽ за смену</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>Выездной</dd></div><div class="row"><dt>График</dt><dd>Свободный</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138004068" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
     </section>
     <section class="group" id="merch" data-group="merch">
       <h2 class="h-md">Оформление и мерчендайзинг</h2>
       
-      <article class="job" data-group="merch">
+      <article class="job" data-group="merch" data-exp="req">
         <div class="job-main">
           <p class="company">Befree</p>
           <h3>Визуальный мерчендайзер магазина Befree (ТЦ «Небо»)</h3>
@@ -209,7 +252,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137710662" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="merch">
+      <article class="job" data-group="merch" data-exp="req">
         <div class="job-main">
           <p class="company">Spar (Eurospar), офис</p>
           <h3>Специалист по мерчендайзингу</h3>
@@ -222,7 +265,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/136304125" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="merch">
+      <article class="job" data-group="merch" data-exp="none">
         <div class="job-main">
           <p class="company">Пи.О.эС. Менеджмент</p>
           <h3>Мерчендайзер-консультант</h3>
@@ -239,7 +282,7 @@ footer p{max-width:70ch}
     <section class="group" id="shop" data-group="shop">
       <h2 class="h-md">Продавец-консультант</h2>
       
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="req">
         <div class="job-main">
           <p class="company">Elis Fashion Rus</p>
           <h3>Старший продавец-консультант (ТЦ «Фантастика»)</h3>
@@ -252,7 +295,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137713789" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Rendez-Vous</p>
           <h3>Продавец-консультант Rendez-vous (ТЦ «Фантастика»)</h3>
@@ -265,7 +308,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137796508" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="req">
         <div class="job-main">
           <p class="company">Palmetta</p>
           <h3>Продавец-консультант сети салонов Palmetta (ТЦ «Небо»)</h3>
@@ -278,7 +321,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137752524" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Inventive Retail Group</p>
           <h3>Продавец-консультант Amazing Red (ТЦ «Небо»)</h3>
@@ -291,7 +334,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137764675" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Костюм &amp; Галстук</p>
           <h3>Продавец-консультант в магазине мужской одежды LEXMER</h3>
@@ -304,7 +347,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137971737" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Снежная Королева</p>
           <h3>Продавец-консультант (ТЦ «Мега»)</h3>
@@ -317,7 +360,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/136159279" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Спортмастер, PRO</p>
           <h3>Продавец-эксперт спортивной одежды (бег, туризм, горные лыжи)</h3>
@@ -330,7 +373,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138141797" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Спортмастер</p>
           <h3>Кассир</h3>
@@ -343,7 +386,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/134387842" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Четыре Лапы</p>
           <h3>Продавец-консультант в зоомагазин</h3>
@@ -356,7 +399,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138186705" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Магнит, М.Косметик</p>
           <h3>Менеджер торгового зала / продавец «М.Косметик»</h3>
@@ -369,7 +412,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138166459" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="shop">
+      <article class="job" data-group="shop" data-exp="none">
         <div class="job-main">
           <p class="company">Олимпинвест (BULLFINCH)</p>
           <h3>Продавец-консультант (аэропорт Нижнего Новгорода)</h3>
@@ -382,11 +425,167 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137147300" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Inventive Retail Group, Street Beat</p>
+          <h3>Продавец-консультант магазина Street Beat (ТЦ «Фантастика»)</h3>
+          <p class="desc">Магазин уличной обуви и одежды. Официальное оформление, часовая ставка плюс процент от личных продаж, лидеры продаж зарабатывают больше 70 000 ₽. Скидки в магазинах группы.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 до 80 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138063915" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">RALF RINGER</p>
+          <h3>Продавец-консультант (ТЦ «Фантастика»)</h3>
+          <p class="desc">Российский обувной бренд, один из лидеров рынка с 1996 года. Магазин в новом месте, расширяют штат. Обувь для мужчин, женщин и детей, аксессуары.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 70 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>3/2 или 2/2, 10–12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137939068" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">GAMMA D’ORO</p>
+          <h3>Продавец-консультант (стилист по ароматам)</h3>
+          <p class="desc">Бренд парфюмерии: аналоги популярных ароматов люкс и селектив, аромадиффузоры. Консультации и подбор аромата клиентам.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 80 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, проспект Гагарина, 35к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138072919" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Parfum Oil</p>
+          <h3>Продавец-консультант</h3>
+          <p class="desc">Сеть магазинов масляной парфюмерии. Есть стажировка, график 2/2 по 11 часов.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, 11 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Казанское шоссе, 11</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138252543" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Ювелирные салоны «Сенат»</p>
+          <h3>Продавец-консультант ювелирных изделий (ТЦ «Фантастика»)</h3>
+          <p class="desc">Компания с 24-летней историей. Консультации по украшениям, помощь клиенту выбрать подарок или украшение под образ.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 60 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В салоне</dd></div><div class="row"><dt>График</dt><dd>3/3 или 2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137780335" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Мави Джинс</p>
+          <h3>Продавец-консультант (ТЦ «Фантастика»)</h3>
+          <p class="desc">Магазин мирового джинсового бренда: подбор образа клиенту, консультации, работа с покупателями. Можно работать по выходным.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 4/3, 4/2 или по выходным</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137977434" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">5 Карманов</p>
+          <h3>Продавец-консультант (ТЦ «Мега»)</h3>
+          <p class="desc">Бренд джинсовой одежды. Ставка за выход плюс процент от личных продаж, график 3/2 или 2/2 по 12 часов.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>3/2 или 2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>село Федяково (ТЦ «Мега»)</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/134776002" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">SneakerBox</p>
+          <h3>Продавец-консультант в магазин SneakerBOX (ТЦ «Фантастика»)</h3>
+          <p class="desc">Мультибрендовый магазин кроссовок. Официальное оформление, белый доход, выплаты без задержек, есть стажировка и несколько вариантов графика.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>до 53 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2, 4/3, 3/3 и другие варианты</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/136929930" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Jobers (магазин «Микродин»)</p>
+          <h3>Продавец-консультант в магазин премиальной одежды</h3>
+          <p class="desc">Магазин премиальной одежды в центре. Компания работает в fashion retail 25 лет. Подбор образов, навыки стилиста приветствуются.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 45 000 до 68 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>Уточняется в вакансии</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Стрелка</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138222228" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">Oniverse</p>
+          <h3>Продавец-консультант Tezenis (ТЦ «Фантастика»)</h3>
+          <p class="desc">Магазин белья и домашней одежды. Оклад плюс процент от личных продаж, выплаты два раза в месяц, график можно совмещать с учёбой.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 40 000 до 55 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>5/2 и другие варианты, 5–8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Родионова, 187В</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138025093" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">4СКИН (бренд SMART BABY)</p>
+          <h3>Продавец-консультант декоративной косметики («Золотое Яблоко»)</h3>
+          <p class="desc">Азиатский бренд декоративной косметики в парфюмерном супермаркете. Консультации покупателей, график 2/2.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2 или свободный, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137384405" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="shop" data-exp="none">
+        <div class="job-main">
+          <p class="company">ИП Валидова О. И. («Любимые ткани»)</p>
+          <h3>Продавец-консультант в магазин тканей</h3>
+          <p class="desc">Магазин работает с 1998 года: ткани для свадебных, вечерних и повседневных нарядов. Консультации покупателей, в том числе в интернете. Её образование в одежде здесь пригодится.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 45 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, проспект Ленина, 73</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137554331" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
     </section>
     <section class="group" id="admin" data-group="admin">
       <h2 class="h-md">Администратор</h2>
       
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">ООО Эстель Сервис Поволжье</p>
           <h3>Администратор Академии ESTEL</h3>
@@ -399,7 +598,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137678286" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">Lady Stretch</p>
           <h3>Администратор в студию растяжки (Автозавод)</h3>
@@ -412,7 +611,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137671921" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">LEVITA</p>
           <h3>Администратор в студию пилатеса и растяжки</h3>
@@ -425,7 +624,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137851906" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">Gold’s Fitness</p>
           <h3>Администратор рецепции (Gold’s Fitness, Hampton)</h3>
@@ -438,7 +637,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138160901" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">Сеть фитнес-клубов «Режим»</p>
           <h3>Администратор фитнес-клуба</h3>
@@ -451,7 +650,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137192050" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">ООО Спутник</p>
           <h3>Администратор торгового центра «ИНДИГО life»</h3>
@@ -464,7 +663,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/136841632" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">Детская театральная студия «Я — Актёр!»</p>
           <h3>Администратор выходного дня в театральной студии</h3>
@@ -477,7 +676,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137580094" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">DELIT LAZER</p>
           <h3>Администратор салона красоты</h3>
@@ -490,7 +689,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138211226" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">Гельтек-Медика</p>
           <h3>Администратор салона красоты</h3>
@@ -503,7 +702,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138128584" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">Salon de beauté LION (LIONLUX)</p>
           <h3>Администратор</h3>
@@ -516,7 +715,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137980032" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">IDOLFACE</p>
           <h3>Администратор студии красоты</h3>
@@ -529,7 +728,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138273210" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">ИП Быстрова П.</p>
           <h3>Администратор в фитнес-центр</h3>
@@ -542,7 +741,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138189056" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="req">
         <div class="job-main">
           <p class="company">Культурное наследие (термальный комплекс ПАР1221)</p>
           <h3>Администратор комплекса</h3>
@@ -555,7 +754,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138188790" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">LEVITA</p>
           <h3>Администратор в студию женского фитнеса (Сормово)</h3>
@@ -568,7 +767,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137927516" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">Gold’s Fitness</p>
           <h3>Администратор фитнес-клуба Gold’s Fitness (Золотая миля)</h3>
@@ -581,7 +780,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138171792" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="admin">
+      <article class="job" data-group="admin" data-exp="none">
         <div class="job-main">
           <p class="company">LF Nails (ONELAF)</p>
           <h3>Администратор-менеджер</h3>
@@ -594,11 +793,50 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137838725" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
+      <article class="job" data-group="admin" data-exp="none">
+        <div class="job-main">
+          <p class="company">Rendez-Vous</p>
+          <h3>Администратор-кассир (ТРЦ «Небо»)</h3>
+          <p class="desc">Обувной магазин: касса, работа с клиентами, порядок в торговом зале. Компания работает больше 20 лет.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 75 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В магазине</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Большая Покровская, 82</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138145015" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin" data-exp="none">
+        <div class="job-main">
+          <p class="company">LEVITA</p>
+          <h3>Администратор в студию женского фитнеса (Автозавод)</h3>
+          <p class="desc">Студия балета и растяжки: лицо студии, запись и консультации клиенток. Бесплатные занятия, прозрачная система мотивации.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 55 000 до 70 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В студии</dd></div><div class="row"><dt>График</dt><dd>2/2, 12 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Краснодонцев, 11Б</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137613383" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="admin" data-exp="none">
+        <div class="job-main">
+          <p class="company">Вишнёвый Сад</p>
+          <h3>Администратор в бутик-отель</h3>
+          <p class="desc">Новый бутик-отель в центре, 20 номеров. Встреча гостей, заселение, сервис. Смены длинные, график 1/3.</p>
+          <p class="note">Смены по 24 часа, вечер и ночь.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 50 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В отеле</dd></div><div class="row"><dt>График</dt><dd>1/3, вечерние или ночные смены, 24 часа</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, центр</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138210796" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
     </section>
     <section class="group" id="dance" data-group="dance">
       <h2 class="h-md">Танцы и преподавание</h2>
       
-      <article class="job" data-group="dance">
+      <article class="job" data-group="dance" data-exp="none">
         <div class="job-main">
           <p class="company">LEVITA</p>
           <h3>Педагог-хореограф</h3>
@@ -611,7 +849,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137235799" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="dance">
+      <article class="job" data-group="dance" data-exp="req">
         <div class="job-main">
           <p class="company">ЦДС-НН</p>
           <h3>Педагог-хореограф (хип-хоп и современная хореография)</h3>
@@ -624,7 +862,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137368737" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="dance">
+      <article class="job" data-group="dance" data-exp="none">
         <div class="job-main">
           <p class="company">Lady Stretch</p>
           <h3>Тренер в студию растяжки / по танцам</h3>
@@ -637,7 +875,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138080631" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="dance">
+      <article class="job" data-group="dance" data-exp="req">
         <div class="job-main">
           <p class="company">Театральная студия «Ирбис»</p>
           <h3>Педагог по хореографии и сценическому движению</h3>
@@ -652,9 +890,9 @@ footer p{max-width:70ch}
       </article>
     </section>
     <section class="group" id="event" data-group="event">
-      <h2 class="h-md">Мероприятия</h2>
+      <h2 class="h-md">Мероприятия и анимация</h2>
       
-      <article class="job" data-group="event">
+      <article class="job" data-group="event" data-exp="req">
         <div class="job-main">
           <p class="company">Нижегородский инновационный бизнес-инкубатор</p>
           <h3>Event-менеджер</h3>
@@ -667,11 +905,24 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138179860" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
+      <article class="job" data-group="event" data-exp="none">
+        <div class="job-main">
+          <p class="company">ООО Нанопарк</p>
+          <h3>Аниматор</h3>
+          <p class="desc">Детские анимационные программы в выходные и праздники: сценарии, реквизит, работа с детьми. Оплата 1 200 ₽ в час, свободный график. Есть танцевальный и ведущий опыт.</p>
+          <p class="note">Частичная занятость, подходит как дополнение к основной работе.</p>
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 1 200 ₽ за час</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В выездном формате</dd></div><div class="row"><dt>График</dt><dd>Свободный, выходные и праздники</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, проспект Гагарина, 35к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137430124" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
     </section>
     <section class="group" id="sew" data-group="sew">
       <h2 class="h-md">Шитьё</h2>
       
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">ООО НиАС</p>
           <h3>Швея</h3>
@@ -684,7 +935,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137708866" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">MARIETTA</p>
           <h3>Швея / портной</h3>
@@ -697,7 +948,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137940647" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">ООО Gabbiano</p>
           <h3>Портной на швейное производство</h3>
@@ -710,7 +961,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138137561" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="none">
         <div class="job-main">
           <p class="company">ИП Гасилин С. В.</p>
           <h3>Швея-портной</h3>
@@ -723,7 +974,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137751046" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">АО «Меридиан»</p>
           <h3>Конструктор швейных изделий, спецодежды</h3>
@@ -736,7 +987,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/135634227" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">ИП Шулимова Н. А.</p>
           <h3>Швея-портной</h3>
@@ -749,7 +1000,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137839643" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">ИП Толоконникова Е. Н.</p>
           <h3>Швея на производство школьной формы</h3>
@@ -762,7 +1013,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/138223732" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">Жуйчуан Автомобильные Компоненты Рус</p>
           <h3>Швея-мотористка / моторист</h3>
@@ -775,7 +1026,7 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/134042103" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
-      <article class="job" data-group="sew">
+      <article class="job" data-group="sew" data-exp="req">
         <div class="job-main">
           <p class="company">Легснаб Спецодежда</p>
           <h3>Швея-лаборант</h3>
@@ -788,7 +1039,47 @@ footer p{max-width:70ch}
           <a class="btn btn-accent" href="https://hh.ru/vacancy/137876455" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
         </aside>
       </article>
+      <article class="job" data-group="sew" data-exp="none">
+        <div class="job-main">
+          <p class="company">Жуйчуан Автомобильные Компоненты Рус</p>
+          <h3>Раскройщик</h3>
+          <p class="desc">Комплексный раскрой деталей: настилание, раскладка и обводка шаблонов, комплектовка, выявление пороков ткани. Опыт не нужен.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>от 65 000 ₽</b><span class="tax">на руки</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, 8 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, улица Юлиуса Фучика, 8к1</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/132808796" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew" data-exp="none">
+        <div class="job-main">
+          <p class="company">Группа компаний СМК</p>
+          <h3>Подготовитель-раскройщик</h3>
+          <p class="desc">Раскрой полотен, спанбонда и синтепона по дневному заданию, расчёт ткани. Можно без опыта, оформление по ТК с первого дня, бонус за приведённого друга.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>50 000 ₽</b><span class="tax">до вычета налогов</span></div>
+          <dl><div class="row"><dt>Формат</dt><dd>На производстве</dd></div><div class="row"><dt>График</dt><dd>5/2, с 7:00 до 15:30</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Торфяная улица, 43</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/138278065" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
+      <article class="job" data-group="sew" data-exp="none">
+        <div class="job-main">
+          <p class="company">ИП Гасилин С. В.</p>
+          <h3>Швея-портной (свадебные и вечерние платья)</h3>
+          <p class="desc">Второе ателье того же работодателя, в Канавинском районе. Свадебные, вечерние платья и женские костюмы, достаточно бытового опыта.</p>
+          
+        </div>
+        <aside class="job-side">
+          <div class="money"><b>Не указана</b></div>
+          <dl><div class="row"><dt>Формат</dt><dd>В ателье</dd></div><div class="row"><dt>График</dt><dd>5/2 или 4/3, 8–9 часов</dd></div><div class="row"><dt>Опыт</dt><dd>Не требуется</dd></div><div class="row"><dt>Где</dt><dd>Нижний Новгород, Бурнаковская</dd></div></dl>
+          <a class="btn btn-accent" href="https://hh.ru/vacancy/137751156" target="_blank" rel="noopener">Перейти на вакансию <span class="arr">→</span></a>
+        </aside>
+      </article>
     </section>
+    <p class="empty" id="empty" hidden>Под такой фильтр вакансий нет. Попробуй выбрать другое направление.</p>
   </div>
 </main>
 
@@ -800,12 +1091,34 @@ footer p{max-width:70ch}
 
 <script>
 (function(){
-  var chips=document.querySelectorAll('.chip'),groups=document.querySelectorAll('.group');
-  chips.forEach(function(c){c.addEventListener('click',function(){
-    var f=c.getAttribute('data-filter');
-    chips.forEach(function(x){x.classList.toggle('is-on',x===c)});
-    groups.forEach(function(g){g.hidden=(f!=='all'&&g.getAttribute('data-group')!==f)});
-    window.scrollTo({top:document.querySelector('.bar').offsetTop-0,behavior:'smooth'});
+  var groupChips=document.querySelectorAll('#chips .chip'),expChips=document.querySelectorAll('#chips-exp .chip');
+  var groups=document.querySelectorAll('.group'),jobs=document.querySelectorAll('.job'),empty=document.getElementById('empty');
+  var fg='all',fe='all';
+  function apply(){
+    var total=0;
+    jobs.forEach(function(j){
+      var ok=(fg==='all'||j.getAttribute('data-group')===fg)&&(fe==='all'||j.getAttribute('data-exp')===fe);
+      j.hidden=!ok; if(ok)total++;
+    });
+    groups.forEach(function(g){g.hidden=!g.querySelector('.job:not([hidden])')});
+    empty.hidden=total>0;
+    // counts of directions follow the experience filter
+    groupChips.forEach(function(c){
+      var f=c.getAttribute('data-filter'),n=0;
+      jobs.forEach(function(j){if((f==='all'||j.getAttribute('data-group')===f)&&(fe==='all'||j.getAttribute('data-exp')===fe))n++});
+      var i=c.querySelector('i'); if(i)i.textContent=n;
+    });
+  }
+  function jump(){var b=document.querySelector('.bar');window.scrollTo({top:Math.max(0,b.offsetTop),behavior:'smooth'})}
+  groupChips.forEach(function(c){c.addEventListener('click',function(){
+    fg=c.getAttribute('data-filter');
+    groupChips.forEach(function(x){x.classList.toggle('is-on',x===c)});
+    apply();jump();
+  })});
+  expChips.forEach(function(c){c.addEventListener('click',function(){
+    fe=c.getAttribute('data-exp-filter');
+    expChips.forEach(function(x){x.classList.toggle('is-on',x===c)});
+    apply();jump();
   })});
 })();
 </script>
