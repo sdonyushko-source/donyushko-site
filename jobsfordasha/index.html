@@ -34,6 +34,7 @@ h1,h2,h3{font-family:var(--display);letter-spacing:-.03em;font-weight:500;line-h
 .hero{background:var(--dark);color:#fff;border-radius:0 0 var(--radius) var(--radius);padding:140px 0 48px;position:relative;overflow:hidden}
 .hero-glow{pointer-events:none;background:radial-gradient(circle,#1a3fe98c 0%,#1a3fe900 62%);width:900px;height:900px;position:absolute;top:-340px;right:-260px;animation:drift 14s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translate(-120px,80px) scale(1.1)}}
+.hero-dots{pointer-events:none;width:100%;height:100%;display:block;position:absolute;inset:0}
 .hero .wrap{position:relative}
 .hero .eyebrow{margin-bottom:28px}
 .hero h1{font-size:clamp(48px,8.6vw,132px);font-weight:600;letter-spacing:-.045em}
@@ -98,6 +99,7 @@ footer p{max-width:70ch}
 <body>
 <header class="hero">
   <div class="hero-glow"></div>
+  <canvas class="hero-dots" aria-hidden="true"></canvas>
   <div class="wrap">
     <p class="eyebrow">Подборка · Нижний Новгород · 8 октября 2026</p>
     <h1>Вакансии<br>для <em>Даши</em></h1>
@@ -1089,6 +1091,57 @@ footer p{max-width:70ch}
   </div>
 </footer>
 
+<script>
+// Interactive dot grid in the hero, same behaviour as the M-One preview (/moneteam/)
+(function(){
+  var BASE=1.1,STEP=26,RADIUS=210,GROW=4.4,EASE=.14;
+  document.querySelectorAll('.hero-dots').forEach(function(canvas){
+    var host=canvas.parentElement,ctx=canvas.getContext('2d');
+    var still=matchMedia('(prefers-reduced-motion: reduce)').matches||!matchMedia('(hover: hover)').matches;
+    var w=0,h=0,cols=0,rows=0,size=new Float32Array(0),pointer=null,busy=false;
+    function resize(){
+      var dpr=Math.min(window.devicePixelRatio||1,2);
+      w=host.clientWidth;h=host.clientHeight;
+      canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      cols=Math.ceil(w/STEP)+1;rows=Math.ceil(h/STEP)+1;
+      size=new Float32Array(cols*rows).fill(BASE);
+      draw();
+    }
+    function step(){
+      var moving=false;
+      for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
+        var i=y*cols+x,target=BASE;
+        if(pointer){
+          var d=Math.hypot(x*STEP+STEP/2-pointer.x,y*STEP+STEP/2-pointer.y);
+          if(d<RADIUS){var k=1-d/RADIUS;target=BASE+GROW*k*k}
+        }
+        var next=size[i]+(target-size[i])*EASE;
+        if(Math.abs(next-size[i])>.01)moving=true;
+        size[i]=Math.abs(target-next)<.01?target:next;
+      }
+      return moving;
+    }
+    function draw(){
+      ctx.clearRect(0,0,w,h);
+      for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
+        var r=size[y*cols+x],a=(r-BASE)/GROW;
+        ctx.fillStyle=a>.02
+          ?'rgba('+Math.round(255-165*a)+', '+Math.round(255-140*a)+', 255, '+(.16+.8*a)+')'
+          :'rgba(255,255,255,0.16)';
+        ctx.beginPath();ctx.arc(x*STEP+STEP/2,y*STEP+STEP/2,r,0,Math.PI*2);ctx.fill();
+      }
+    }
+    function frame(){var m=step();draw();if(m)requestAnimationFrame(frame);else busy=false}
+    function kick(){if(!busy){busy=true;requestAnimationFrame(frame)}}
+    new ResizeObserver(resize).observe(host);
+    if(!still){
+      host.addEventListener('pointermove',function(e){var b=host.getBoundingClientRect();pointer={x:e.clientX-b.left,y:e.clientY-b.top};kick()});
+      host.addEventListener('pointerleave',function(){pointer=null;kick()});
+    }
+  });
+})();
+</script>
 <script>
 (function(){
   var groupChips=document.querySelectorAll('#chips .chip'),expChips=document.querySelectorAll('#chips-exp .chip');
