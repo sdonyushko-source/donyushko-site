@@ -15,6 +15,10 @@ COPY dist/ /var/www/html/
 # Built separately from the moneteam-redesign Astro project; kept outside dist/ because `gulp build` wipes dist/.
 COPY moneteam/ /var/www/html/moneteam/
 
+# Hidden sales demo (Implant52 dental clinic redesign): reachable only by direct link, not linked from the portfolio.
+# Built separately from the implant52 Astro project (npx astro build, then copy dist/ here).
+COPY implant52/ /var/www/html/implant52/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
