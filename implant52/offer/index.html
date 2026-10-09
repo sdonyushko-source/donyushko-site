@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Commercial offer for the clinic: shared by link only, keep it out of search engines -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Предложение по новому сайту для стоматологии «Имплант52».">
+<title>Новый сайт для Имплант52</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a Bronco document — pine cover with the wordmark, then numbered chapters on warm paper, hairline rules, one pine accent.
+   The brand is light-only by design, so every colour is set explicitly. */
+:root {
+  --ink: #1A1A18;
+  --ink-2: #55534C;
+  --steel: #8C897F;
+  --paper: #F4F2EC;
+  --bone: #E9E6DD;
+  --chalk: #EFECE4;
+  --line: #D2CDBF; /* a step darker than the brandbook's, so hairlines still read on bone */
+  --white: #FFFFFF;
+  --pine: #2E5E4E;
+  --pine-tint: #A9C7BB;
+  --logo: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; /* wordmark only: no Cyrillic */
+  --text: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --r: 14px;
+  --gutter: clamp(16px, 4vw, 56px);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--bone); color: var(--ink); font: 400 16px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 920px; margin: 0 auto; padding-inline: var(--gutter); }
+h1, h2, h3 { font-family: var(--text); font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(32px, 4.6vw, 52px); }
+h3 { font-size: 19px; letter-spacing: -0.02em; line-height: 1.2; }
+p { margin: 0; }
+a { color: var(--pine); text-underline-offset: 3px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outline-offset: 3px; }
+.label { font: 400 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--steel); }
+
+.logo { font-family: var(--logo); font-weight: 500; font-optical-sizing: auto; line-height: .8; letter-spacing: -.065em; white-space: nowrap; display: inline-flex; align-items: baseline; }
+.logo .dot { display: inline-block; width: .15em; height: .15em; background: var(--pine); margin-left: .04em; flex: none; }
+
+/* Cover */
+.cover { background: var(--pine); color: var(--chalk); padding-block: clamp(36px, 6vw, 64px) clamp(36px, 6vw, 64px); }
+.cover .logo { font-size: clamp(44px, 8vw, 72px); }
+.cover .logo .dot { background: var(--chalk); }
+.cover-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.cover-top .label { color: rgba(239,236,228,.6); }
+.cover h1 { font-size: clamp(38px, 6.4vw, 72px); margin-top: clamp(48px, 9vw, 104px); max-width: 15ch; }
+.cover .lead { margin-top: 24px; font-size: clamp(17px, 1.6vw, 19px); color: rgba(239,236,228,.82); max-width: 58ch; }
+.cover-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 32px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 999px; background: var(--chalk); color: var(--ink); font-weight: 600; text-decoration: none; transition: transform .2s; }
+.btn:hover { transform: translateY(-2px); }
+.url { font: 400 13px/1.4 var(--mono); color: rgba(239,236,228,.7); }
+.cover-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 32px; margin-top: clamp(40px, 7vw, 72px); padding-top: 18px; border-top: 1px solid rgba(239,236,228,.28); }
+.cover-meta .label { color: rgba(239,236,228,.6); }
+.cover-meta strong { display: block; font: 500 15px/1.4 var(--text); color: var(--chalk); margin-top: 6px; }
+
+/* Chapters */
+.ch { padding-block: clamp(56px, 8vw, 96px); border-bottom: 1px solid var(--line); }
+.ch-head { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 40px); }
+.ch-num { font: 400 12px/1 var(--mono); letter-spacing: .1em; color: var(--pine); display: flex; align-items: center; gap: 10px; }
+.ch-num::after { content: ""; width: 40px; height: 1px; background: var(--pine); opacity: .5; }
+.ch-head p { color: var(--ink-2); max-width: 60ch; }
+
+.thesis { font: 500 clamp(26px, 3.6vw, 40px)/1.12 var(--text); letter-spacing: -.035em; text-wrap: balance; max-width: 26ch; }
+.thesis em { font-style: normal; color: var(--pine); }
+
+/* Issues: problem and what it costs */
+.issues { display: grid; border-top: 1px solid var(--line); }
+.issue { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px 32px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.issue b { font-weight: 600; }
+.issue span { color: var(--ink-2); font-size: 15px; display: flex; gap: 10px; }
+.issue span::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
+
+.gets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
+.get { display: grid; gap: 8px; align-content: start; padding-top: 16px; border-top: 1px solid var(--line); }
+.get p { color: var(--ink-2); font-size: 15px; }
+.get a { font: 400 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+
+/* Price */
+.plans { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.plan { background: var(--white); border-radius: var(--r); padding: 26px; display: grid; gap: 16px; align-content: start; }
+.plan.pick { background: var(--pine); color: var(--chalk); }
+.plan .price { font: 600 40px/1 var(--text); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.plan .tag { font: 400 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--pine-tint); }
+.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; }
+.plan li { display: flex; gap: 12px; }
+.plan li::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
+.plan.pick li::before { background: var(--chalk); }
+.why { margin-top: 16px; padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--r); display: grid; gap: 8px; }
+.why p { color: var(--ink-2); font-size: 15px; max-width: 64ch; }
+.terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px; margin-top: 28px; }
+.terms div { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px; }
+.terms b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.math { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px 24px; margin-top: 12px; font-variant-numeric: tabular-nums; }
+.math span { color: var(--ink-2); }
+.math b { text-align: right; font-weight: 600; }
+.math .sum { padding-top: 12px; border-top: 1px solid var(--ink); color: var(--ink); font-weight: 600; }
+
+/* Steps: real order of the project */
+.steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 0; border-top: 1px solid var(--line); }
+.steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.steps li::before { counter-increment: s; content: "0" counter(s); grid-row: span 2; font: 400 13px/1.6 var(--mono); color: var(--pine); }
+.steps span { color: var(--ink-2); font-size: 15px; }
+.need { margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.need li { display: flex; gap: 12px; color: var(--ink-2); }
+.need li::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
+
+/* Signature */
+.sign { padding-block: clamp(48px, 7vw, 80px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px 48px; align-items: end; }
+.sign .logo { font-size: clamp(56px, 9vw, 96px); }
+.sign-info { display: grid; gap: 6px; }
+.sign-info b { font-weight: 600; font-size: 17px; }
+.sign-info p { color: var(--ink-2); }
+.sign-info .phone { font: 500 20px/1.3 var(--text); letter-spacing: -.01em; color: var(--ink); font-variant-numeric: tabular-nums; user-select: all; }
+.rule { height: 1px; background: var(--ink); position: relative; margin-top: 12px; }
+.rule::after { content: ""; position: absolute; right: 0; top: -2.5px; width: 6px; height: 6px; background: var(--pine); }
+
+@media (max-width: 680px) {
+  .issue, .gets, .plans, .terms, .cover-meta { grid-template-columns: minmax(0, 1fr); }
+  .sign { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+<style>body { margin: 0; } img { max-width: 100%; }</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="wrap">
+    <div class="cover-top">
+      <span class="logo">bronco<span class="dot"></span></span>
+      <span class="label">Предложение · октябрь 2026</span>
+    </div>
+    <h1>Новый сайт для «Имплант52» уже готов</h1>
+    <p class="lead">Я сделал рабочую версию нового сайта на ваших материалах: врачи, цены, работы до и после, все направления и услуги. Это не макет, а живой сайт на 101 страницу. Посмотрите его до разговора о цене, можно с телефона.</p>
+    <div class="cover-cta">
+      <a class="btn" href="https://donyushko.ru/implant52/" target="_blank" rel="noopener">Открыть демо сайта →</a>
+      <span class="url">donyushko.ru/implant52</span>
+    </div>
+    <div class="cover-meta">
+      <div><span class="label">Для</span><strong>Юсифа и Карины Акберовых</strong></div>
+      <div><span class="label">Клиника</span><strong>«Имплант52», Казанская набережная, 5</strong></div>
+      <div><span class="label">Стоимость</span><strong>80 000 – 100 000 ₽</strong></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head"><div class="ch-num">01</div><h2>Идея</h2></div>
+      <p class="thesis">Вы единственная клиника в городе <em>со стеклянными стенами</em>. Сайт должен быть таким же прозрачным: понятная цена, живые врачи и запись в два касания.</p>
+    </div>
+  </section>
+
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head"><div class="ch-num">02</div><h2>Что мешает сейчас</h2><p>Текущий сайт теряет пациентов на простых вещах.</p></div>
+      <div class="issues">
+
+      <div class="issue"><b>На телефоне всплывающий чат закрывает кнопку «Записаться»</b><span>Кто зашёл с телефона, не может сразу записаться</span></div>
+      <div class="issue"><b>Страница отзывов пустая: четыре плашки «5.0» без единого текста</b><span>У вас высокие рейтинги, но на сайте их не видно</span></div>
+      <div class="issue"><b>Прозрачные стены — главная фишка — упомянуты одной строкой</b><span>Отличие от конкурентов теряется среди общих фраз</span></div>
+      <div class="issue"><b>На главной анкеты 19 врачей с номерами дипломов</b><span>Важное (33 000 пациентов, KaVo Kerr, гарантия) не видно</span></div>
+      <div class="issue"><b>Цены — длинный список из прайса: «пломба II кл. по Блэку»</b><span>Пациент не понимает, сколько стоит его задача</span></div>
+      <div class="issue"><b>На разных страницах разные номера телефона</b><span>Выглядит ненадёжно, люди сомневаются, куда звонить</span></div>
+    
+      </div>
+    </div>
+  </section>
+
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head"><div class="ch-num">03</div><h2>Что будет на новом сайте</h2><p>Всё, что нужно человеку, чтобы решиться на лечение и записаться. Ссылки ведут прямо в демо.</p></div>
+      <div class="gets">
+
+      <div class="get"><h3>Калькулятор имплантации</h3><p>Пациент выбирает число зубов и систему имплантов и сразу видит цену и платёж в рассрочку.</p><a href="https://donyushko.ru/implant52/services/implantatsiya-i-khirurgiya/implantatsiya-zubov/#calc" target="_blank" rel="noopener">Попробовать →</a></div>
+      <div class="get"><h3>Услуги через задачу пациента</h3><p>«Нет зуба», «болит зуб», «хочу ровные зубы» вместо названий отделений. Все 10 направлений и 59 услуг в понятном меню.</p><a href="https://donyushko.ru/implant52/services/" target="_blank" rel="noopener">Каталог услуг →</a></div>
+      <div class="get"><h3>Врачи как люди, а не дипломы</h3><p>Карточки с фото и стажем, фильтр по специализации, у каждого врача своя страница со списком услуг и записью к нему.</p><a href="https://donyushko.ru/implant52/teams/" target="_blank" rel="noopener">Врачи →</a></div>
+      <div class="get"><h3>Работы до и после</h3><p>Ползунок сравнения на ваших реальных клинических случаях.</p><a href="https://donyushko.ru/implant52/#works" target="_blank" rel="noopener">Посмотреть →</a></div>
+      <div class="get"><h3>Понятные цены</h3><p>Полный прайс по разделам человеческим языком, рассрочка 0% и ДМС на видном месте.</p><a href="https://donyushko.ru/implant52/price/" target="_blank" rel="noopener">Цены →</a></div>
+      <div class="get"><h3>Продвижение не пострадает</h3><p>Адреса всех страниц совпадают с текущими: /services/…, /teams/…, /price/. Позиции в Яндексе сохранятся.</p></div>
+    
+      </div>
+    </div>
+  </section>
+
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head"><div class="ch-num">04</div><h2>Стоимость</h2><p>Запуск под ключ, без скрытых платежей.</p></div>
+      <div class="plans">
+        <div class="plan">
+          <span class="tag" style="color: var(--steel)">Пакет</span>
+          <h3>Сайт</h3>
+          <div class="price">80 000 ₽</div>
+          <ul>
+            <li>Сайт как в демо, адаптирован под телефоны</li>
+            <li>Перенос текстов всех страниц услуг</li>
+            <li>Заявки с сайта приходят в Telegram или на почту</li>
+            <li>Политика и согласие на обработку данных</li>
+            <li>Переезд без потери адресов страниц</li>
+          </ul>
+        </div>
+        <div class="plan pick">
+          <span class="tag">Рекомендую</span>
+          <h3>Сайт и админка</h3>
+          <div class="price">100 000 ₽</div>
+          <ul>
+            <li>Всё из пакета «Сайт»</li>
+            <li>Админка: сами меняете цены, врачей, акции и фото</li>
+            <li>Обучение администратора, 30 минут</li>
+            <li>Месяц бесплатных правок после запуска</li>
+          </ul>
+        </div>
+      </div>
+      <div class="why">
+        <span class="label">Почему такая цена</span>
+        <p>В студиях сайт такого уровня обычно стоит 150–250 тыс. ₽ и делается 1–2 месяца. Вы будете одной из первых клиник в моём портфолио, поэтому цена ниже. Взамен прошу отзыв и разрешение показывать сайт как кейс.</p>
+      </div>
+      <div class="terms">
+        <div><span class="label">Оплата</span><b>50% до старта, 50% после запуска</b></div>
+        <div><span class="label">Поддержка после запуска</span><b>7 000 ₽ в месяц</b></div>
+      </div>
+      <div style="margin-top: 40px">
+        <span class="label">Окупаемость по вашему прайсу</span>
+        <div class="math">
+          <span>Один имплант Medentika с циркониевой коронкой</span><b>64 200 ₽</b>
+          <span>Протезирование всей челюсти All-on-4</span><b>от 305 200 ₽</b>
+          <span class="sum">Чтобы сайт окупился, достаточно</span><b class="sum">2 пациентов на имплант</b>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch">
+    <div class="wrap">
+      <div class="ch-head"><div class="ch-num">05</div><h2>Запуск за 2–3 недели</h2></div>
+<ol class="steps">
+      <li><b>Созвон и договор</b><span>Обсуждаем правки к демо, подписываем договор, предоплата 50%.</span></li>
+      <li><b>Тексты и доступы</b><span>Переношу тексты услуг, подключаю заявки, вы присылаете доступы к домену и хостингу.</span></li>
+      <li><b>Согласование</b><span>Показываю готовый сайт, вносим правки: два круга включены в цену.</span></li>
+      <li><b>Запуск</b><span>Переносим сайт на ваш домен, проверяем заявки и Яндекс.Вебмастер, оплата оставшихся 50%.</span></li>
+    </ol>
+      <h3 style="margin-top: 40px">Что понадобится от клиники</h3>
+<ul class="need">
+        <li>Доступ к домену и хостингу, или к тому, кто их ведёт</li>
+        <li>Куда присылать заявки: Telegram, почта или ваша CRM</li>
+        <li>Один ответственный, который согласует тексты и правки</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="wrap sign">
+    <span class="logo">bronco<span class="dot"></span></span>
+    <div class="sign-info">
+      <span class="label">Контакты</span>
+      <b>Антон Степанов</b>
+      <p class="phone">+7 996 564-05-73</p>
+      <p>Демо открыто только по ссылке и закрыто от поисковиков.</p>
+      <div class="rule"></div>
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
