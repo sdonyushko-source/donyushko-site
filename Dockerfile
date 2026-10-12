@@ -24,6 +24,10 @@ COPY implant52/ /var/www/html/implant52/
 # Built separately from the akvilio Astro project (npx astro build, then copy dist/ here).
 COPY akvilio/ /var/www/html/akvilio/
 
+# Hidden demo ("Гараж" fight club landing): direct link only, noindex, no password (no client assets inside).
+# Built separately from the garazh Astro project (npx astro build, then copy dist/ here).
+COPY garazh/ /var/www/html/garazh/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
