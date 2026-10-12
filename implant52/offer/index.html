@@ -11,19 +11,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a Bronco document — pine cover with the wordmark, then numbered chapters on warm paper, hairline rules, one pine accent.
+/* Colours follow the client's brand (Implant52 green); layout: a Bronco document — accent cover with the wordmark, then numbered chapters on warm paper, hairline rules, one pine accent.
    The brand is light-only by design, so every colour is set explicitly. */
 :root {
-  --ink: #1A1A18;
-  --ink-2: #55534C;
-  --steel: #8C897F;
-  --paper: #F4F2EC;
-  --bone: #E9E6DD;
-  --chalk: #EFECE4;
-  --line: #D2CDBF; /* a step darker than the brandbook's, so hairlines still read on bone */
+  --ink: #0F1B17;
+  --ink-2: #47524E;
+  --steel: #7F8A85;
+  --paper: #F3F6F5;
+  --bone: #E6EEEA;
+  --chalk: #EEF5F1;
+  --line: #C9D6D0; /* a step darker than the brandbook's, so hairlines still read on bone */
   --white: #FFFFFF;
-  --pine: #2E5E4E;
-  --pine-tint: #A9C7BB;
+  --pine: #173F30;
+  --pine-tint: #9FD0B2;
   --logo: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif; /* wordmark only: no Cyrillic */
   --text: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -50,15 +50,15 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .cover .logo { font-size: clamp(44px, 8vw, 72px); }
 .cover .logo .dot { background: var(--chalk); }
 .cover-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-.cover-top .label { color: rgba(239,236,228,.6); }
+.cover-top .label { color: rgba(238,245,241,.6); }
 .cover h1 { font-size: clamp(36px, 4.6vw, 60px); margin-top: clamp(48px, 9vw, 104px); max-width: 15ch; }
-.cover .lead { margin-top: 24px; font-size: clamp(17px, 1.6vw, 19px); color: rgba(239,236,228,.82); max-width: 58ch; }
+.cover .lead { margin-top: 24px; font-size: clamp(17px, 1.6vw, 19px); color: rgba(238,245,241,.82); max-width: 58ch; }
 .cover-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 32px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 999px; background: var(--chalk); color: var(--ink); font-weight: 600; text-decoration: none; transition: transform .2s; }
 .btn:hover { transform: translateY(-2px); }
-.url { font: 400 13px/1.4 var(--mono); color: rgba(239,236,228,.7); }
-.cover-meta { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 16px clamp(32px, 6vw, 96px); margin-top: clamp(40px, 7vw, 72px); padding-top: 18px; border-top: 1px solid rgba(239,236,228,.28); }
-.cover-meta .label { color: rgba(239,236,228,.6); }
+.url { font: 400 13px/1.4 var(--mono); color: rgba(238,245,241,.7); }
+.cover-meta { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 16px clamp(32px, 6vw, 96px); margin-top: clamp(40px, 7vw, 72px); padding-top: 18px; border-top: 1px solid rgba(238,245,241,.28); }
+.cover-meta .label { color: rgba(238,245,241,.6); }
 .cover-meta strong { display: block; font: 500 15px/1.4 var(--text); color: var(--chalk); margin-top: 6px; }
 
 /* Chapters */
@@ -133,14 +133,14 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
    Phone proportions follow an iPhone: screen corner ≈ 14% of width, bezel ≈ 2.6%. */
 .preview { --dw: 23cqw; --bezel: calc(var(--dw) * .026); --screen-r: calc(var(--dw) * .14); position: relative; margin-top: clamp(40px, 6vw, 64px); display: flex; align-items: center; container-type: inline-size; }
 .preview .browser { flex: none; width: 89%; }
-.browser { background: var(--chalk); border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px rgba(239,236,228,.12), 0 40px 80px -36px rgba(0,0,0,.55); }
+.browser { background: var(--chalk); border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px rgba(238,245,241,.12), 0 40px 80px -36px rgba(0,0,0,.55); }
 .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--bone); }
 .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
 .browser-bar { padding: 9px 12px; }
 .browser-bar i { width: 8px; height: 8px; }
 .browser-bar span { margin-left: 8px; font: 400 10px/1 var(--mono); color: var(--steel); }
 .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
-.device { position: relative; flex: none; width: var(--dw); margin-left: calc(var(--dw) * -.55); transform: translateY(9%); /* a little below centre */ border-radius: calc(var(--screen-r) + var(--bezel)); padding: var(--bezel); background: #10120F; box-shadow: 0 0 0 1px rgba(239,236,228,.16), 0 40px 70px -24px rgba(0,0,0,.6); }
+.device { position: relative; flex: none; width: var(--dw); margin-left: calc(var(--dw) * -.55); transform: translateY(9%); /* a little below centre */ border-radius: calc(var(--screen-r) + var(--bezel)); padding: var(--bezel); background: #10120F; box-shadow: 0 0 0 1px rgba(238,245,241,.16), 0 40px 70px -24px rgba(0,0,0,.6); }
 .device img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: var(--screen-r); }
 /* Support: what the monthly fee covers */
 .support { margin-top: 28px; background: var(--white); border-radius: var(--r); padding: clamp(22px, 3vw, 30px); display: grid; gap: 22px; }
@@ -211,11 +211,11 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 /* ROI right under the price */
 .roi { margin-top: 16px; background: var(--pine); color: var(--chalk); border-radius: var(--r); padding: clamp(22px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 48px; align-items: center; }
 .roi h3 { font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.035em; }
-.roi p { color: rgba(239,236,228,.75); font-size: 15px; margin-top: 10px; }
+.roi p { color: rgba(238,245,241,.75); font-size: 15px; margin-top: 10px; }
 .roi .math { margin-top: 0; }
-.roi .math span { color: rgba(239,236,228,.75); }
+.roi .math span { color: rgba(238,245,241,.75); }
 .roi .math b { color: var(--chalk); }
-.roi .math .sum { border-top-color: rgba(239,236,228,.4); color: var(--chalk); }
+.roi .math .sum { border-top-color: rgba(238,245,241,.4); color: var(--chalk); }
 .deadline { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; padding: 16px 20px; border-radius: var(--r); border: 1px dashed var(--pine); }
 .deadline b { font-weight: 600; }
 .deadline span { color: var(--ink-2); font-size: 15px; }
@@ -225,7 +225,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .next .ch-num::after { background: var(--pine-tint); }
 .next h2 { max-width: 16ch; }
 .next-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 32px 64px; align-items: end; margin-top: 8px; }
-.next ul { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; color: rgba(239,236,228,.82); }
+.next ul { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; color: rgba(238,245,241,.82); }
 .next li { display: flex; gap: 12px; }
 .next li::before { content: ""; width: 6px; height: 6px; background: var(--chalk); flex: none; margin-top: .6em; }
 .call { background: var(--chalk); color: var(--ink); border-radius: var(--r); padding: clamp(22px, 3vw, 32px); display: grid; gap: 10px; }
