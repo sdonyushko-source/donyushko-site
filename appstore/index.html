@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rexi — скриншоты для App Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0F0E10;
+    --panel: #19171B;
+    --text: #F4F1F2;
+    --muted: #A39EA6;
+    --line: #2B282E;
+    --red: #F9354E;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--bg); }
+  body { background: var(--bg); color: var(--text); font: 400 17px/1.55 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 72px 0 40px; }
+  .eyebrow { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 14px; font-weight: 500; letter-spacing: .02em; }
+  .eyebrow img { width: 28px; height: 28px; border-radius: 7px; }
+  h1 { margin-top: 18px; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 14ch; }
+  .lead { margin-top: 22px; max-width: 60ch; color: #D8D3DA; font-size: 19px; }
+  .facts { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .facts span { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; color: var(--muted); }
+
+  /* App Store–like strip of creatives */
+  .strip {
+    display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr);
+    gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 8px 24px 28px; margin: 0 auto; max-width: 1228px;
+    scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip a { scroll-snap-align: start; display: block; border-radius: 22px; overflow: hidden; background: var(--panel); transition: transform .25s ease; }
+  .strip a:hover { transform: translateY(-4px); }
+  .strip img { display: block; width: 100%; height: auto; aspect-ratio: 1290 / 2796; }
+  .hint { color: var(--muted); font-size: 14px; text-align: center; margin-top: -8px; }
+
+  section { padding: 64px 0 0; }
+  h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  ol { margin-top: 22px; padding: 0; list-style: none; counter-reset: n; display: grid; gap: 18px; }
+  ol li { counter-increment: n; display: grid; grid-template-columns: 34px 1fr; gap: 10px; color: #D8D3DA; }
+  ol li::before { content: counter(n, decimal-leading-zero); color: var(--red); font-weight: 600; font-size: 15px; padding-top: 2px; }
+  ol b { color: var(--text); font-weight: 600; }
+
+  .screens { margin-top: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .screens figure { margin: 0; }
+  .screens img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  .screens figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
+  .note { margin-top: 18px; color: var(--muted); font-size: 15px; max-width: 60ch; }
+
+  footer { padding: 80px 0 56px; color: var(--muted); font-size: 14px; }
+
+  @media (max-width: 860px) {
+    .cols { grid-template-columns: 1fr; gap: 8px; }
+    .screens { grid-template-columns: repeat(2, 1fr); }
+    .strip { grid-auto-columns: 62%; padding: 8px 16px 24px; }
+    .wrap { padding: 0 16px; }
+    header { padding-top: 48px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="eyebrow"><img src="img/splash.webp" alt="">Кейс · iOS · App Store</div>
+  <h1>Rexi — скриншоты для App Store</h1>
+  <p class="lead">Rexi — приложение знакомств для людей с собаками: свайпы, взаимные симпатии и чат, чтобы договориться о совместной прогулке. Я спроектировал интерфейс приложения и собрал набор скриншотов для его страницы в App Store.</p>
+  <div class="facts">
+    <span>6 скриншотов</span>
+    <span>1290 × 2796, iPhone 6,7″</span>
+    <span>Английский</span>
+    <span>UI и креативы — мои</span>
+  </div>
+</header>
+
+<div class="strip" aria-label="Скриншоты для App Store">
+  <a href="img/full/rexi-01.webp" target="_blank"><img src="img/rexi-01.webp" alt="Find your people. And their dogs." loading="eager"></a>
+  <a href="img/full/rexi-02.webp" target="_blank"><img src="img/rexi-02.webp" alt="Swipe dog lovers nearby" loading="eager"></a>
+  <a href="img/full/rexi-03.webp" target="_blank"><img src="img/rexi-03.webp" alt="It's mutual? Say hi first" loading="lazy"></a>
+  <a href="img/full/rexi-04.webp" target="_blank"><img src="img/rexi-04.webp" alt="Photos, voice, dog stories" loading="lazy"></a>
+  <a href="img/full/rexi-05.webp" target="_blank"><img src="img/rexi-05.webp" alt="See who looked at you" loading="lazy"></a>
+  <a href="img/full/rexi-06.webp" target="_blank"><img src="img/rexi-06.webp" alt="Light by day, dark by night" loading="lazy"></a>
+</div>
+<p class="hint">Листается вбок · по клику открывается в полном размере</p>
+
+<section class="wrap cols">
+  <h2>Как устроен набор</h2>
+  <ol>
+    <li><span><b>Первый кадр продаёт идею целиком.</b> Логотип, обещание в одну строку и главный экран со свайпом. В поиске App Store видно только первые кадры, поэтому самое важное — в начале.</span></li>
+    <li><span><b>Одна функция — один кадр.</b> Свайп, взаимная симпатия, чат, просмотры профиля, тёмная тема. Заголовок называет пользу, подзаголовок поясняет её.</span></li>
+    <li><span><b>Цвет держит серию.</b> Кадры чередуются между фирменным красным и сливовым градиентом из онбординга, светлый и раздвоенный кадры дают паузу. В ленте набор читается как одна история.</span></li>
+    <li><span><b>Живые экраны вместо коллажей.</b> В рамке настоящий интерфейс приложения; поверх — только то, что помогает прочитать сценарий: сообщение в чате, сердечки из онбординга.</span></li>
+  </ol>
+</section>
+
+<section class="wrap">
+  <h2>Экраны приложения</h2>
+  <p class="note">Сплэш и онбординг из самого приложения — из них взяты цвета, сердечки и тон текстов для скриншотов.</p>
+  <div class="screens">
+    <figure><img src="img/splash.webp" alt="Сплэш Rexi" loading="lazy"><figcaption>Сплэш</figcaption></figure>
+    <figure><img src="img/onb-1.webp" alt="Онбординг 1" loading="lazy"><figcaption>Онбординг · знакомства</figcaption></figure>
+    <figure><img src="img/onb-2.webp" alt="Онбординг 2" loading="lazy"><figcaption>Онбординг · лайки</figcaption></figure>
+    <figure><img src="img/onb-3.webp" alt="Онбординг 3" loading="lazy"><figcaption>Онбординг · чат</figcaption></figure>
+  </div>
+</section>
+
+<footer class="wrap">Сергей Донюшко · продуктовый дизайнер</footer>
+
+</body>
+</html>

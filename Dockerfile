@@ -28,6 +28,10 @@ COPY akvilio/ /var/www/html/akvilio/
 # Built separately from the garazh Astro project (npx astro build, then copy dist/ here).
 COPY garazh/ /var/www/html/garazh/
 
+# Hidden case page (Rexi App Store screenshots, for job applications): direct link only, noindex, no password.
+# Static page; App Store creatives are rendered from the rexi-appstore project.
+COPY appstore/ /var/www/html/appstore/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
