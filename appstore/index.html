@@ -26,7 +26,8 @@
 
   header.wrap { padding-top: 80px; padding-bottom: 40px; }
   .eyebrow { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 14px; font-weight: 500; letter-spacing: .02em; }
-  .eyebrow img { width: 28px; height: 28px; border-radius: 7px; }
+  .appicon { width: 28px; height: 28px; border-radius: 7px; background: var(--red); display: grid; place-items: center; }
+  .appicon img { width: 72%; height: auto; display: block; }
   h1 { margin-top: 18px; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 14ch; }
   .lead { margin-top: 22px; max-width: 60ch; color: var(--body); font-size: 19px; }
   .facts { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -75,7 +76,7 @@
 <body>
 
 <header class="wrap">
-  <div class="eyebrow"><img src="img/splash.webp" alt="">Кейс · iOS · App Store</div>
+  <div class="eyebrow"><span class="appicon"><img src="img/rexi-dog.webp" alt=""></span>Кейс · iOS · App Store</div>
   <h1>Rexi — скриншоты для App Store</h1>
   <p class="lead">Rexi — приложение знакомств для людей с собаками: свайпы, взаимные симпатии и чат, чтобы договориться о совместной прогулке. Я спроектировал интерфейс приложения и собрал набор скриншотов для его страницы в App Store.</p>
   <div class="facts">
