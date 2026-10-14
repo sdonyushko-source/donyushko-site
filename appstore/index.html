@@ -10,11 +10,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0F0E10;
-    --panel: #19171B;
-    --text: #F4F1F2;
-    --muted: #A39EA6;
-    --line: #2B282E;
+    --bg: #F6F3F4;
+    --panel: #FFFFFF;
+    --text: #17141A;
+    --body: #3B3640;
+    --muted: #7A7380;
+    --line: #E3DDE1;
     --red: #F9354E;
   }
   * { box-sizing: border-box; margin: 0; }
@@ -23,49 +24,51 @@
   a { color: inherit; }
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-  header { padding: 72px 0 40px; }
+  header.wrap { padding-top: 80px; padding-bottom: 40px; }
   .eyebrow { display: flex; gap: 10px; align-items: center; color: var(--muted); font-size: 14px; font-weight: 500; letter-spacing: .02em; }
   .eyebrow img { width: 28px; height: 28px; border-radius: 7px; }
   h1 { margin-top: 18px; font-size: clamp(36px, 6vw, 64px); line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; max-width: 14ch; }
-  .lead { margin-top: 22px; max-width: 60ch; color: #D8D3DA; font-size: 19px; }
+  .lead { margin-top: 22px; max-width: 60ch; color: var(--body); font-size: 19px; }
   .facts { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .facts span { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; color: var(--muted); }
+  .facts span { padding: 7px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; font-size: 14px; color: var(--muted); }
 
   /* App Store–like strip of creatives */
   .strip {
     display: grid; grid-auto-flow: column; grid-auto-columns: minmax(220px, 1fr);
     gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
-    padding: 8px 24px 28px; margin: 0 auto; max-width: 1228px;
+    padding: 12px 24px 40px; margin: 0 auto; max-width: 1228px;
     scrollbar-width: none;
   }
   .strip::-webkit-scrollbar { display: none; }
-  .strip a { scroll-snap-align: start; display: block; border-radius: 22px; overflow: hidden; background: var(--panel); transition: transform .25s ease; }
+  .strip a { scroll-snap-align: start; display: block; border-radius: 22px; overflow: hidden; background: var(--panel); box-shadow: 0 18px 40px -22px rgba(40, 10, 40, .35); transition: transform .25s ease; }
   .strip a:hover { transform: translateY(-4px); }
   .strip img { display: block; width: 100%; height: auto; aspect-ratio: 1290 / 2796; }
-  .hint { color: var(--muted); font-size: 14px; text-align: center; margin-top: -8px; }
+  .hint { color: var(--muted); font-size: 14px; text-align: center; margin-top: -12px; }
 
-  section { padding: 64px 0 0; }
+  section.wrap { padding-top: 96px; }
   h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
   .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   ol { margin-top: 22px; padding: 0; list-style: none; counter-reset: n; display: grid; gap: 18px; }
-  ol li { counter-increment: n; display: grid; grid-template-columns: 34px 1fr; gap: 10px; color: #D8D3DA; }
+  ol li { counter-increment: n; display: grid; grid-template-columns: 34px 1fr; gap: 10px; color: var(--body); }
   ol li::before { content: counter(n, decimal-leading-zero); color: var(--red); font-weight: 600; font-size: 15px; padding-top: 2px; }
   ol b { color: var(--text); font-weight: 600; }
 
   .screens { margin-top: 26px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .screens figure { margin: 0; }
-  .screens img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  .screens img { display: block; width: 100%; height: auto; border-radius: 18px; box-shadow: 0 14px 32px -20px rgba(40, 10, 40, .35); }
   .screens figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); }
   .note { margin-top: 18px; color: var(--muted); font-size: 15px; max-width: 60ch; }
 
-  footer { padding: 80px 0 56px; color: var(--muted); font-size: 14px; }
+  footer.wrap { margin-top: 120px; padding: 32px 24px 72px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
 
   @media (max-width: 860px) {
     .cols { grid-template-columns: 1fr; gap: 8px; }
     .screens { grid-template-columns: repeat(2, 1fr); }
     .strip { grid-auto-columns: 62%; padding: 8px 16px 24px; }
     .wrap { padding: 0 16px; }
-    header { padding-top: 48px; }
+    header.wrap { padding-top: 48px; }
+    section.wrap { padding-top: 64px; }
+    footer.wrap { margin-top: 88px; padding-bottom: 56px; }
   }
 </style>
 </head>
