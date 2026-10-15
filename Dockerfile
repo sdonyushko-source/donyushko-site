@@ -32,6 +32,10 @@ COPY garazh/ /var/www/html/garazh/
 # Static page; App Store creatives are rendered from the rexi-appstore project.
 COPY appstore/ /var/www/html/appstore/
 
+# Hidden client prototype (Hi,Life wireframe: structure and copy, no design yet): direct link only, noindex, no password.
+# Built separately from the hilife Astro project (npm run build, then copy dist/ here).
+COPY hilife/ /var/www/html/hilife/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
