@@ -36,6 +36,10 @@ COPY appstore/ /var/www/html/appstore/
 # Built separately from the hilife Astro project (npm run build, then copy dist/ here).
 COPY hilife/ /var/www/html/hilife/
 
+# Hidden pitch demo (S&O IP home page prototypes: v1, v2): direct link only, noindex, no password.
+# Static pages from the "S&O IP/demo" folder.
+COPY so-ip/ /var/www/html/so-ip/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
