@@ -29,36 +29,50 @@
   .intro p { font-size: 17px; line-height: 1.55; color: #3A3B3E; max-width: 600px; }
   .intro p + p { margin-top: 10px; }
 
-  /* Cards: as the Moneteam case cards */
+  /* Cards: as the Moneteam case cards — black card, one tag, round arrow, screenshot running to the bottom
+     edge with a progressive blur under the title (layered backdrop-filter, same as Moneteam / Hi,Life) */
   .cards { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
-  .card { position: relative; display: flex; flex-direction: column; gap: 22px; min-height: 520px; padding: 28px; border-radius: var(--radius); overflow: hidden; isolation: isolate; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .card { position: relative; display: flex; flex-direction: column; justify-content: space-between; min-height: 560px; padding: 28px;
+    border-radius: var(--radius); background: #0B0D10; color: #fff; isolation: isolate; clip-path: inset(0 round var(--radius)); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
   .card:hover { transform: translateY(-6px); }
-  .card.dark { background: #16151E; color: #fff; }
-  .card.paper { background: #EFEEEB; }
-  .card.warm { background: radial-gradient(60% 60% at 80% 20%, rgba(161,49,53,.18), transparent 70%), radial-gradient(50% 50% at 10% 90%, rgba(255,160,110,.28), transparent 70%), #F7F2F1; }
-  .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tag { font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 999px; background: rgba(11,13,16,.08); }
-  .tag.main { background: var(--ink); color: #fff; }
-  .dark .tag { background: rgba(255,255,255,.14); }
-  .dark .tag.main { background: #fff; color: var(--ink); }
-  .arrow { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; background: var(--ink); color: #fff; transition: transform .3s; }
-  .dark .arrow { background: #fff; color: var(--ink); }
+  .top { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 999px; background: #fff; color: var(--ink); }
+  .arrow { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; background: #fff; color: var(--ink); transition: transform .3s; }
   .card:hover .arrow { transform: rotate(-45deg); }
-  .shot { flex: 1; min-height: 0; display: flex; align-items: center; }
-  .shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.18); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
-  .card:hover .shot img { transform: translateY(-6px) scale(1.02); }
+  .shot { position: absolute; z-index: -1; left: 28px; right: 28px; top: 96px; bottom: 0; width: calc(100% - 56px); height: calc(100% - 96px);
+    object-fit: cover; object-position: center top; border-radius: 12px 12px 0 0; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .shot { transform: translateY(-8px); }
+  .blur { position: absolute; left: 0; right: 0; bottom: 0; height: 46%; pointer-events: none;
+    background: linear-gradient(to bottom, transparent 0%, rgba(11,13,16,.55) 55%, rgba(11,13,16,.85) 100%); }
+  .blur i { position: absolute; inset: 0; }
+  .blur i:nth-child(1) { backdrop-filter: blur(1.5px); -webkit-backdrop-filter: blur(1.5px); mask-image: linear-gradient(transparent 0%, #000 20%, #000 40%, transparent 60%); -webkit-mask-image: linear-gradient(transparent 0%, #000 20%, #000 40%, transparent 60%); }
+  .blur i:nth-child(2) { backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); mask-image: linear-gradient(transparent 20%, #000 40%, #000 60%, transparent 80%); -webkit-mask-image: linear-gradient(transparent 20%, #000 40%, #000 60%, transparent 80%); }
+  .blur i:nth-child(3) { backdrop-filter: blur(7px); -webkit-backdrop-filter: blur(7px); mask-image: linear-gradient(transparent 40%, #000 60%, #000 80%, transparent 100%); -webkit-mask-image: linear-gradient(transparent 40%, #000 60%, #000 80%, transparent 100%); }
+  .blur i:nth-child(4) { backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); mask-image: linear-gradient(transparent 60%, #000 80%, #000 100%); -webkit-mask-image: linear-gradient(transparent 60%, #000 80%, #000 100%); }
+  .blur i:nth-child(5) { backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); mask-image: linear-gradient(transparent 80%, #000 100%); -webkit-mask-image: linear-gradient(transparent 80%, #000 100%); }
+  /* Firefox: backdrop blur doesn't render inside these cards, so a blurred copy of the screenshot fades in at the bottom */
+  .blur-ff { display: none; }
+  html.ff .blur i { display: none; }
+  /* the copy is clipped to the screenshot's own box and slightly oversized, so its blurred edges never go see-through */
+  html.ff .blur-ff { display: block; position: absolute; z-index: 0; left: 28px; right: 28px; top: 96px; bottom: 0; overflow: hidden; border-radius: 12px 12px 0 0; pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 50%, #000 75%); mask-image: linear-gradient(to bottom, transparent 50%, #000 75%); }
+  html.ff .blur-ff .shot { z-index: 0; left: -24px; right: auto; top: -24px; width: calc(100% + 48px); height: calc(100% + 48px); border-radius: 0; filter: blur(18px); transition: none; }
+  @media (max-width: 1000px) { html.ff .blur-ff { left: 24px; right: 24px; top: 88px; } }
+  html.ff .blur { z-index: 0; }
+  .text { position: relative; z-index: 2; }
   .card h2 { font-weight: 400; font-size: clamp(26px, 2.3vw, 34px); line-height: 1.1; margin-bottom: 10px; }
-  .card p { font-size: 15px; line-height: 1.5; opacity: .75; max-width: 420px; }
+  .card p { font-size: 15px; line-height: 1.5; opacity: .8; max-width: 420px; }
 
   @media (max-width: 1000px) {
     .page { padding: 20px 16px 28px; }
     .intro { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
     .cards { grid-template-columns: 1fr; }
-    .card { min-height: 0; padding: 24px; }
+    .card { min-height: 520px; padding: 24px; }
+    .shot { left: 24px; right: 24px; width: calc(100% - 48px); top: 88px; height: calc(100% - 88px); object-position: left top; }
   }
 </style>
 <script>
+  if (/firefox/i.test(navigator.userAgent)) document.documentElement.classList.add("ff");
   // Language: English by default, the choice is remembered
   let lang = "en";
   try { lang = localStorage.getItem("so-lang") || "en"; } catch (e) {}
@@ -82,40 +96,34 @@
     </section>
 
     <div class="cards">
-      <a class="card dark" href="v1/">
-        <div class="top">
-          <div class="tags"><span class="tag main" data-en="Option 01" data-ru="Вариант 01"></span><span class="tag" data-en="Monospace" data-ru="Моноширинный шрифт"></span><span class="tag" data-en="Dark blocks" data-ru="Тёмные блоки"></span></div>
-          <span class="arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="shot"><img src="assets/previews/v1.jpg" alt=""></div>
-        <div>
+      <a class="card" href="v1/">
+        <div class="top"><span class="tag" data-en="Option 01" data-ru="Вариант 01"></span><span class="arrow" aria-hidden="true">→</span></div>
+        <img class="shot" src="assets/previews/v1.jpg" alt="">
+        <span class="blur-ff" aria-hidden="true"><img class="shot" src="assets/previews/v1.jpg" alt=""></span>
+        <span class="blur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="text">
           <h2 data-en="Strict and graphic" data-ru="Строгий и графичный"></h2>
-          <p data-en="Monospace type, dark blocks and a fine grid. The office map draws itself as you scroll."
-             data-ru="Моноширинный шрифт, тёмные блоки и тонкая сетка. Карта офисов рисуется при прокрутке."></p>
+          <p data-en="Monospace type, dark blocks and a fine grid. The office map draws itself as you scroll." data-ru="Моноширинный шрифт, тёмные блоки и тонкая сетка. Карта офисов рисуется при прокрутке."></p>
         </div>
       </a>
-      <a class="card paper" href="v2/">
-        <div class="top">
-          <div class="tags"><span class="tag main" data-en="Option 02" data-ru="Вариант 02"></span><span class="tag" data-en="Bold type" data-ru="Крупный шрифт"></span><span class="tag" data-en="Full-width photos" data-ru="Фото на всю ширину"></span></div>
-          <span class="arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="shot"><img src="assets/previews/v2.jpg" alt=""></div>
-        <div>
+      <a class="card" href="v2/">
+        <div class="top"><span class="tag" data-en="Option 02" data-ru="Вариант 02"></span><span class="arrow" aria-hidden="true">→</span></div>
+        <img class="shot" src="assets/previews/v2.jpg" alt="">
+        <span class="blur-ff" aria-hidden="true"><img class="shot" src="assets/previews/v2.jpg" alt=""></span>
+        <span class="blur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="text">
           <h2 data-en="Bold typography" data-ru="Крупная типографика"></h2>
-          <p data-en="Upper-case headlines and full-width photos. Regions are shown as case studies with panels over the photos."
-             data-ru="Заголовки капсом и фото на всю ширину. Регионы показаны как кейсы с плашками поверх фото."></p>
+          <p data-en="Upper-case headlines and full-width photos. Regions are shown as case studies with panels over the photos." data-ru="Заголовки капсом и фото на всю ширину. Регионы показаны как кейсы с плашками поверх фото."></p>
         </div>
       </a>
-      <a class="card warm" href="v3/">
-        <div class="top">
-          <div class="tags"><span class="tag main" data-en="Option 03" data-ru="Вариант 03"></span><span class="tag" data-en="Interactive globe" data-ru="Интерактивный глобус"></span><span class="tag" data-en="Light" data-ru="Светлый"></span></div>
-          <span class="arrow" aria-hidden="true">→</span>
-        </div>
-        <div class="shot"><img src="assets/previews/v3.jpg" alt=""></div>
-        <div>
+      <a class="card" href="v3/">
+        <div class="top"><span class="tag" data-en="Option 03" data-ru="Вариант 03"></span><span class="arrow" aria-hidden="true">→</span></div>
+        <img class="shot" src="assets/previews/v3.jpg" alt="">
+        <span class="blur-ff" aria-hidden="true"><img class="shot" src="assets/previews/v3.jpg" alt=""></span>
+        <span class="blur" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <div class="text">
           <h2 data-en="Light and modern" data-ru="Светлый и современный"></h2>
-          <p data-en="An interactive globe with the offices, soft gradients and rounded cards."
-             data-ru="Интерактивный глобус с офисами, мягкие градиенты и скругленные карточки."></p>
+          <p data-en="An interactive globe with the offices, soft gradients and rounded cards." data-ru="Интерактивный глобус с офисами, мягкие градиенты и скругленные карточки."></p>
         </div>
       </a>
     </div>
