@@ -1,3 +1,137 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>S&amp;O IP — prototype</title>
-<meta http-equiv="refresh" content="0; url=v1/"></head><body><a href="v1/">v1</a></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>S&amp;O IP — home page design options</title>
+<!-- Entry page of the pitch demo: three design directions of the S&O IP home page on one screen.
+     Cards follow the Moneteam case cards (coloured card, tag pills, round arrow, title at the bottom). EN by default, RU switch. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #0B0D10; --muted: #6B6B6D; --radius: 20px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #fff; color: var(--ink); font: 400 16px/1.5 "Geist", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+  .page { min-height: 100vh; max-width: 1480px; margin: 0 auto; padding: 28px 40px 36px; display: flex; flex-direction: column; }
+  header { display: flex; justify-content: space-between; align-items: center; }
+  header img { width: 44px; display: block; }
+  .lang { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(11,13,16,.05); }
+  .lang button { border: 0; background: none; cursor: pointer; padding: 7px 14px; border-radius: 999px; font: 500 13px/1 "Geist", sans-serif; color: var(--muted); transition: background .2s, color .2s; }
+  .lang button.on { background: var(--ink); color: #fff; }
+
+  /* Title and text start on the same line */
+  .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; margin-top: 44px; }
+  h1 { font-weight: 400; font-size: clamp(32px, 3.2vw, 48px); line-height: 1.1; letter-spacing: -0.015em; }
+  .intro p { font-size: 17px; line-height: 1.55; color: #3A3B3E; max-width: 600px; }
+  .intro p + p { margin-top: 10px; }
+
+  /* Cards: as the Moneteam case cards */
+  .cards { flex: 1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 36px; }
+  .card { position: relative; display: flex; flex-direction: column; gap: 22px; min-height: 520px; padding: 28px; border-radius: var(--radius); overflow: hidden; isolation: isolate; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .card:hover { transform: translateY(-6px); }
+  .card.dark { background: #16151E; color: #fff; }
+  .card.paper { background: #EFEEEB; }
+  .card.warm { background: radial-gradient(60% 60% at 80% 20%, rgba(161,49,53,.18), transparent 70%), radial-gradient(50% 50% at 10% 90%, rgba(255,160,110,.28), transparent 70%), #F7F2F1; }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 999px; background: rgba(11,13,16,.08); }
+  .tag.main { background: var(--ink); color: #fff; }
+  .dark .tag { background: rgba(255,255,255,.14); }
+  .dark .tag.main { background: #fff; color: var(--ink); }
+  .arrow { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-size: 20px; background: var(--ink); color: #fff; transition: transform .3s; }
+  .dark .arrow { background: #fff; color: var(--ink); }
+  .card:hover .arrow { transform: rotate(-45deg); }
+  .shot { flex: 1; min-height: 0; display: flex; align-items: center; }
+  .shot img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-radius: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.18); transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+  .card:hover .shot img { transform: translateY(-6px) scale(1.02); }
+  .card h2 { font-weight: 400; font-size: clamp(26px, 2.3vw, 34px); line-height: 1.1; margin-bottom: 10px; }
+  .card p { font-size: 15px; line-height: 1.5; opacity: .75; max-width: 420px; }
+
+  @media (max-width: 1000px) {
+    .page { padding: 20px 16px 28px; }
+    .intro { grid-template-columns: 1fr; gap: 14px; margin-top: 32px; }
+    .cards { grid-template-columns: 1fr; }
+    .card { min-height: 0; padding: 24px; }
+  }
+</style>
+<script>
+  // Language: English by default, the choice is remembered
+  let lang = "en";
+  try { lang = localStorage.getItem("so-lang") || "en"; } catch (e) {}
+</script>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <img src="assets/LOGO_SchmittOrlov.svg" alt="S&amp;O IP">
+      <div class="lang" role="group" aria-label="Language"><button data-l="en">EN</button><button data-l="ru">RU</button></div>
+    </header>
+
+    <section class="intro">
+      <h1 data-en="Three design options for the S&amp;O&nbsp;IP home page" data-ru="Три варианта дизайна главной страницы S&amp;O&nbsp;IP"></h1>
+      <div>
+        <p data-en="These are clickable prototypes of the home page of the new website. All three share the same structure and copy, taken from the current site so-ipr.com — only the design differs, so the options are easy to compare."
+           data-ru="Это кликабельные прототипы главной страницы будущего сайта. Структура и тексты у всех трёх одинаковые — они взяты с текущего сайта so-ipr.com. Отличается только оформление, поэтому варианты удобно сравнивать между собой."></p>
+        <p data-en="Photos are placeholders from the free Unsplash library; the final site will use your own."
+           data-ru="Фотографии временные, из свободного фотобанка Unsplash. На финальном сайте будут ваши."></p>
+      </div>
+    </section>
+
+    <div class="cards">
+      <a class="card dark" href="v1/">
+        <div class="top">
+          <div class="tags"><span class="tag main" data-en="Option 01" data-ru="Вариант 01"></span><span class="tag" data-en="Monospace" data-ru="Моноширинный шрифт"></span><span class="tag" data-en="Dark blocks" data-ru="Тёмные блоки"></span></div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="shot"><img src="assets/previews/v1.jpg" alt=""></div>
+        <div>
+          <h2 data-en="Strict and graphic" data-ru="Строгий и графичный"></h2>
+          <p data-en="Monospace type, dark blocks and a fine grid. The office map draws itself as you scroll."
+             data-ru="Моноширинный шрифт, тёмные блоки и тонкая сетка. Карта офисов рисуется при прокрутке."></p>
+        </div>
+      </a>
+      <a class="card paper" href="v2/">
+        <div class="top">
+          <div class="tags"><span class="tag main" data-en="Option 02" data-ru="Вариант 02"></span><span class="tag" data-en="Bold type" data-ru="Крупный шрифт"></span><span class="tag" data-en="Full-width photos" data-ru="Фото на всю ширину"></span></div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="shot"><img src="assets/previews/v2.jpg" alt=""></div>
+        <div>
+          <h2 data-en="Bold typography" data-ru="Крупная типографика"></h2>
+          <p data-en="Upper-case headlines and full-width photos. Regions are shown as case studies with panels over the photos."
+             data-ru="Заголовки капсом и фото на всю ширину. Регионы показаны как кейсы с плашками поверх фото."></p>
+        </div>
+      </a>
+      <a class="card warm" href="v3/">
+        <div class="top">
+          <div class="tags"><span class="tag main" data-en="Option 03" data-ru="Вариант 03"></span><span class="tag" data-en="Interactive globe" data-ru="Интерактивный глобус"></span><span class="tag" data-en="Light" data-ru="Светлый"></span></div>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+        <div class="shot"><img src="assets/previews/v3.jpg" alt=""></div>
+        <div>
+          <h2 data-en="Light and modern" data-ru="Светлый и современный"></h2>
+          <p data-en="An interactive globe with the offices, soft gradients and rounded cards."
+             data-ru="Интерактивный глобус с офисами, мягкие градиенты и скругленные карточки."></p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+<script>
+  const btns = [...document.querySelectorAll(".lang button")];
+  const apply = (l) => {
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-en]").forEach((el) => (el.innerHTML = el.dataset[l]));
+    document.title = l === "ru" ? "S&O IP — варианты дизайна главной" : "S&O IP — home page design options";
+    btns.forEach((b) => b.classList.toggle("on", b.dataset.l === l));
+    try { localStorage.setItem("so-lang", l); } catch (e) {}
+  };
+  btns.forEach((b) => b.addEventListener("click", () => apply(b.dataset.l)));
+  apply(lang === "ru" ? "ru" : "en");
+</script>
+</body>
+</html>
