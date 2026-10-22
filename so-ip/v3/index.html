@@ -9,8 +9,12 @@
      Fonts as on the reference: Geist + Fragment Mono. Accent = the red of the S&O logo (#A13135). -->
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script>
+  // Reload always opens at the very top: no restored scroll position and no jump to a #section left in the address
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  if (!location.hash) scrollTo(0, 0);
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  const toTop = () => window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  toTop(); addEventListener("DOMContentLoaded", toTop); addEventListener("load", toTop);
+  addEventListener("pageshow", (e) => { if (e.persisted) toTop(); });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,8 +41,8 @@
   .h2 em { font-style: normal; color: var(--brand); background: var(--brand-soft); padding: 0 10px; border-radius: 6px; }
   .p { font-size: 18px; line-height: 27px; }
   .btn { display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 1px 23px 0; border-radius: 23px; border: 1px solid transparent; font: 400 14px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; transition: background .2s, color .2s, border-color .2s; white-space: nowrap; }
-  .btn.dark { background: var(--ink); color: #fff; }
-  .btn.dark:hover { background: var(--brand); }
+  .btn.dark { background: var(--brand); color: #fff; }
+  .btn.dark:hover { background: #7E2427; }
   .btn.line { border-color: rgba(20,20,20,.25); }
   .btn.line:hover { border-color: var(--ink); background: var(--ink); color: #fff; }
   .btns { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -67,7 +71,7 @@
   header .logo img { width: 44px; }
   header nav { display: flex; gap: 6px; }
   header nav a { padding: 8px 18px; border-radius: 1000px; background: var(--tint); font-size: 15px; line-height: 20px; transition: background .2s, color .2s; }
-  header nav a:hover { background: var(--ink); color: #fff; }
+  header nav a:hover { background: var(--brand); color: #fff; }
   header .right { display: flex; align-items: center; gap: 16px; }
   header .lang { display: flex; gap: 8px; font: 400 12px var(--mono); }
   header .lang b { font-weight: 400; color: var(--ink); }
@@ -76,7 +80,7 @@
   header .burger { display: none; }
 
   /* Hero */
-  .hero { position: relative; padding: 110px 0 90px; overflow: hidden; }
+  .hero { position: relative; padding: 72px 0 56px; overflow: hidden; }
   .hero-glow { position: absolute; inset: 0; opacity: .45; pointer-events: none; }  /* softer than before */
   .hero .glow.a { width: 720px; height: 720px; right: 4%; top: -60px; }
   .hero .glow.b { width: 520px; height: 520px; right: 22%; top: 160px; }
@@ -92,18 +96,19 @@
   .gchip b { font-weight: 400; }
   .gchip.show { animation: chipIn .5s var(--ease); }
   @keyframes chipIn { from { opacity: 0; filter: blur(4px); } }
-  @media (max-width: 1100px) { .globe-box { opacity: .7; } }
+  @media (max-width: 1100px) {
+    .tgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .globe-box { opacity: .7; } }
   @media (max-width: 760px) { .globe-box { opacity: .4; } .gchip { display: none; } }
   .hero .h2 { margin-top: 22px; }
   .hero .p { margin-top: 22px; max-width: 560px; }
   .hero .btns { margin-top: 36px; }
-  .figs { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 170px; }
+  .figs { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 150px; }
   .fig { padding-top: 18px; border-top: 1px solid var(--line); }
-  .fig b { display: block; font-weight: 400; font-size: 52px; line-height: 1.1; }
+  .fig b { display: block; font-weight: 400; font-size: 52px; line-height: 1.1; color: var(--brand); }
   .fig span { display: block; margin-top: 10px; color: var(--muted); }
 
   /* About: text left, photos scattered right (the reference's team-photo collage) */
-  .about { padding: 120px 0; }
+  .about { padding: 72px 0; }
   .about .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .about .p { margin-top: 22px; max-width: 560px; color: #333; }
   .about .p + .p { margin-top: 14px; }
@@ -114,14 +119,14 @@
   .collage .i3 { right: 8%; bottom: 0; width: 46%; height: 220px; }
 
   /* Services: the nine practices as large pills, in the style of the reference's menu pills */
-  .svc { padding: 40px 0 120px; }
+  .svc { padding: 16px 0 72px; }
   .svc .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .svc .p { margin-top: 22px; max-width: 520px; color: #333; }
   .svc .btn { margin-top: 32px; }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .chips a { display: inline-flex; align-items: center; gap: 14px; padding: 16px 26px; border-radius: 1000px; background: var(--tint); font-size: 22px; line-height: 1.2; transition: background .25s, color .25s; }
   .chips a i { font-style: normal; font: 400 14px var(--mono); color: var(--muted); transition: color .25s, transform .25s var(--ease); }
-  .chips a:hover { background: var(--ink); color: #fff; }
+  .chips a:hover { background: var(--brand); color: #fff; }
   .chips a:hover i { color: #fff; transform: translateX(3px); }
 
   /* Map in a rounded card; the route draws itself once the card is on screen */
@@ -132,15 +137,15 @@
   .mapcard .land { fill: none; stroke: rgba(20,20,20,.32); stroke-width: .8; stroke-linejoin: round; }
   .mapcard .brd { fill: none; stroke: rgba(20,20,20,.12); stroke-width: .6; stroke-dasharray: 2 3; }
   .mapcard .seg { stroke: var(--ink); stroke-width: 1.2; fill: none; }
-  .mapcard .pt circle { fill: #F5F5F6; stroke: var(--ink); stroke-width: 1.2; transition: fill .3s; }
-  .mapcard .pt.on circle { fill: var(--ink); }
+  .mapcard .pt circle { fill: #F5F5F6; stroke: var(--brand); stroke-width: 1.2; transition: fill .3s; }
+  .mapcard .pt.on circle { fill: var(--brand); }
   .mapcard .pt text { font: 400 13px var(--mono); text-transform: uppercase; letter-spacing: .04em; fill: var(--ink); opacity: 0; transition: opacity .4s; }
   .mapcard .pt.on text { opacity: 1; }
   .legend { display: flex; gap: 8px; flex-wrap: wrap; }
   .legend span { padding: 8px 14px; border-radius: 1000px; background: #fff; }
 
   /* Regions: big rounded cards in a slider (the reference's case studies) */
-  .regions { padding: 120px 0; }
+  .regions { padding: 72px 0; }
   .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
   .track { display: flex; gap: 20px; margin-top: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 max(58px, calc((100vw - 1440px) / 2 + 58px)); scroll-padding: 0 max(58px, calc((100vw - 1440px) / 2 + 58px)); }
   .track::-webkit-scrollbar { display: none; }
@@ -158,38 +163,35 @@
   .rcard .go { position: absolute; z-index: 2; right: 32px; bottom: 32px; height: 36px; font-size: 12px; background: #fff; color: var(--ink); }
   .arrows { display: flex; gap: 8px; }
   .arr { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--tint); cursor: pointer; font-family: var(--mono); transition: background .2s, color .2s; }
-  .arr:hover { background: var(--ink); color: #fff; }
+  .arr:hover { background: var(--brand); color: #fff; }
   .count { font: 400 12px var(--mono); color: var(--muted); }
 
   /* Enforcement: centred heading with marked words and three tiles (the reference's Partner Club block) */
-  .ground { padding: 110px 0; background: #F5F5F6; text-align: center; }
+  .ground { padding: 72px 0; background: #F5F5F6; text-align: center; }
   .ground .h2 { max-width: 980px; margin: 18px auto 0; }
   .ground .p { max-width: 640px; margin: 22px auto 0; color: #333; }
-  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 56px; text-align: left; }
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 40px; text-align: left; }
   .tile { background: #fff; border-radius: 8px; padding: 26px 26px 28px; display: flex; flex-direction: column; min-height: 260px; transition: transform .3s var(--ease); }
   .tile:hover { transform: translateY(-4px); }
-  .tile b { font-weight: 400; font-size: 52px; line-height: 1.05; margin-top: 26px; }
+  .tile b { font-weight: 400; font-size: 52px; line-height: 1.05; margin-top: 26px; color: var(--brand); }
   .tile p { margin-top: 12px; color: #333; }
   .tile .mono { color: var(--muted); }
   .tile .meta { margin-top: auto; padding-top: 22px; }
 
-  /* Team: sticky centred heading, portraits float past it (the reference's "people bloom" block) */
-  .team { position: relative; height: 260vh; }
-  .team .stick { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; overflow: hidden; }
-  .team .glow.a { width: 640px; height: 640px; left: 30%; top: 22%; }
-  .team .glow.b { width: 420px; height: 420px; left: 46%; top: 36%; }
-  .team .center { position: relative; z-index: 3; text-align: center; padding: 0 24px; }
-  .team .center .h2 { max-width: 880px; margin: 18px auto 0; }
-  .team .center .p { max-width: 560px; margin: 18px auto 0; color: #333; }
-  .team .center .btns { justify-content: center; margin-top: 28px; }
-  .floater { position: absolute; z-index: 2; width: 220px; will-change: transform; }
-  .floater img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px; }
-  .floater figcaption { margin-top: 10px; }
-  .floater figcaption b { display: block; font-weight: 400; font-size: 17px; }
-  .floater figcaption span { display: block; margin-top: 3px; color: var(--muted); font: 400 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+  /* Team: plain grid of contact cards */
+  .team { padding: 72px 0; }
+  .tgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+  .tcard { display: block; }
+  .tcard .ph { aspect-ratio: 4 / 5; border-radius: 8px; overflow: hidden; background: #EEE; }
+  .tcard img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+  .tcard:hover img { transform: scale(1.04); }
+  .tcard .mono { display: block; margin-top: 14px; color: var(--brand); }
+  .tcard b { display: block; margin-top: 6px; font-weight: 400; font-size: 20px; line-height: 1.2; transition: color .2s; }
+  .tcard .role { display: block; margin-top: 2px; color: var(--muted); font-size: 15px; }
+  .tcard:hover b { color: var(--brand); }
 
   /* News: card slider (the reference's Latest Thoughts) */
-  .news { padding: 120px 0; }
+  .news { padding: 72px 0; }
   .ncard { flex: 0 0 420px; scroll-snap-align: start; }
   .ncard .im { aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; }
   .ncard .im img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
@@ -224,18 +226,17 @@
     header .burger { display: inline-flex; }
     .wrap, header .in { padding: 0 32px; }
     .track { padding: 0 32px; scroll-padding: 0 32px; }
-    .floater { width: 170px; }
   }
   @media (max-width: 760px) {
     .wrap, header .in { padding: 0 20px; }
     header .lang, header .right .btn.dark { display: none; }
     .h2 { font-size: 36px; }
-    .hero { padding: 64px 0 64px; }
+    .hero { padding: 48px 0 48px; }
     .hero-glow { position: absolute; inset: 0; opacity: .45; pointer-events: none; }  /* softer than before */
   .hero .glow.a { width: 420px; height: 420px; right: -120px; top: 200px; }
     .figs { grid-template-columns: 1fr 1fr; margin-top: 56px; row-gap: 32px; }
     .fig b { font-size: 40px; }
-    .about { padding: 72px 0; }
+    .about { padding: 56px 0; }
     .about .grid, .svc .grid, footer .grid { grid-template-columns: 1fr; gap: 40px; }
     .collage { height: 380px; }
     .collage .i1 { height: 200px; top: 50px; } .collage .i2 { height: 160px; } .collage .i3 { height: 150px; }
@@ -246,19 +247,17 @@
     .mapcard .pt text { font-size: 24px; }
     .mapcard .pt circle { r: 7; }
     .mapcard .seg { stroke-width: 2.4; }
-    .regions, .news { padding: 72px 0; }
+    .regions, .news { padding: 56px 0; }
     .track { padding: 0 20px; scroll-padding: 0 20px; }
     .rcard { flex-basis: 86vw; height: 520px; }
     .rcard h3 { font-size: 32px; }
     .rcard .t, .rcard .stats { left: 20px; right: 20px; }
     .rcard .go { right: 20px; bottom: 120px; }
-    .ground { padding: 72px 0; }
+    .ground { padding: 56px 0; }
+    .team { padding: 56px 0; }
+    .tgrid { grid-template-columns: 1fr 1fr; gap: 12px; }
     .tiles { grid-template-columns: 1fr; }
     .tile { min-height: 0; }
-    .team { height: 220vh; }
-    .floater { width: 104px; }
-    .floater figcaption { display: none; }
-    .team .center { margin: 0 16px; padding: 28px 18px; border-radius: 16px; background: rgba(255,255,255,.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
     .ncard { flex-basis: 80vw; }
     footer .say { font-size: 26px; }
     footer .cols { grid-template-columns: 1fr; }
@@ -426,21 +425,23 @@
       </div>
     </section>
 
-    <!-- Team -->
+    <!-- Team: heading and a plain row of contact cards -->
     <section class="team" id="team">
-      <div class="stick">
-        <div class="glow a"></div><div class="glow b"></div>
-        <div class="center">
-          <div class="mono">Our team</div>
-          <h2 class="h2">Key contacts in <em>each region</em>.</h2>
-          <p class="p">Please feel free to reach out to the key contacts listed for any queries in their respective regions.</p>
-          <div class="btns"><a class="btn dark" href="#contact">Contact us</a></div>
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="up">
+            <h2 class="h2">Key contacts in <em>each region</em>.</h2>
+            <p class="p" style="margin-top:14px;max-width:600px;color:#333">Please feel free to reach out to the key contacts listed for any queries in their respective regions.</p>
+          </div>
+          <a class="btn dark" href="#contact">Contact us</a>
         </div>
-        <figure class="floater" data-x="6" data-y="8" data-s="1.15"><img src="../assets/team/gao.webp" alt="Laura Gao"><figcaption><b>Laura Gao</b><span>Director · Greater China</span></figcaption></figure>
-        <figure class="floater" data-x="74" data-y="2" data-s=".85"><img src="../assets/team/li.webp" alt="Chris Li"><figcaption><b>Chris Li</b><span>Director · Greater China</span></figcaption></figure>
-        <figure class="floater" data-x="80" data-y="58" data-s="1.3"><img src="../assets/team/greif.webp" alt="Daniel Greif"><figcaption><b>Daniel Greif</b><span>Director · Southeast Asia</span></figcaption></figure>
-        <figure class="floater" data-x="10" data-y="66" data-s="1"><img src="../assets/team/nguyen.webp" alt="Hau Nguyen"><figcaption><b>Hau Nguyen</b><span>Vice Director · Southeast Asia</span></figcaption></figure>
-        <figure class="floater" data-x="44" data-y="88" data-s="1.2"><img src="../assets/team/ashkina.webp" alt="Irina Ashkina"><figcaption><b>Irina Ashkina</b><span>Director · Eurasia</span></figcaption></figure>
+        <div class="tgrid">
+          <a class="tcard up" style="--d:0ms" href="#"><div class="ph"><img src="../assets/team/gao.webp" alt="Laura Gao"></div><span class="mono">Greater China</span><b>Laura Gao</b><span class="role">Director</span></a>
+          <a class="tcard up" style="--d:80ms" href="#"><div class="ph"><img src="../assets/team/li.webp" alt="Chris Li"></div><span class="mono">Greater China</span><b>Chris Li</b><span class="role">Director</span></a>
+          <a class="tcard up" style="--d:160ms" href="#"><div class="ph"><img src="../assets/team/greif.webp" alt="Daniel Greif"></div><span class="mono">Southeast Asia</span><b>Daniel Greif</b><span class="role">Director</span></a>
+          <a class="tcard up" style="--d:240ms" href="#"><div class="ph"><img src="../assets/team/nguyen.webp" alt="Hau Nguyen"></div><span class="mono">Southeast Asia</span><b>Hau Nguyen</b><span class="role">Vice Director</span></a>
+          <a class="tcard up" style="--d:320ms" href="#"><div class="ph"><img src="../assets/team/ashkina.webp" alt="Irina Ashkina"></div><span class="mono">Eurasia</span><b>Irina Ashkina</b><span class="role">Director</span></a>
+        </div>
       </div>
     </section>
 
@@ -525,7 +526,7 @@
     const size = () => {
       dpr = Math.min(2, devicePixelRatio || 1); W = box.clientWidth; H = box.clientHeight;
       cv.width = W * dpr; cv.height = H * dpr;
-      if (W > 1180) { const right = Math.max(40, (W - 1440) / 2 + 40); R = Math.min(265, (W - right - 800) / 2.1); cx = W - right - R * 1.05; cy = Math.min(H * 0.4, 310); }
+      if (W > 1180) { const right = Math.max(40, (W - 1440) / 2 + 40); R = Math.min(248, (W - right - 800) / 2.1); cx = W - right - R * 1.05; cy = R + 28; }   // whole globe below the header
       else if (W > 760) { R = W * 0.26; cx = W - R * 0.55; cy = H * 0.42; }
       else { R = W * 0.52; cx = W * 0.82; cy = H * 0.55; }
       Object.assign(hit.style, { left: cx - R + "px", top: cy - R + "px", width: R * 2 + "px", height: R * 2 + "px" });
@@ -597,8 +598,8 @@
       const dt = Math.min(.05, (now - last) / 1000); last = now;
       const t = still ? 99 : Math.max(0, now - t0) / 1000;
       const ti = ready < 0 ? 0 : (still ? 99 : Math.max(0, now - ready) / 1000);
-      if (!drag) { yaw += vy; pitch = Math.max(-60, Math.min(60, pitch + vp)); vy *= .94; vp *= .94; if (!still) yaw += 5 * dt; }
-      const spin = Math.max(0, 1 - ti / 2.4) * 70;           // extra turn while the dots assemble
+      if (!drag) { yaw += vy; pitch = Math.max(-60, Math.min(60, pitch + vp)); vy *= .94; vp *= .94; if (!still) yaw -= 5 * dt; }   // same direction as the turn while assembling
+      const spin = Math.pow(Math.max(0, 1 - ti / 2.4), 2) * 70;   // extra turn while the dots assemble, easing into the slow spin
       const rY = (yaw + spin) * D, rX = pitch * D;
       cyR = Math.cos(rY); syR = Math.sin(rY); cxR = Math.cos(rX); sxR = Math.sin(rX);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
@@ -690,22 +691,6 @@
     t.addEventListener("scroll", upd, { passive: true }); upd();
   })();
 
-  // --- Team: portraits drift upward past the sticky heading ---
-  (() => {
-    const sec = document.getElementById("team"), fl = [...document.querySelectorAll(".floater")];
-    const place = () => {
-      const r = sec.getBoundingClientRect(), p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
-      fl.forEach((f) => {
-        const x = +f.dataset.x, y = +f.dataset.y, s = +f.dataset.s;
-        const ty = (y / 100) * innerHeight + (0.6 - p) * innerHeight * 1.2 * s;
-        f.style.transform = `translate(${(x / 100) * innerWidth}px, ${ty}px)`;
-      });
-    };
-    fl.forEach((f) => { f.style.left = "0"; f.style.top = "0"; });
-    let raf = 0;
-    addEventListener("scroll", () => { if (raf) return; raf = requestAnimationFrame(() => { raf = 0; place(); }); }, { passive: true });
-    addEventListener("resize", place); place();
-  })();
 
   // --- Figures: count up ---
   (() => {
