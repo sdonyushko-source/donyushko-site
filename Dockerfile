@@ -7,7 +7,6 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
     && a2enmod headers expires deflate
 
 COPY docker/site.conf /etc/apache2/conf-available/site.conf
-COPY docker/demo.htpasswd /etc/apache2/demo.htpasswd
 RUN a2enconf site
 
 COPY dist/ /var/www/html/
@@ -20,9 +19,13 @@ COPY moneteam/ /var/www/html/moneteam/
 # Built separately from the implant52 Astro project (npx astro build, then copy dist/ here).
 COPY implant52/ /var/www/html/implant52/
 
-# Hidden sales demo (Akvilio dental network redesign), same rules as Implant52: direct link only, password, noindex.
+# Hidden sales demo (Akvilio dental network redesign), same rules as Implant52: direct link only, noindex.
 # Built separately from the akvilio Astro project (npx astro build, then copy dist/ here).
 COPY akvilio/ /var/www/html/akvilio/
+
+# Hidden sales demo (Семейная стоматология Волоховой redesign), same rules as Implant52: direct link only, noindex.
+# Built separately from the volokhova Astro project (npx astro build, then copy dist/ here).
+COPY volokhova/ /var/www/html/volokhova/
 
 # Hidden demo ("Гараж" fight club landing): direct link only, noindex, no password (no client assets inside).
 # Built separately from the garazh Astro project (npx astro build, then copy dist/ here).

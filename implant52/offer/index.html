@@ -32,15 +32,15 @@
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { background: var(--bone); color: var(--ink); font: 400 16px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
+body { background: var(--bone); color: var(--ink); font: 400 18px/1.6 var(--text); -webkit-font-smoothing: antialiased; }
 .wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter); }
 h1, h2, h3 { font-family: var(--text); font-weight: 600; letter-spacing: -0.04em; line-height: 1.02; margin: 0; text-wrap: balance; }
 h2 { font-size: clamp(32px, 4.6vw, 52px); }
-h3 { font-size: 19px; letter-spacing: -0.02em; line-height: 1.2; }
+h3 { font-size: 21px; letter-spacing: -0.02em; line-height: 1.2; }
 p { margin: 0; }
 a { color: var(--pine); text-underline-offset: 3px; }
 a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outline-offset: 3px; }
-.label { font: 400 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--steel); }
+.label { font: 600 14px/1.3 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
 
 .logo { font-family: var(--logo); font-weight: 500; font-optical-sizing: auto; line-height: .8; letter-spacing: -.065em; white-space: nowrap; display: inline-flex; align-items: baseline; }
 .logo .dot { display: inline-block; width: .15em; height: .15em; background: var(--pine); margin-left: .04em; flex: none; }
@@ -56,15 +56,15 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .cover-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 32px; }
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 999px; background: var(--chalk); color: var(--ink); font-weight: 600; text-decoration: none; transition: transform .2s; }
 .btn:hover { transform: translateY(-2px); }
-.url { font: 400 13px/1.4 var(--mono); color: rgba(238,245,241,.7); }
+.url { font: 600 14px/1.4 var(--text); color: rgba(238,245,241,.7); }
 .cover-meta { display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 16px clamp(32px, 6vw, 96px); margin-top: clamp(40px, 7vw, 72px); padding-top: 18px; border-top: 1px solid rgba(238,245,241,.28); }
 .cover-meta .label { color: rgba(238,245,241,.6); }
-.cover-meta strong { display: block; font: 500 15px/1.4 var(--text); color: var(--chalk); margin-top: 6px; }
+.cover-meta strong { display: block; font: 500 17px/1.4 var(--text); color: var(--chalk); margin-top: 6px; }
 
 /* Chapters */
 .ch { padding-block: clamp(56px, 8vw, 96px); border-bottom: 1px solid var(--line); }
 .ch-head { display: grid; gap: 14px; margin-bottom: clamp(28px, 4vw, 40px); }
-.ch-num { font: 400 12px/1 var(--mono); letter-spacing: .1em; color: var(--pine); display: flex; align-items: center; gap: 10px; }
+.ch-num { font: 600 14px/1 var(--text); letter-spacing: .1em; color: var(--pine); display: flex; align-items: center; gap: 10px; }
 .ch-num::after { content: ""; width: 40px; height: 1px; background: var(--pine); opacity: .5; }
 .ch-head p { color: var(--ink-2); max-width: 60ch; }
 
@@ -75,13 +75,13 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .issues { display: grid; border-top: 1px solid var(--line); }
 .issue { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 6px 32px; padding: 18px 0; border-bottom: 1px solid var(--line); }
 .issue b { font-weight: 600; }
-.issue span { color: var(--ink-2); font-size: 15px; display: flex; gap: 10px; }
+.issue span { color: var(--ink-2); font-size: 17px; display: flex; gap: 10px; }
 .issue span::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
 
 .gets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; }
 .get { display: grid; gap: 8px; align-content: start; padding-top: 16px; border-top: 1px solid var(--line); }
-.get p { color: var(--ink-2); font-size: 15px; }
-.get a { font: 400 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.get p { color: var(--ink-2); font-size: 17px; }
+.get a { font: 600 14px/1 var(--text); letter-spacing: .06em; text-transform: uppercase; }
 
 /* Price */
 .plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -92,15 +92,25 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 @media (max-width: 960px) { .plans { grid-template-columns: minmax(0, 1fr); } .plans .plan .tag, .plans .plan h3 { min-height: 0; } }
 .plan { background: var(--white); border-radius: var(--r); padding: clamp(24px, 2.6vw, 34px); display: grid; gap: 16px; align-content: start; }
 .plan.pick { background: var(--pine); color: var(--chalk); }
+.talk { margin-top: 16px; padding: 22px 24px; border-radius: var(--r); background: var(--white); }
+.talk p { color: var(--ink-2); font-size: 18px; max-width: 72ch; }
+.talk b { color: var(--ink); }
+.extras-h { margin-top: 40px; }
+.extras { margin-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 32px; border-top: 1px solid var(--line); }
+.extras div { display: grid; gap: 6px; align-content: start; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.extras b { font-weight: 600; }
+.extras span { color: var(--ink-2); font-size: 17px; }
+.extras em { font-style: normal; font-weight: 600; color: var(--pine); }
+@media (max-width: 960px) { .extras { grid-template-columns: minmax(0, 1fr); } }
 .plan .price { font: 600 34px/1 var(--text); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
-.plan .tag { font: 400 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--pine-tint); }
-.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 15px; }
+.plan .tag { font: 600 14px/1.4 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--pine-tint); }
+.plan ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; font-size: 17px; }
 .plan li { display: flex; gap: 12px; }
 .plan li::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
 .plan.pick li::before { background: var(--chalk); }
 .why + .why { margin-top: 12px; }
 .why { margin-top: 16px; padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--r); display: grid; gap: 8px; }
-.why p { color: var(--ink-2); font-size: 15px; max-width: 64ch; }
+.why p { color: var(--ink-2); font-size: 17px; max-width: 64ch; }
 .terms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px; margin-top: 28px; }
 .terms div { border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px; }
 .terms b { font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -112,8 +122,8 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 /* Steps: real order of the project */
 .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 4px 16px; padding: 18px 0; border-bottom: 1px solid var(--line); }
-.steps li::before { counter-increment: s; content: "0" counter(s); grid-row: span 2; font: 400 13px/1.6 var(--mono); color: var(--pine); }
-.steps span { color: var(--ink-2); font-size: 15px; }
+.steps li::before { counter-increment: s; content: "0" counter(s); grid-row: span 2; font: 600 14px/1.6 var(--text); color: var(--pine); }
+.steps span { color: var(--ink-2); font-size: 17px; }
 .need { margin: 20px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .need li { display: flex; gap: 12px; color: var(--ink-2); }
 .need li::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
@@ -138,7 +148,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
 .browser-bar { padding: 9px 12px; }
 .browser-bar i { width: 8px; height: 8px; }
-.browser-bar span { margin-left: 8px; font: 400 10px/1 var(--mono); color: var(--steel); }
+.browser-bar span { margin-left: 8px; font: 600 14px/1 var(--text); color: var(--steel); }
 .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; }
 .device { position: relative; flex: none; width: var(--dw); margin-left: calc(var(--dw) * -.55); transform: translateY(9%); /* a little below centre */ border-radius: calc(var(--screen-r) + var(--bezel)); padding: var(--bezel); background: #10120F; box-shadow: 0 0 0 1px rgba(238,245,241,.16), 0 40px 70px -24px rgba(0,0,0,.6); }
 .device img { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; border-radius: var(--screen-r); }
@@ -147,11 +157,11 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .support-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .support-head b { font: 600 28px/1 var(--text); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
 .support-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; }
-.support ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; color: var(--ink-2); }
+.support ul { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 17px; color: var(--ink-2); }
 .support li { display: flex; gap: 12px; }
 .support li::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
 .support .no li::before { background: var(--steel); }
-.support .note { font-size: 14px; color: var(--steel); }
+.support .note { font-size: 16px; color: var(--ink-2); }
 @media (max-width: 680px) { .support-cols { grid-template-columns: minmax(0, 1fr); } }
 
 /* Cover: text on the left, site preview on the right */
@@ -164,7 +174,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .audit { display: grid; border-top: 1px solid var(--ink); }
 .audit-head { display: grid; grid-template-columns: 180px repeat(3, minmax(0, 1fr)); gap: 40px; padding: 12px 0; border-bottom: 1px solid var(--line); }
 .audit-head span:first-child { grid-column: 2; }
-.finding { display: grid; grid-template-columns: 180px repeat(3, minmax(0, 1fr)); gap: 8px 40px; padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+.finding { display: grid; grid-template-columns: 180px repeat(3, minmax(0, 1fr)); gap: 8px 40px; padding: 20px 0; border-bottom: 1px solid var(--line); font-size: 17px; }
 .finding .area { color: var(--pine); padding-top: 3px; }
 .finding .seen { color: var(--ink); }
 .finding .seen b { font-weight: 600; }
@@ -183,13 +193,13 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .tier { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 12px; align-content: start; }
 .tier.pick { border: 2px solid var(--pine); }
 .tier { position: relative; }
-.tier .tag { position: absolute; top: 22px; right: 20px; font: 400 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--pine); }
+.tier .tag { position: absolute; top: 22px; right: 20px; font: 600 14px/1 var(--text); letter-spacing: .06em; text-transform: uppercase; color: var(--pine); }
 .tier-price { font: 600 26px/1 var(--text); letter-spacing: -.035em; font-variant-numeric: tabular-nums; }
-.tier-price small { font: 400 14px/1 var(--text); letter-spacing: 0; color: var(--steel); }
+.tier-price small { font: 400 16px/1 var(--text); letter-spacing: 0; color: var(--steel); }
 .tier ul { margin: 0; }
 .tier li.off::before { background: var(--steel); }
 .tier li.off { color: var(--steel); }
-.nopack { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 15px; }
+.nopack { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 6px 24px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 17px; }
 .nopack p { color: var(--ink-2); }
 @media (max-width: 860px) { .tiers { grid-template-columns: minmax(0, 1fr); } .nopack { grid-template-columns: minmax(0, 1fr); } }
 
@@ -203,22 +213,22 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .strengths { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .strength { border-top: 1px solid var(--ink); padding-top: 16px; display: grid; gap: 8px; align-content: start; }
 .strength b { font: 600 clamp(26px, 2.6vw, 34px)/1 var(--text); letter-spacing: -.035em; }
-.strength span { color: var(--ink-2); font-size: 15px; }
+.strength span { color: var(--ink-2); font-size: 17px; }
 .bridge { margin-top: 36px; font: 500 clamp(22px, 2.4vw, 30px)/1.25 var(--text); letter-spacing: -.025em; max-width: 34ch; text-wrap: balance; }
 .bridge em { font-style: normal; color: var(--pine); }
-.sample { margin-top: 28px; display: flex; gap: 12px; color: var(--ink-2); font-size: 15px; max-width: 70ch; }
+.sample { margin-top: 28px; display: flex; gap: 12px; color: var(--ink-2); font-size: 17px; max-width: 70ch; }
 .sample::before { content: ""; width: 6px; height: 6px; background: var(--pine); flex: none; margin-top: .6em; }
 /* ROI right under the price */
 .roi { margin-top: 16px; background: var(--pine); color: var(--chalk); border-radius: var(--r); padding: clamp(22px, 3vw, 32px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 48px; align-items: center; }
 .roi h3 { font-size: clamp(24px, 2.6vw, 32px); letter-spacing: -.035em; }
-.roi p { color: rgba(238,245,241,.75); font-size: 15px; margin-top: 10px; }
+.roi p { color: rgba(238,245,241,.75); font-size: 17px; margin-top: 10px; }
 .roi .math { margin-top: 0; }
 .roi .math span { color: rgba(238,245,241,.75); }
 .roi .math b { color: var(--chalk); }
 .roi .math .sum { border-top-color: rgba(238,245,241,.4); color: var(--chalk); }
 .deadline { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; padding: 16px 20px; border-radius: var(--r); border: 1px dashed var(--pine); }
 .deadline b { font-weight: 600; }
-.deadline span { color: var(--ink-2); font-size: 15px; }
+.deadline span { color: var(--ink-2); font-size: 17px; }
 /* Final call to action */
 .next { background: var(--pine); color: var(--chalk); padding-block: clamp(56px, 8vw, 96px); }
 .next .ch-num { color: var(--pine-tint); }
@@ -230,14 +240,14 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .next li::before { content: ""; width: 6px; height: 6px; background: var(--chalk); flex: none; margin-top: .6em; }
 .call { background: var(--chalk); color: var(--ink); border-radius: var(--r); padding: clamp(22px, 3vw, 32px); display: grid; gap: 10px; }
 .call .big { font: 600 clamp(28px, 3.2vw, 40px)/1.05 var(--text); letter-spacing: -.035em; font-variant-numeric: tabular-nums; user-select: all; }
-.call p { color: var(--ink-2); font-size: 15px; }
+.call p { color: var(--ink-2); font-size: 17px; }
 .call .who { font-weight: 600; }
 /* About the studio */
 .about { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 24px 64px; align-items: start; padding-block: clamp(48px, 7vw, 80px); }
 .about .logo { font-size: clamp(56px, 9vw, 96px); }
 .about h3 { font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -.03em; max-width: 28ch; }
 .about p { color: var(--ink-2); max-width: 62ch; margin-top: 14px; }
-.about .note { color: var(--steel); font-size: 14px; margin-top: 18px; }
+.about .note { color: var(--steel); font-size: 16px; margin-top: 18px; }
 @media (max-width: 860px) {
   .strengths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .roi, .next-grid, .about { grid-template-columns: minmax(0, 1fr); }
@@ -251,7 +261,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 .work:hover .browser { transform: translateY(-3px); }
 .work .browser img { aspect-ratio: 1200 / 650; }
 .work b { font-weight: 600; }
-.work span { color: var(--ink-2); font-size: 14px; }
+.work span { color: var(--ink-2); font-size: 16px; }
 @media (max-width: 680px) { .works-grid { grid-template-columns: minmax(0, 1fr); } }
 </style>
 <style>body { margin: 0; } img { max-width: 100%; }</style>
@@ -366,55 +376,68 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
 
   <section class="ch">
     <div class="wrap">
-      <div class="ch-head"><div class="ch-num">04</div><h2>Стоимость</h2><p>Три варианта запуска под ключ, без скрытых платежей. Выберите тот, что ближе к тому, как вы работаете с сайтом сейчас.</p></div>
+      <div class="ch-head"><div class="ch-num">04</div><h2>Стоимость</h2><p>Три готовых варианта — ориентир. Состав и цену соберём под вашу клинику.</p></div>
 <div class="plans">
         <div class="plan">
-          <span class="tag" style="color: var(--steel)">Если сайт ведёт подрядчик</span>
-          <h3>Новый сайт</h3>
-          <div class="price">80 000 ₽</div>
+          <span class="tag" style="color: var(--ink-2)">Новый сайт и запись</span>
+          <h3>Сайт с онлайн-записью</h3>
+          <div class="price">55 000 ₽</div>
           <ul>
             <li>Новый сайт вместо текущего, как в демо</li>
-            <li>Перенос текстов всех страниц услуг</li>
-            <li>Заявки приходят в Telegram или на почту</li>
-            <li>Политика и согласие на обработку данных</li>
+            <li>Онлайн-запись на каждой странице: пациент выбирает услугу, врача и удобное время</li>
+            <li>Заявка сразу приходит администратору в Telegram, MAX или на почту</li>
+            <li>Перенос текстов всех страниц услуг, политика и согласие на обработку данных</li>
             <li>Все прежние адреса страниц сохраняются</li>
-            <li>Запуск за 5–7 рабочих дней</li>
+            <li>Запуск за 7 рабочих дней</li>
           </ul>
         </div>
         <div class="plan pick">
-          <span class="tag">Если меняете цены и акции сами</span>
-          <h3>Новый сайт и админка</h3>
-          <div class="price">100 000 ₽</div>
+          <span class="tag">Рекомендуем</span>
+          <h3>Сайт, который отвечает на вопросы</h3>
+          <div class="price">от 80 000 ₽</div>
           <ul>
-            <li>Всё из «Нового сайта»</li>
-            <li>Своя админка: цены, врачи, акции и фото</li>
-            <li>Обучение администратора, 30 минут</li>
-            <li>Месяц поддержки «Стандарт» бесплатно</li>
-            <li>Запуск за 5–7 рабочих дней</li>
+            <li>Всё из «Сайта с онлайн-записью»</li>
+            <li>Своя админка: цены, врачи, акции и фото меняете сами, без подрядчика</li>
+            <li>Отзывы с Яндекс Карт сами подтягиваются на сайт</li>
+            <li>Запись на сайте — цель в Яндекс Метрике: ваши специалисты по рекламе видят, какая реклама приводит записи, а не просто заходы</li>
+            <li>2 месяца поддержки «Стандарт» бесплатно</li>
+            <li>Запуск за 7 рабочих дней</li>
           </ul>
         </div>
         <div class="plan">
-          <span class="tag" style="color: var(--steel)">Если важны Битрикс и интеграции</span>
-          <h3>Новый дизайн на вашем Битриксе</h3>
-          <div class="price">от 150 000 ₽</div>
+          <span class="tag" style="color: var(--ink-2)">Если важно записывать без звонков</span>
+          <h3>Запись без звонков</h3>
+          <div class="price">от 130 000 ₽</div>
           <ul>
-            <li>Новый дизайн внутри вашего 1С-Битрикс</li>
-            <li>Привычная админка, акции, новости и блог остаются</li>
-            <li>Подключённые сервисы продолжают работать: CRM, чат, коллтрекинг</li>
-            <li>Все страницы услуг и врачей в новом дизайне</li>
-            <li>Запуск за 2–3 недели</li>
+            <li>Всё из рекомендуемого варианта</li>
+            <li>Запись в реальном времени: пациент видит свободные окна врачей из вашей медицинской программы и сам выбирает время</li>
+            <li>Напоминание о визите накануне в SMS или Telegram — меньше неявок</li>
+            <li>Цена зависит от того, можно ли подключиться к вашей программе (есть ли у неё API)</li>
+            <li>Запуск за 10–14 рабочих дней</li>
           </ul>
         </div>
       </div>
+      <div class="talk">
+        <p><b>Тарифы — ориентир.</b> На 20-минутном созвоне разберём, что нужно именно вам: лишнее уберём, нужное добавим, и цена будет под ваш состав.</p>
+      </div>
+      <h3 class="extras-h">Что ещё можем сделать</h3>
+      <div class="extras">
+        <div><b>Запись в реальном времени</b><span>Свободные окна врачей из вашей медицинской программы прямо на сайте</span><em>от 50 000 ₽</em></div>
+        <div><b>Напоминания пациентам</b><span>Сообщение о визите накануне в SMS или Telegram — меньше неявок</span><em>от 12 000 ₽</em></div>
+        <div><b>Страницы процедур</b><span>Своя страница с текстом, ценами и врачами для каждой процедуры</span><em>от 2 500 ₽ за страницу</em></div>
+        <div><b>Запись через Telegram</b><span>Бот, через который пациент записывается и получает напоминания</span><em>от 25 000 ₽</em></div>
+        <div><b>Дизайн на вашем Битриксе</b><span>Новый дизайн внутри 1С-Битрикс: привычная админка, CRM, чат и коллтрекинг продолжают работать</span><em>от 120 000 ₽</em></div>
+        <div><b>Поддержка после запуска</b><span>Правки цен, акций, врачей и фото — пакеты ниже</span><em>от 2 000 ₽ в месяц</em></div>
+      </div>
       <div class="roi">
         <div>
-          <h3>Сайт стоит как 1–2 импланта</h3>
+          <h3>Сайт дешевле одного импланта</h3>
           <p>А работает на клинику каждый день и годами: приводит пациентов, отвечает на их вопросы о ценах и врачах, ведёт к записи.</p>
         </div>
         <div class="math">
           <span>Имплант Medentika с циркониевой коронкой</span><b>64 200 ₽</b>
           <span>Протезирование челюсти All-on-4</span><b>от 305 200 ₽</b>
-          <span class="sum">Новый сайт</span><b class="sum">от 80 000 ₽</b>
+          <span class="sum">Новый сайт с онлайн-записью</span><b class="sum">от 55 000 ₽</b>
         </div>
       </div>
       <div class="why">
@@ -426,13 +449,13 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
         <div><span class="label">Правки</span><b>Два круга правок включены в цену</b></div>
         <div><span class="label">Сайт ваш</span><b>Код и доступы передаём клинике, поддерживать сайт может любой разработчик</b></div>
       </div>
-      <div class="deadline"><b>Условия действуют до 20 октября 2026</b><span>Демо и цены сохраняем за вами до этой даты.</span></div>
+      <div class="deadline"><b>Условия действуют до 31 октября 2026</b><span>Демо и цены сохраняем за вами до этой даты.</span></div>
     </div>
   </section>
 
   <section class="ch">
     <div class="wrap">
-      <div class="ch-head"><div class="ch-num">05</div><h2>Запуск за 5–7 рабочих дней</h2><p>Для нового сайта. Срок считаем с момента, когда получили доступы и ответы на вопросы. Вариант на вашем Битриксе занимает 2–3 недели, план согласуем отдельно.</p></div>
+      <div class="ch-head"><div class="ch-num">05</div><h2>Запуск за 7 рабочих дней</h2><p>Для двух первых вариантов. Срок считаем с момента, когда получили доступы и ответы на вопросы. «Запись без звонков» занимает 10–14 рабочих дней, дизайн на вашем Битриксе — 2–3 недели.</p></div>
       <ol class="steps">
         <li><b>День 1. Созвон и договор</b><span>Обсуждаем правки к демо, подписываем договор, предоплата 50%.</span></li>
         <li><b>Дни 2–4. Тексты и доступы</b><span>Переносим тексты услуг, подключаем заявки, вы присылаете доступы к домену и хостингу.</span></li>
@@ -492,7 +515,7 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
           <b>Без пакета</b>
           <p>Сайт работает сам по себе. Если что-то понадобится, оцениваем задачу заранее и делаем после оплаты.</p>
         </div>
-        <p class="note">Во всех вариантах хостинг и домен оплачивает клиника, поэтому сайт всегда остаётся вашим. Неиспользованные часы на следующий месяц не переносятся. В варианте «Новый сайт и админка» первый месяц «Стандарта» бесплатный.</p>
+        <p class="note">Во всех вариантах хостинг и домен оплачивает клиника, поэтому сайт всегда остаётся вашим. Неиспользованные часы на следующий месяц не переносятся. В вариантах «Сайт, который отвечает на вопросы» и «Запись без звонков» первые 2 месяца «Стандарта» бесплатные.</p>
       </div>
     </div>
   </section>
@@ -506,14 +529,14 @@ a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pine-tint); outli
           <ul>
             <li>Покажем демо и пройдём по нему вместе</li>
             <li>Ответим на вопросы о переезде, сроках и поддержке</li>
-            <li>Поможем выбрать вариант под то, как вы работаете</li>
+            <li>Разберём, что нужно клинике, и соберём состав и цену под вас</li>
           </ul>
         </div>
         <div class="call">
           <span class="label">Позвоните или напишите</span>
           <span class="big">+7 996 564-05-73</span>
           <p class="who">Антон Степанов, bronco</p>
-          <p>Условия действуют до 20 октября 2026.</p>
+          <p>Условия действуют до 31 октября 2026.</p>
         </div>
       </div>
     </div>
