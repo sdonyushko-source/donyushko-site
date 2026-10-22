@@ -128,23 +128,25 @@
   .svc-card .more { margin-top: 14px; }
 
   /* Map (light) */
-  .intro { border-top: 1px solid var(--line); }
+  /* Map: dark block, as in v1 (fonts stay v2's) */
+  .intro { background: #16151E; color: #fff; }
   .intro-stick { position: relative; min-height: 80vh; display: grid; place-items: center; overflow: hidden; padding: 48px 0; }
   .intro svg { width: min(64vw, 1080px); height: auto; overflow: visible; }
-  .intro .grat { stroke: rgba(0,0,0,.06); stroke-width: 1; stroke-dasharray: 2 6; fill: none; }
-  .intro .land { fill: none; stroke: rgba(0,0,0,.42); stroke-width: .8; stroke-linejoin: round; }
-  .intro .brd { fill: none; stroke: rgba(0,0,0,.16); stroke-width: .6; stroke-dasharray: 2 3; }
-  .intro .seg { stroke: var(--ink); stroke-width: 1.2; fill: none; }
-  .intro .pt circle { fill: #fff; stroke: var(--ink); stroke-width: 1.2; transition: fill .3s; }
-  .intro .pt circle { stroke: var(--accent); }
-  .intro .pt.on circle { fill: var(--accent); }
-  .intro .pt text { font: 500 13px var(--font); letter-spacing: .01em; fill: var(--ink); opacity: 0; transition: opacity .4s; }
+  .intro .grat { stroke: rgba(255,255,255,.07); stroke-width: 1; stroke-dasharray: 2 6; fill: none; }
+  .intro .land { fill: none; stroke: rgba(255,255,255,.42); stroke-width: .8; stroke-linejoin: round; }
+  .intro .brd { fill: none; stroke: rgba(255,255,255,.18); stroke-width: .6; stroke-dasharray: 2 3; }
+  .intro .seg { stroke: #fff; stroke-width: 1.2; fill: none; }
+  .intro .pt circle { fill: #16151E; stroke: #E0585D; stroke-width: 1.2; transition: fill .3s; }
+  .intro .pt.on circle { fill: #E0585D; }
+  .intro .pt text { font: 500 13px var(--font); letter-spacing: .01em; fill: #fff; opacity: 0; transition: opacity .4s; }
   .intro .pt.on text { opacity: 1; }
   .side { position: absolute; top: 50%; transform: translateY(-50%); width: 15vw; }
   .side.l { left: 32px; }
   .side.r { right: 32px; text-align: right; }
   .side span { display: block; opacity: 0; transition: opacity .5s; }
   .side span.on { opacity: 1; }
+  .intro .side { color: #fff; }
+  .intro .side span:first-child { color: #E0585D; }
 
   /* Regions: case-study cards — photo with a frosted white panel over its edge, alternating */
   .regions .body { margin-top: 20px; max-width: 672px; }
@@ -271,16 +273,24 @@
     .svc-top, .team-top { grid-template-columns: 1fr; gap: 20px; }
     .svc-cards { grid-template-columns: 1fr; gap: 48px; margin-top: 48px; }
     .svc-card .ph { aspect-ratio: 16 / 11; }
-    .intro svg { width: 96vw; }
+    .intro svg { width: 90vw; }
     .intro .pt text { font-size: 26px; }
     .intro .pt circle { r: 7; }
     .intro .seg { stroke-width: 2.4; }
-    .side { width: 40vw; top: auto; bottom: 18vh; transform: none; }
-    .side.l { left: 20px; } .side.r { right: 20px; }
+    /* map on phones, as in v1: no tall empty block — captions above and below the map */
+    .intro-stick { min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 44px; padding: 64px 0 60px; }
+    .side { position: static; width: auto; transform: none; padding: 0 20px; }
+    .side.l { order: 0; } .intro svg { order: 1; align-self: center; } .side.r { order: 2; text-align: left; }
+    .side span { display: inline; } .side span + span::before { content: " · "; }
     .reg { display: block; min-height: 0; }
     .reg .photo { position: relative; width: 100%; height: 280px; }
     .reg .panel { width: 100%; padding: 28px 0 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .team-top { flex-direction: column; align-items: flex-start; gap: 24px; }
+    .team-tools { width: 100%; }
+    .team-tools .arrows { display: none; }   /* on a phone the strip is swiped, arrows are not needed */
+    .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+    .filters::-webkit-scrollbar { display: none; }
+    .filters button { flex: none; }
     .people { gap: 16px; margin-top: 24px; padding: 0 20px; scroll-padding: 0 20px; }
     .person { flex-basis: 78vw; }
     .person h4 { font-size: 24px; }
@@ -292,6 +302,21 @@
     .foot .cols { grid-template-columns: 1fr; gap: 32px; }
     .foot .copy { flex-direction: column; gap: 6px; margin-top: 48px; }
   }
+  /* Mobile menu */
+  .mmenu { position: fixed; inset: 0; z-index: 25; background: #fff; padding: 96px 20px 28px; display: flex; flex-direction: column; justify-content: space-between;
+    opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .35s, transform .35s, visibility 0s .35s; }
+  body.menu-open .mmenu { opacity: 1; visibility: visible; transform: none; transition: opacity .35s, transform .35s; }
+  body.menu-open { overflow: hidden; }
+  .mmenu nav { display: flex; flex-direction: column; }
+  .mmenu nav a { font-weight: 500; font-size: 36px; line-height: 1.15; letter-spacing: -0.02em; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .mmenu nav a:active { color: var(--accent); }
+  .mm-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .mm-lang { display: flex; gap: 14px; font-size: 16px; font-weight: 500; color: var(--muted); }
+  .mm-lang b { font-weight: 500; color: var(--accent); }
+  header .burger { cursor: pointer; font-weight: 500; }
+  /* Header hides while scrolling down and comes back on any scroll up */
+  header { transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, color .3s; }
+  header.hide { transform: translateY(-110%); }
 </style>
 </head>
 <body>
@@ -302,6 +327,10 @@
       <div class="right"><div class="lang"><b>EN</b><span>RU</span></div><span class="burger">Menu</span></div>
     </div>
   </header>
+  <div class="mmenu" id="mmenu" aria-label="Menu">
+    <nav><a href="#about">About</a><a href="#services">Services</a><a href="#regions">Regions</a><a href="#team">Team</a><a href="#news">News</a><a href="#contact">Contact</a></nav>
+    <div class="mm-foot"><div class="mm-lang"><b>EN</b><span>RU</span></div><a class="pill" href="mailto:mail@so-ipr.com">↘ Contact us</a></div>
+  </div>
 
   <main>
     <!-- Hero: big heading on white, then a full-width photo with the slogan changing word by word -->
@@ -695,6 +724,30 @@
     if (!("IntersectionObserver" in window)) { els.forEach((e) => e.classList.add("in")); return; }
     const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" });
     els.forEach((e) => io.observe(e));
+  })();
+
+  // --- Mobile menu: the Menu button opens a full-screen panel; a link or the button closes it ---
+  (() => {
+    const btn = document.querySelector(".burger"), panel = document.getElementById("mmenu");
+    const set = (open) => { document.body.classList.toggle("menu-open", open); btn.textContent = open ? "Close" : "Menu"; btn.setAttribute("aria-expanded", open); };
+    btn.setAttribute("role", "button"); btn.setAttribute("tabindex", "0"); btn.setAttribute("aria-controls", "mmenu");
+    btn.addEventListener("click", (e) => { e.preventDefault(); set(!document.body.classList.contains("menu-open")); });
+    btn.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); btn.click(); } });
+    panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => set(false)));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
+    addEventListener("resize", () => { if (innerWidth > 1100) set(false); });
+  })();
+
+  // --- Header: hide on scroll down, show on scroll up (never while the mobile menu is open or near the top) ---
+  (() => {
+    const h = document.querySelector("header"); let last = scrollY;
+    addEventListener("scroll", () => {
+      const y = scrollY, d = y - last;
+      if (document.body.classList.contains("menu-open") || y < 120) h.classList.remove("hide");
+      else if (d > 6) h.classList.add("hide");
+      else if (d < -6) h.classList.remove("hide");
+      if (Math.abs(d) > 6 || y < 120) last = y;
+    }, { passive: true });
   })();
 </script>
 </body>

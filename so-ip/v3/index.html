@@ -107,16 +107,15 @@
   .fig b { display: block; font-weight: 400; font-size: 52px; line-height: 1.1; color: var(--brand); }
   .fig span { display: block; margin-top: 10px; color: var(--muted); }
 
-  /* About: text left, photos scattered right (the reference's team-photo collage) */
+  /* About: text left, a tidy photo grid right — one wide picture and two below */
   .about { padding: 72px 0; }
   .about .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .about .p { margin-top: 22px; max-width: 560px; color: #333; }
   .about .p + .p { margin-top: 14px; }
-  .collage { position: relative; height: 560px; }
-  .collage img { position: absolute; object-fit: cover; border-radius: 6px; }
-  .collage .i1 { left: 0; top: 70px; width: 58%; height: 300px; }
-  .collage .i2 { right: 0; top: 0; width: 38%; height: 240px; }
-  .collage .i3 { right: 8%; bottom: 0; width: 46%; height: 220px; }
+  .collage { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .collage img { width: 100%; object-fit: cover; border-radius: 8px; }
+  .collage .i1 { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
+  .collage .i2, .collage .i3 { aspect-ratio: 1 / 1; }
 
   /* Services: the nine practices as large pills, in the style of the reference's menu pills */
   .svc { padding: 16px 0 72px; }
@@ -238,11 +237,12 @@
     .fig b { font-size: 40px; }
     .about { padding: 56px 0; }
     .about .grid, .svc .grid, footer .grid { grid-template-columns: 1fr; gap: 40px; }
-    .collage { height: 380px; }
-    .collage .i1 { height: 200px; top: 50px; } .collage .i2 { height: 160px; } .collage .i3 { height: 150px; }
+    .collage { gap: 8px; }
     .svc { padding: 20px 0 72px; }
     .chips a { font-size: 18px; padding: 12px 18px; }
-    .mapcard { padding: 32px 20px 24px; border-radius: 16px; }
+    #map-sec { padding: 0; }   /* map card runs edge to edge on phones */
+    .mapcard { padding: 40px 20px 28px; border-radius: 0; }
+    .mapcard svg { width: calc(100% + 16px); margin: 24px -8px 0; }
     .mapcard .top, .sec-head { flex-direction: column; align-items: flex-start; gap: 20px; }
     .mapcard .pt text { font-size: 24px; }
     .mapcard .pt circle { r: 7; }
@@ -252,7 +252,8 @@
     .rcard { flex-basis: 86vw; height: 520px; }
     .rcard h3 { font-size: 32px; }
     .rcard .t, .rcard .stats { left: 20px; right: 20px; }
-    .rcard .go { right: 20px; bottom: 120px; }
+    .rcard .stats { bottom: 84px; }
+    .rcard .go { left: 20px; right: 20px; bottom: 20px; }   /* button under the figures on phones, no overlap */
     .ground { padding: 56px 0; }
     .team { padding: 56px 0; }
     .tgrid { grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -263,6 +264,20 @@
     footer .cols { grid-template-columns: 1fr; }
     footer .base { flex-direction: column; gap: 8px; }
   }
+  /* Mobile menu */
+  .mmenu { position: fixed; inset: 0; z-index: 35; background: #fff; padding: 120px 20px 28px; display: flex; flex-direction: column; justify-content: space-between;
+    opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .35s, transform .35s, visibility 0s .35s; }
+  body.menu-open .mmenu { opacity: 1; visibility: visible; transform: none; transition: opacity .35s, transform .35s; }
+  body.menu-open { overflow: hidden; }
+  .mmenu nav { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+  .mmenu nav a { font-size: 26px; line-height: 1.2; padding: 12px 22px; border-radius: 1000px; background: var(--tint); }
+  .mmenu nav a:active { background: var(--brand); color: #fff; }
+  .mm-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .mm-lang { display: flex; gap: 10px; font: 400 13px var(--mono); }
+  .mm-lang span { color: var(--muted); }
+  /* Header hides while scrolling down and comes back on any scroll up */
+  header { transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, color .3s; }
+  header.hide { transform: translateY(-110%); }
 </style>
 </head>
 <body>
@@ -279,6 +294,10 @@
       </div>
     </div>
   </header>
+  <div class="mmenu" id="mmenu" aria-label="Menu">
+    <nav><a href="#about">About</a><a href="#services">Services</a><a href="#regions">Regions</a><a href="#team">Team</a><a href="#news">News</a><a href="#contact">Contact</a></nav>
+    <div class="mm-foot"><div class="mm-lang"><b>EN</b><span>RU</span></div><a class="btn dark" href="mailto:mail@so-ipr.com">Contact us</a></div>
+  </div>
 
   <main>
     <!-- Hero -->
@@ -705,6 +724,30 @@
       });
     }, { threshold: 0.4 });
     io.observe(document.querySelector(".figs"));
+  })();
+
+  // --- Mobile menu: the Menu button opens a full-screen panel; a link or the button closes it ---
+  (() => {
+    const btn = document.querySelector(".burger"), panel = document.getElementById("mmenu");
+    const set = (open) => { document.body.classList.toggle("menu-open", open); btn.textContent = open ? "Close" : "Menu"; btn.setAttribute("aria-expanded", open); };
+    btn.setAttribute("role", "button"); btn.setAttribute("tabindex", "0"); btn.setAttribute("aria-controls", "mmenu");
+    btn.addEventListener("click", (e) => { e.preventDefault(); set(!document.body.classList.contains("menu-open")); });
+    btn.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); btn.click(); } });
+    panel.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => set(false)));
+    addEventListener("keydown", (e) => { if (e.key === "Escape") set(false); });
+    addEventListener("resize", () => { if (innerWidth > 1100) set(false); });
+  })();
+
+  // --- Header: hide on scroll down, show on scroll up (never while the mobile menu is open or near the top) ---
+  (() => {
+    const h = document.querySelector("header"); let last = scrollY;
+    addEventListener("scroll", () => {
+      const y = scrollY, d = y - last;
+      if (document.body.classList.contains("menu-open") || y < 120) h.classList.remove("hide");
+      else if (d > 6) h.classList.add("hide");
+      else if (d < -6) h.classList.remove("hide");
+      if (Math.abs(d) > 6 || y < 120) last = y;
+    }, { passive: true });
   })();
 </script>
 </body>
