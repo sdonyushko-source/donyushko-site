@@ -187,19 +187,14 @@
   .filters button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
   /* Team: a strip of large portraits that scrolls sideways (arrows, swipe or trackpad) */
   .team-top .body { margin-top: 16px; max-width: 563px; }
-  .arrows { display: flex; gap: 8px; }
-  .arr { width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--accent); background: none; color: var(--accent); font-size: 18px; cursor: pointer; transition: background .15s, color .15s; }
-  .arr:hover { background: var(--accent); color: #fff; }
-  .people { display: flex; gap: 24px; margin-top: 40px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
-    padding: 0 max(24px, calc((100vw - 1328px) / 2 + 24px)); scroll-padding: 0 max(24px, calc((100vw - 1328px) / 2 + 24px)); }
-  .people::-webkit-scrollbar { display: none; }
-  .person { flex: 0 0 420px; scroll-snap-align: start; }
+  /* All key contacts at once in a grid (no slider); the region filter still narrows it down */
+  .people { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin-top: 40px; }
   .person.off { display: none; }
   .person .rv { aspect-ratio: 4 / 5; }
   .person .rv img { transition: transform .6s var(--ease); }
   .person:hover .rv img { transform: scale(1.03); }
   .person .meta { display: block; margin-top: 20px; font-size: 14px; letter-spacing: .01em; color: var(--accent); }
-  .person h4 { margin-top: 6px; font-weight: 500; font-size: 32px; line-height: 1.1; letter-spacing: -0.02em; transition: color .15s; }
+  .person h4 { margin-top: 6px; font-weight: 500; font-size: clamp(22px, 2vw, 28px); line-height: 1.1; letter-spacing: -0.02em; transition: color .15s; }
   .person .role { display: block; margin-top: 4px; font-weight: 300; font-size: 19px; color: var(--text); }
   .person .more { margin-top: 8px; }
   .person:hover h4, .person:hover .more { color: var(--accent); }
@@ -287,12 +282,10 @@
     .reg .panel { width: 100%; padding: 28px 0 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .team-top { flex-direction: column; align-items: flex-start; gap: 24px; }
     .team-tools { width: 100%; }
-    .team-tools .arrows { display: none; }   /* on a phone the strip is swiped, arrows are not needed */
     .filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
     .filters::-webkit-scrollbar { display: none; }
     .filters button { flex: none; }
-    .people { gap: 16px; margin-top: 24px; padding: 0 20px; scroll-padding: 0 20px; }
-    .person { flex-basis: 78vw; }
+    .people { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; margin-top: 24px; }
     .person h4 { font-size: 24px; }
     .news { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
     .feat h4 { font-size: 24px; }
@@ -495,7 +488,7 @@
       </div>
     </section>
 
-    <!-- Team: large portraits in a strip that scrolls sideways -->
+    <!-- Team: all key contacts in one grid -->
     <section class="s team" id="team">
       <div class="wrap">
         <div class="team-top">
@@ -507,16 +500,15 @@
             <div class="filters" id="filters">
               <button class="on" data-r="all">All</button><button data-r="gc">Greater China</button><button data-r="sea">Southeast Asia</button><button data-r="eu">Eurasia</button>
             </div>
-            <div class="arrows"><button class="arr" id="prev" aria-label="Previous">←</button><button class="arr" id="next" aria-label="Next">→</button></div>
           </div>
         </div>
-      </div>
-      <div class="people" id="people">
+        <div class="people" id="people">
           <a class="person" data-r="gc" href="#"><div class="rv"><img src="../assets/team/gao.webp" alt="Laura Gao"></div><span class="meta">Greater China</span><h4>Laura Gao</h4><span class="role">Director</span><span class="more"><i>↘</i> Contact</span></a>
           <a class="person" data-r="gc" href="#"><div class="rv"><img src="../assets/team/li.webp" alt="Chris Li"></div><span class="meta">Greater China</span><h4>Chris Li</h4><span class="role">Director</span><span class="more"><i>↘</i> Contact</span></a>
           <a class="person" data-r="sea" href="#"><div class="rv"><img src="../assets/team/greif.webp" alt="Daniel Greif"></div><span class="meta">Southeast Asia</span><h4>Daniel Greif</h4><span class="role">Director</span><span class="more"><i>↘</i> Contact</span></a>
           <a class="person" data-r="sea" href="#"><div class="rv"><img src="../assets/team/nguyen.webp" alt="Hau Nguyen"></div><span class="meta">Southeast Asia</span><h4>Hau Nguyen</h4><span class="role">Vice Director</span><span class="more"><i>↘</i> Contact</span></a>
           <a class="person" data-r="eu" href="#"><div class="rv"><img src="../assets/team/ashkina.webp" alt="Irina Ashkina"></div><span class="meta">Eurasia</span><h4>Irina Ashkina</h4><span class="role">Director</span><span class="more"><i>↘</i> Contact</span></a>
+        </div>
       </div>
     </section>
 
@@ -673,20 +665,11 @@
     io.observe(intro);
   })();
 
-  // --- Team strip: arrows scroll by one card ---
-  (() => {
-    const strip = document.getElementById("people");
-    const step = () => (strip.querySelector(".person:not(.off)")?.offsetWidth || 420) + 24;
-    document.getElementById("prev").addEventListener("click", () => strip.scrollBy({ left: -step(), behavior: "smooth" }));
-    document.getElementById("next").addEventListener("click", () => strip.scrollBy({ left: step(), behavior: "smooth" }));
-  })();
-
   // --- Team filter by region ---
   const btns = [...document.querySelectorAll("#filters button")], people = [...document.querySelectorAll(".person")];
   btns.forEach((b) => b.addEventListener("click", () => {
     btns.forEach((x) => x.classList.toggle("on", x === b));
     people.forEach((p) => p.classList.toggle("off", b.dataset.r !== "all" && p.dataset.r !== b.dataset.r));
-    document.getElementById("people").scrollTo({ left: 0 });
     revealState();
   }));
 
