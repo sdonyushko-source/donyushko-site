@@ -39,6 +39,10 @@ COPY appstore/ /var/www/html/appstore/
 # Built separately from the hilife Astro project (npm run build, then copy dist/ here).
 COPY hilife/ /var/www/html/hilife/
 
+# Hidden client preview (Hi,Life offline studio in Tallinn): direct link only, noindex, no password.
+# Built separately from the hilife-studio Astro project (npm run build, then copy dist/ here).
+COPY hilife-studio/ /var/www/html/hilife-studio/
+
 # Hidden pitch demo (S&O IP home page prototypes: v1, v2): direct link only, noindex, no password.
 # Static pages from the "S&O IP/demo" folder.
 COPY so-ip/ /var/www/html/so-ip/
