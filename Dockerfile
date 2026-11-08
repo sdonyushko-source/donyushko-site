@@ -47,6 +47,10 @@ COPY hilife-studio/ /var/www/html/hilife-studio/
 # Static pages from the "S&O IP/demo" folder.
 COPY so-ip/ /var/www/html/so-ip/
 
+# Hidden client preview (artist Vera Sudzilouskaya, portfolio site): direct link only, noindex, no password.
+# Built separately from the vera-site Astro project (npm run build with base /vera, then copy dist/ here).
+COPY vera/ /var/www/html/vera/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
