@@ -51,6 +51,10 @@ COPY so-ip/ /var/www/html/so-ip/
 # Built separately from the vera-site Astro project (npm run build with base /vera, then copy dist/ here).
 COPY vera/ /var/www/html/vera/
 
+# Hidden client preview (ReadySet landing for parents, design for approval): direct link only, noindex, no password.
+# Built separately from the readyset/site Astro project (npm run build with base /readyset, then copy dist/ here without v2/).
+COPY readyset/ /var/www/html/readyset/
+
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
