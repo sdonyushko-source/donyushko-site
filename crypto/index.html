@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Forecast log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Private crypto forecast log. Look follows the S&O IP demo v1: JetBrains Mono, warm paper, thin grid, one red accent.
+     Data: forecasts.json next to this file (array; a new forecast is appended there). The page only reads it.
+     A forecast is checked when "result" has the actual close on the horizon date: {"price": 2101}.
+     The scenario that happened is found from the ranges (">X", "A–B", "<X"); "scenario": "name" in result overrides it. -->
+<style>
+  :root {
+    --bg: #F4F4ED; --ink: #16151E; --ink-2: #424247; --ink-3: #8C8B88; --line: rgba(22,21,30,.1); --grid: rgba(22,21,30,.055);
+    --brand: #A13135; --ok: #2F6B3F; --chip: #E8E7DE;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --gutter: clamp(16px, 2.2vw, 32px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { overflow-x: clip; }
+  body { background: var(--bg); color: var(--ink); font: 400 15px/1.45 var(--mono); letter-spacing: -0.03em; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .cap { font-weight: 600; text-transform: uppercase; font-size: 13px; letter-spacing: -0.02em; }
+  .muted { color: var(--ink-2); } .faint { color: var(--ink-3); }
+  .dot::before { content: ""; display: inline-block; width: 5px; height: 5px; margin-right: 8px; vertical-align: 2px; background: var(--brand); }
+
+  /* Thin vertical grid lines, as on S&O v1 */
+  .gridlines { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: grid; grid-template-columns: repeat(4, 1fr); padding: 0 var(--gutter); }
+  .gridlines i { border-left: 1px solid var(--grid); } .gridlines i:last-child { border-right: 1px solid var(--grid); }
+  .wrap { position: relative; z-index: 1; padding: 0 var(--gutter); }
+
+  header { display: flex; justify-content: space-between; align-items: center; height: 64px; border-bottom: 1px solid var(--line); }
+  .lang { display: flex; gap: 12px; }
+  .lang button { font: 600 13px var(--mono); text-transform: uppercase; letter-spacing: -0.02em; background: none; border: 0; color: rgba(22,21,30,.4); cursor: pointer; padding: 4px 0; }
+  .lang button[aria-pressed="true"] { color: var(--ink); }
+
+  h1 { font-weight: 600; text-transform: uppercase; font-size: clamp(34px, 4.4vw, 64px); line-height: 1.02; letter-spacing: -0.04em; margin: clamp(48px, 7vw, 96px) 0 18px; max-width: 14em; }
+  .lead { max-width: 46em; color: var(--ink-2); }
+
+  /* Summary: four numbers in the grid's four columns */
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 48px; border-top: 1px solid var(--ink); }
+  .stat { padding: 18px 18px 22px 0; }
+  .stat + .stat { padding-left: 18px; border-left: 1px solid var(--line); }
+  .stat b { display: block; font-weight: 600; font-size: clamp(34px, 3.6vw, 52px); line-height: 1; letter-spacing: -0.05em; margin: 12px 0 8px; font-variant-numeric: tabular-nums; }
+  .stat b.accent { color: var(--brand); }
+  .stat span { font-size: 13px; color: var(--ink-3); }
+
+  /* Table */
+  .tbl-wrap { margin: 64px 0 96px; overflow-x: auto; }
+  table { width: 100%; min-width: 1080px; border-collapse: collapse; background: var(--bg); }
+  th { text-align: left; font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: -0.02em; color: var(--ink-3); padding: 0 14px 12px 0; border-bottom: 1px solid var(--ink); white-space: nowrap; }
+  td { padding: 20px 14px 22px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .coin { font-weight: 600; font-size: 18px; letter-spacing: -0.04em; }
+  .when { white-space: nowrap; }
+
+  /* Scenarios: name, range and a probability bar; the one that happened is marked */
+  .scn { display: grid; gap: 8px; min-width: 380px; }
+  .sc { display: grid; grid-template-columns: minmax(0, 1fr) 46px; gap: 4px 12px; align-items: center; padding: 6px 8px; margin: 0 -8px; }
+  .sc-name { font-weight: 500; }
+  .sc-range { color: var(--ink-3); font-size: 13px; margin-left: 6px; white-space: nowrap; }
+  .sc-p { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .sc-bar { grid-column: 1 / -1; height: 4px; background: var(--chip); }
+  .sc-bar i { display: block; height: 100%; background: var(--ink); }
+  .sc.hit { background: rgba(161,49,53,.07); outline: 1px solid rgba(161,49,53,.35); }
+  .sc.hit .sc-bar i { background: var(--brand); }
+  .sc.hit .sc-name::after { content: " ●"; color: var(--brand); }
+  .why { margin-top: 12px; font-size: 13px; color: var(--ink-2); max-width: 46em; }
+
+  .res-price { font-weight: 600; font-size: 17px; font-variant-numeric: tabular-nums; }
+  .res-chg { font-size: 13px; margin-left: 4px; }
+  .up { color: var(--ok); } .down { color: var(--brand); }
+  .res-scn { margin-top: 6px; }
+  .res-prob { margin-top: 2px; font-size: 13px; color: var(--ink-3); }
+  .pending { display: inline-block; font: 600 12px var(--mono); text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--ink); }
+  .pending.due { border-color: var(--brand); color: var(--brand); }
+
+  .empty, .err { margin: 64px 0; color: var(--ink-2); }
+  footer { padding: 24px 0 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-3); }
+  @media (max-width: 760px) {
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+<div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="wrap">
+  <header>
+    <span class="cap dot" data-t="brand"></span>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ru">RU</button>
+    </div>
+  </header>
+
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+
+  <div class="stats" id="stats"></div>
+  <div id="out"></div>
+
+  <footer data-t="foot"></footer>
+</div>
+
+<script>
+const T = {
+  en: {
+    brand: "Forecast log", title: "Crypto forecasts, checked against the price",
+    lead: "Each forecast gives scenarios with probabilities. On the horizon date the daily close decides which scenario happened. The score is the average probability given to what actually happened: the higher, the better calibrated.",
+    total: "Forecasts", checked: "Checked", avg: "Avg. probability of the outcome", pending: "Waiting",
+    avgNote: (b) => `random guess ≈ ${b}%`, totalNote: (c) => `${c} coin${c === 1 ? "" : "s"}`, checkedNote: "horizon passed, price in", pendingNote: (d) => d ? `${d} past horizon, need a price` : "horizon still ahead",
+    date: "Date", coin: "Coin", price: "Price at forecast", horizon: "Horizon", scenarios: "Scenarios", result: "Result",
+    gave: (p) => `we gave it ${p}%`, wait: "waiting", due: "price needed", none: "No forecasts yet.", err: "Could not load forecasts.json.",
+    outside: "outside all ranges", foot: "Private page · not indexed · data: forecasts.json",
+  },
+  ru: {
+    brand: "Журнал прогнозов", title: "Прогнозы по крипте, сверенные с ценой",
+    lead: "В каждом прогнозе несколько сценариев с вероятностями. На дату горизонта дневное закрытие решает, какой сценарий сбылся. Оценка — средняя вероятность, которую мы дали тому, что случилось: чем выше, тем точнее калибровка.",
+    total: "Прогнозов", checked: "Проверено", avg: "Средняя вероятность исхода", pending: "Ждут",
+    avgNote: (b) => `случайно ≈ ${b}%`, totalNote: (c) => `монет: ${c}`, checkedNote: "горизонт прошёл, цена внесена", pendingNote: (d) => d ? `${d} — горизонт прошёл, нужна цена` : "горизонт ещё впереди",
+    date: "Дата", coin: "Монета", price: "Цена на момент", horizon: "Горизонт", scenarios: "Сценарии", result: "Итог",
+    gave: (p) => `мы давали ${p}%`, wait: "ждём", due: "нужна цена", none: "Прогнозов пока нет.", err: "Не удалось загрузить forecasts.json.",
+    outside: "вне всех диапазонов", foot: "Закрытая страница · не индексируется · данные: forecasts.json",
+  },
+};
+
+// Language: ?lang=ru in the address, then the last choice (if the browser lets us remember it), then English
+let lang = new URLSearchParams(location.search).get("lang");
+if (!T[lang]) { try { lang = localStorage.getItem("fl-lang"); } catch (e) {} }
+if (!T[lang]) lang = "en";
+let data = null, loadErr = false;
+
+const num = (v) => Number(String(v).replace(/[^\d.,-]/g, "").replace(",", "."));
+// ">2150", "2030–2150", "<1950" → does the price fall inside?
+const inRange = (r, p) => {
+  const s = String(r).trim();
+  if (s[0] === ">") return p > num(s.slice(1));
+  if (s[0] === "<") return p < num(s.slice(1));
+  const [a, b] = s.split(/[–—-]/).map(num);
+  return p >= Math.min(a, b) && p <= Math.max(a, b);
+};
+const happened = (f) => {
+  const r = f.result; if (!r || r.price == null) return null;
+  if (r.scenario) return f.scenarios.find((s) => s.name === r.scenario) || null;
+  return f.scenarios.find((s) => inRange(s.range, Number(r.price))) || null;
+};
+const today = () => new Date().toISOString().slice(0, 10);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const fmtDate = (d) => { const x = new Date(d.length === 10 ? d + "T12:00:00" : d); return isNaN(x) ? esc(d) : x.toLocaleDateString(lang === "ru" ? "ru-RU" : "en-GB", { day: "numeric", month: "short", year: "numeric" }); };
+const fmtNum = (n) => Number(n).toLocaleString(lang === "ru" ? "ru-RU" : "en-US", { maximumFractionDigits: 2 });
+
+function render() {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.title = t.brand;
+  document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t[el.dataset.t]));
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  const out = document.getElementById("out"), stats = document.getElementById("stats");
+  if (loadErr) { stats.innerHTML = ""; out.innerHTML = `<p class="err">${t.err}</p>`; return; }
+  if (!data) return;
+  if (!data.length) { stats.innerHTML = ""; out.innerHTML = `<p class="empty">${t.none}</p>`; return; }
+
+  const rows = [...data].sort((a, b) => String(b.created).localeCompare(String(a.created)));
+  const checked = data.filter((f) => happened(f));
+  const avg = checked.length ? Math.round(checked.reduce((s, f) => s + happened(f).prob, 0) / checked.length) : null;
+  const base = Math.round(data.reduce((s, f) => s + 100 / f.scenarios.length, 0) / data.length);
+  const due = data.filter((f) => !happened(f) && f.horizon < today()).length;
+  const coins = new Set(data.map((f) => f.coin)).size;
+  stats.innerHTML = [
+    [t.total, data.length, t.totalNote(coins)],
+    [t.checked, checked.length, t.checkedNote],
+    [t.avg, avg == null ? "—" : avg + "%", t.avgNote(base), true],
+    [t.pending, data.length - checked.length, t.pendingNote(due)],
+  ].map(([k, v, n, a]) => `<div class="stat"><p class="cap">${k}</p><b${a ? ' class="accent"' : ""}>${v}</b><span>${n}</span></div>`).join("");
+
+  out.innerHTML = `<div class="tbl-wrap"><table>
+    <thead><tr><th>${t.date}</th><th>${t.coin}</th><th>${t.price}</th><th>${t.horizon}</th><th>${t.scenarios}</th><th>${t.result}</th></tr></thead>
+    <tbody>${rows.map((f) => {
+      const hit = happened(f), r = f.result;
+      let res;
+      if (r && r.price != null) {
+        const chg = (Number(r.price) / f.price_at_forecast - 1) * 100;
+        res = `<div><span class="res-price">${fmtNum(r.price)}</span><span class="res-chg ${chg >= 0 ? "up" : "down"}">${chg >= 0 ? "+" : ""}${chg.toFixed(1)}%</span></div>
+          <div class="res-scn">${hit ? esc(hit.name) : t.outside}</div>${hit ? `<div class="res-prob">${t.gave(hit.prob)}</div>` : ""}`;
+      } else {
+        const late = f.horizon < today();
+        res = `<span class="pending${late ? " due" : ""}">${late ? t.due : t.wait}</span>`;
+      }
+      return `<tr>
+        <td class="when">${fmtDate(f.created)}</td>
+        <td class="coin">${esc(f.coin)}</td>
+        <td class="num">${fmtNum(f.price_at_forecast)}</td>
+        <td class="when">${fmtDate(f.horizon)}</td>
+        <td><div class="scn">${f.scenarios.map((s) => `<div class="sc${hit === s ? " hit" : ""}"><span><span class="sc-name">${esc(s.name)}</span><span class="sc-range">${esc(s.range)}</span></span><span class="sc-p">${s.prob}%</span><span class="sc-bar"><i style="width:${Number(s.prob)}%"></i></span></div>`).join("")}</div>
+          ${f.reasoning ? `<p class="why">${esc(f.reasoning)}</p>` : ""}</td>
+        <td>${res}</td>
+      </tr>`;
+    }).join("")}</tbody></table></div>`;
+}
+
+document.querySelectorAll("[data-lang]").forEach((b) => b.addEventListener("click", () => {
+  lang = b.dataset.lang; try { localStorage.setItem("fl-lang", lang); } catch (e) {} render();
+}));
+render();
+fetch("forecasts.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw 0; return r.json(); })
+  .then((d) => { data = Array.isArray(d) ? d : []; render(); })
+  .catch(() => { loadErr = true; render(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "2026-11-11-eth",
+    "created": "2026-11-11T09:50+03:00",
+    "coin": "ETH",
+    "price_at_forecast": 2054,
+    "horizon": "2026-11-18",
+    "measure": "daily close on horizon date",
+    "scenarios": [
+      {"name": "Отскок", "range": ">2150", "prob": 25},
+      {"name": "Боковик на поддержке", "range": "2030–2150", "prob": 35},
+      {"name": "Пробой поддержки", "range": "1950–2030", "prob": 25},
+      {"name": "Глубокий слив", "range": "<1950", "prob": 15}
+    ],
+    "reasoning": "Цена на фибо 0,786 (2057) + дневной FVG после −20% за месяц; пауза вероятнее продолжения, но тренд вниз.",
+    "result": null
+  },
+  {
+    "id": "2026-11-11-btc",
+    "created": "2026-11-11T09:50+03:00",
+    "coin": "BTC",
+    "price_at_forecast": 73600,
+    "horizon": "2026-11-18",
+    "measure": "daily close on horizon date",
+    "scenarios": [
+      {"name": "Возврат над сопротивлением", "range": ">76000", "prob": 20},
+      {"name": "Боковик", "range": "73000–76000", "prob": 35},
+      {"name": "Пробой 73k", "range": "70000–73000", "prob": 30},
+      {"name": "Слив под 70k", "range": "<70000", "prob": 15}
+    ],
+    "reasoning": "Понижающиеся максимумы и минимумы, 73k уже проколот фитилём; структура слабее, чем у ETH.",
+    "result": null
+  }
+]

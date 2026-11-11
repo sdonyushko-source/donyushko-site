@@ -58,4 +58,11 @@ COPY readyset/ /var/www/html/readyset/
 # Private job list for Dasha (noindex): reachable only by direct link, not linked from the portfolio.
 COPY jobsfordasha/ /var/www/html/jobsfordasha/
 
+# Private crypto forecast log: noindex + password (basic auth, see docker/site.conf and docker/start.sh).
+# Set CRYPTO_USER and CRYPTO_PASS in the app's variables; without them the page is closed for everyone.
+COPY crypto/ /var/www/html/crypto/
+RUN command -v htpasswd >/dev/null || (apt-get update && apt-get install -y --no-install-recommends apache2-utils && rm -rf /var/lib/apt/lists/*)
+COPY docker/start.sh /usr/local/bin/start.sh
+
 EXPOSE 80
+CMD ["/usr/local/bin/start.sh"]
