@@ -54,6 +54,7 @@
   td { padding: 20px 14px 22px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
   td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .coin { font-weight: 600; font-size: 18px; letter-spacing: -0.04em; }
+  .kind { margin-top: 4px; font-weight: 400; font-size: 12px; letter-spacing: -0.02em; color: var(--ink-3); white-space: nowrap; }
   .when { white-space: nowrap; }
 
   /* Scenarios: name, range and a probability bar; the one that happened is marked */
@@ -115,7 +116,7 @@ const T = {
     avgNote: (b) => `random guess ≈ ${b}%`, totalNote: (c) => `${c} coin${c === 1 ? "" : "s"}`, checkedNote: "horizon passed, price in", pendingNote: (d) => d ? `${d} past horizon, need a price` : "horizon still ahead",
     date: "Date", coin: "Coin", price: "Price at forecast", horizon: "Horizon", scenarios: "Scenarios", result: "Result",
     gave: (p) => `we gave it ${p}%`, wait: "waiting", due: "price needed", none: "No forecasts yet.", err: "Could not load forecasts.json.",
-    outside: "outside all ranges", foot: "Not indexed · data: forecasts.json",
+    outside: "outside all ranges", kindClose: "close on date", kindTouch: "touch before date", hl: (h, l) => `high ${h} · low ${l}`, touched: (n, m) => `${n} of ${m} levels touched`, foot: "Not indexed · data: forecasts.json",
   },
   ru: {
     brand: "Журнал прогнозов", title: "Прогнозы по крипте, сверенные с ценой",
@@ -124,7 +125,7 @@ const T = {
     avgNote: (b) => `случайно ≈ ${b}%`, totalNote: (c) => `монет: ${c}`, checkedNote: "горизонт прошёл, цена внесена", pendingNote: (d) => d ? `${d} — горизонт прошёл, нужна цена` : "горизонт ещё впереди",
     date: "Дата", coin: "Монета", price: "Цена на момент", horizon: "Горизонт", scenarios: "Сценарии", result: "Итог",
     gave: (p) => `мы давали ${p}%`, wait: "ждём", due: "нужна цена", none: "Прогнозов пока нет.", err: "Не удалось загрузить forecasts.json.",
-    outside: "вне всех диапазонов", foot: "Не индексируется · данные: forecasts.json",
+    outside: "вне всех диапазонов", kindClose: "закрытие на дату", kindTouch: "касание до даты", hl: (h, l) => `макс. ${h} · мин. ${l}`, touched: (n, m) => `уровней задето: ${n} из ${m}`, foot: "Не индексируется · данные: forecasts.json",
   },
 };
 
@@ -135,15 +136,34 @@ if (!T[lang]) lang = "en";
 let data = null, loadErr = false;
 
 const num = (v) => Number(String(v).replace(/[^\d.,-]/g, "").replace(",", "."));
-// ">2150", "2030–2150", "<1950" → does the price fall inside?
+// ">2150", ">=2150", "2030–2150", "<1950", "<=2000" → does the price fall inside?
 const inRange = (r, p) => {
   const s = String(r).trim();
+  if (s.startsWith(">=")) return p >= num(s.slice(2));
+  if (s.startsWith("<=")) return p <= num(s.slice(2));
   if (s[0] === ">") return p > num(s.slice(1));
   if (s[0] === "<") return p < num(s.slice(1));
   const [a, b] = s.split(/[–—-]/).map(num);
   return p >= Math.min(a, b) && p <= Math.max(a, b);
 };
+// Two kinds of forecast (by "measure"):
+//  · close — one of the scenarios happens, judged by the close on the horizon date: result {"price": X};
+//  · touch — each level is its own yes/no, judged by the high and low before the horizon: result {"high": X, "low": Y}.
+const isTouch = (f) => /touch/i.test(f.measure || "");
+const touchedBy = (s, high, low) => {
+  const r = String(s.range).trim();
+  if (r[0] === ">") return inRange(r, high);
+  if (r[0] === "<") return inRange(r, low);
+  const [a, b] = r.split(/[–—-]/).map(num);
+  return high >= Math.min(a, b) && low <= Math.max(a, b);
+};
+const touchHits = (f) => {
+  const r = f.result; if (!r || r.high == null || r.low == null) return null;
+  return f.scenarios.filter((s) => touchedBy(s, Number(r.high), Number(r.low)));
+};
+const isChecked = (f) => (isTouch(f) ? !!touchHits(f) : !!happened(f));
 const happened = (f) => {
+  if (isTouch(f)) return null;
   const r = f.result; if (!r || r.price == null) return null;
   if (r.scenario) return f.scenarios.find((s) => s.name === r.scenario) || null;
   return f.scenarios.find((s) => inRange(s.range, Number(r.price))) || null;
@@ -165,10 +185,12 @@ function render() {
   if (!data.length) { stats.innerHTML = ""; out.innerHTML = `<p class="empty">${t.none}</p>`; return; }
 
   const rows = [...data].sort((a, b) => String(b.created).localeCompare(String(a.created)));
-  const checked = data.filter((f) => happened(f));
-  const avg = checked.length ? Math.round(checked.reduce((s, f) => s + happened(f).prob, 0) / checked.length) : null;
-  const base = Math.round(data.reduce((s, f) => s + 100 / f.scenarios.length, 0) / data.length);
-  const due = data.filter((f) => !happened(f) && f.horizon < today()).length;
+  const checked = data.filter(isChecked);
+  const scored = checked.filter((f) => !isTouch(f));
+  const avg = scored.length ? Math.round(scored.reduce((s, f) => s + happened(f).prob, 0) / scored.length) : null;
+  const closeAll = data.filter((f) => !isTouch(f));
+  const base = closeAll.length ? Math.round(closeAll.reduce((s, f) => s + 100 / f.scenarios.length, 0) / closeAll.length) : 0;
+  const due = data.filter((f) => !isChecked(f) && f.horizon < today()).length;
   const coins = new Set(data.map((f) => f.coin)).size;
   stats.innerHTML = [
     [t.total, data.length, t.totalNote(coins)],
@@ -180,9 +202,11 @@ function render() {
   out.innerHTML = `<div class="tbl-wrap"><table>
     <thead><tr><th>${t.date}</th><th>${t.coin}</th><th>${t.price}</th><th>${t.horizon}</th><th>${t.scenarios}</th><th>${t.result}</th></tr></thead>
     <tbody>${rows.map((f) => {
-      const hit = happened(f), r = f.result;
+      const hit = happened(f), r = f.result, tHits = isTouch(f) ? touchHits(f) : null;
       let res;
-      if (r && r.price != null) {
+      if (tHits) {
+        res = `<div class="res-scn">${t.hl(fmtNum(r.high), fmtNum(r.low))}</div><div class="res-prob">${t.touched(tHits.length, f.scenarios.length)}</div>`;
+      } else if (!isTouch(f) && r && r.price != null) {
         const chg = (Number(r.price) / f.price_at_forecast - 1) * 100;
         res = `<div><span class="res-price">${fmtNum(r.price)}</span><span class="res-chg ${chg >= 0 ? "up" : "down"}">${chg >= 0 ? "+" : ""}${chg.toFixed(1)}%</span></div>
           <div class="res-scn">${hit ? esc(hit.name) : t.outside}</div>${hit ? `<div class="res-prob">${t.gave(hit.prob)}</div>` : ""}`;
@@ -192,10 +216,10 @@ function render() {
       }
       return `<tr>
         <td class="when">${fmtDate(f.created)}</td>
-        <td class="coin">${esc(f.coin)}</td>
+        <td class="coin">${esc(f.coin)}<div class="kind">${isTouch(f) ? t.kindTouch : t.kindClose}</div></td>
         <td class="num">${fmtNum(f.price_at_forecast)}</td>
         <td class="when">${fmtDate(f.horizon)}</td>
-        <td><div class="scn">${f.scenarios.map((s) => `<div class="sc${hit === s ? " hit" : ""}"><span><span class="sc-name">${esc(s.name)}</span><span class="sc-range">${esc(s.range)}</span></span><span class="sc-p">${s.prob}%</span><span class="sc-bar"><i style="width:${Number(s.prob)}%"></i></span></div>`).join("")}</div>
+        <td><div class="scn">${f.scenarios.map((s) => `<div class="sc${hit === s || (tHits && tHits.includes(s)) ? " hit" : ""}"><span><span class="sc-name">${esc(s.name)}</span><span class="sc-range">${esc(s.range)}</span></span><span class="sc-p">${s.prob}%</span><span class="sc-bar"><i style="width:${Number(s.prob)}%"></i></span></div>`).join("")}</div>
           ${f.reasoning ? `<p class="why">${esc(f.reasoning)}</p>` : ""}</td>
         <td>${res}</td>
       </tr>`;
